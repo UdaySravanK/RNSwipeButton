@@ -2,8 +2,6 @@
 
 ![](https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.gif)
 
-<img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.gif" width="400" />
-
 <br>
 Code for below screenshot
 <br>
