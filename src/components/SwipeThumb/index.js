@@ -1,27 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  PanResponder,
   Animated,
-  View,
   Image,
+  PanResponder,
   TouchableNativeFeedback,
+  View,
 } from 'react-native';
-import arrowRight from '../../assets/images/arrow-right.png';
-import styles, {iconSize, borderWidth, margin} from './styles';
-import {
-  RAIL_FILL_BORDER_COLOR,
-  RAIL_FILL_BACKGROUND_COLOR,
-  TRANSPARENT_COLOR,
-} from '../../constants';
 
-export const SWIPE_SUCCESS_THRESHOLD = 70;
+// Styles
+import styles, {borderWidth, margin} from './styles';
+
+// Constants
+import {TRANSPARENT_COLOR} from '../../constants';
 
 class SwipeThumb extends React.Component {
   constructor(props) {
     super(props);
     const paddingAndMarginsOffset = borderWidth + 2 * margin;
-    this.defaultContainerWidth = iconSize;
+    this.defaultContainerWidth = props.iconSize;
     this.maxWidth = props.layoutWidth - paddingAndMarginsOffset;
     this.state = {
       animatedWidth: new Animated.Value(),
@@ -95,7 +92,7 @@ class SwipeThumb extends React.Component {
     if (this.props.disabled) return;
     const newWidth = this.defaultContainerWidth + gestureState.dx;
     const successThresholdWidth =
-      this.maxWidth * (SWIPE_SUCCESS_THRESHOLD / 100);
+      this.maxWidth * (this.props.swipeSuccessThreshold / 100);
     if (newWidth < successThresholdWidth) {
       this.onSwipeNotMetSuccessThreshold();
       return;
@@ -104,11 +101,12 @@ class SwipeThumb extends React.Component {
   }
 
   setBackgroundColors() {
+    const {railFillBackgroundColor, railFillBorderColor} = this.props;
     // Set backgroundColor only if not already set
     if (this.state.backgroundColor === TRANSPARENT_COLOR) {
       this.setState({
-        backgroundColor: RAIL_FILL_BACKGROUND_COLOR,
-        borderColor: RAIL_FILL_BORDER_COLOR,
+        backgroundColor: railFillBackgroundColor,
+        borderColor: railFillBorderColor,
       });
     }
   }
@@ -135,14 +133,30 @@ class SwipeThumb extends React.Component {
   }
 
   renderThumbIcon() {
-    const {disabled} = this.props;
+    const {
+      disabled,
+      disabledThumbIconBackgroundColor,
+      disabledThumbIconBorderColor,
+      iconSize,
+      thumbIconBackgroundColor,
+      thumbIconBorderColor,
+      thumbIconImageSource,
+    } = this.props;
+    const dynamicStyles = {
+      height: iconSize,
+      width: iconSize,
+      backgroundColor: disabled
+        ? disabledThumbIconBackgroundColor
+        : thumbIconBackgroundColor,
+      borderColor: disabled
+        ? disabledThumbIconBorderColor
+        : thumbIconBorderColor,
+      overflow: 'hidden',
+    };
+
     return (
-      <View style={[styles.icon, disabled ? styles.iconDisabled : '']}>
-        <Image
-          resizeMethod="scale"
-          source={disabled ? arrowRight : arrowRight}
-          style={styles.chevronImage}
-        />
+      <View style={[styles.icon, ...dynamicStyles]}>
+        <Image resizeMethod="resize" source={thumbIconImageSource} />
       </View>
     );
   }
@@ -182,14 +196,25 @@ SwipeThumb.defaultProps = {
   disabled: false,
   layoutWidth: 0,
   screenReaderEnabled: false,
-  title: '',
 };
 
 SwipeThumb.propTypes = {
   disabled: PropTypes.bool,
+  disabledThumbIconBackgroundColor: PropTypes.string,
+  disabledThumbIconBorderColor: PropTypes.string,
+  iconSize: PropTypes.number,
   layoutWidth: PropTypes.number,
   onSwipeSuccess: PropTypes.func,
+  railFillBackgroundColor: PropTypes.string,
+  railFillBorderColor: PropTypes.string,
   screenReaderEnabled: PropTypes.bool,
+  swipeSuccessThreshold: PropTypes.number,
+  thumbIconBackgroundColor: PropTypes.string,
+  thumbIconBorderColor: PropTypes.string,
+  thumbIconImageSource: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   title: PropTypes.string,
 };
 

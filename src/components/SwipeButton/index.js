@@ -1,8 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Text, View, AccessibilityInfo} from 'react-native';
+
+// Components
 import SwipeThumb from '../../components/SwipeThumb';
+
+// Styles
 import styles from './styles';
+
+// Constants
+import {
+  DISABLED_RAIL_BACKGROUND_COLOR,
+  DISABLED_THUMB_ICON_BACKGROUND_COLOR,
+  DISABLED_THUMB_ICON_BORDER_COLOR,
+  RAIL_BACKGROUND_COLOR,
+  RAIL_BORDER_COLOR,
+  RAIL_FILL_BACKGROUND_COLOR,
+  RAIL_FILL_BORDER_COLOR,
+  SWIPE_SUCCESS_THRESHOLD,
+  THUMB_ICON_BACKGROUND_COLOR,
+  THUMB_ICON_BORDER_COLOR,
+  TITLE_COLOR,
+} from '../../constants';
+
+// Assets
+import thumbIcon from '../../assets/images/arrow-right.png';
 
 class SwipeButton extends React.Component {
   constructor(props) {
@@ -59,24 +81,69 @@ class SwipeButton extends React.Component {
   }
 
   render() {
-    const {disabled, onSwipeSuccess, title} = this.props;
+    const {
+      disabled,
+      disabledRailBackgroundColor,
+      disabledThumbIconBackgroundColor,
+      disabledThumbIconBorderColor,
+      height,
+      onSwipeSuccess,
+      railBackgroundColor,
+      railBorderColor,
+      railFillBackgroundColor,
+      railFillBorderColor,
+      swipeSuccessThreshold,
+      thumbIconBackgroundColor,
+      thumbIconBorderColor,
+      thumbIconImageSource,
+      title,
+      titleColor,
+      titleFontSize,
+      width,
+    } = this.props;
     const {screenReaderEnabled} = this.state;
 
     return (
-      <View style={styles.container} onLayout={this.onLayoutContainer}>
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor: disabled
+              ? disabledRailBackgroundColor
+              : railBackgroundColor,
+            borderColor: railBorderColor,
+            ...(width ? {width} : {}),
+          },
+        ]}
+        onLayout={this.onLayoutContainer}>
         <Text
           importantForAccessibility={
             screenReaderEnabled ? 'no-hide-descendants' : ''
           }
-          style={styles.title}>
-          Swipe to submit
+          style={[
+            styles.title,
+            {
+              color: titleColor,
+              fontSize: titleFontSize,
+            },
+          ]}>
+          {title}
         </Text>
         {this.state.layoutWidth > 0 && (
           <SwipeThumb
             disabled={disabled}
+            disabledThumbIconBackgroundColor={disabledThumbIconBackgroundColor}
+            disabledThumbIconBorderColor={disabledThumbIconBorderColor}
+            iconSize={height}
             layoutWidth={this.state.layoutWidth}
             onSwipeSuccess={onSwipeSuccess}
+            railFillBackgroundColor={railFillBackgroundColor}
+            railFillBorderColor={railFillBorderColor}
             screenReaderEnabled={screenReaderEnabled}
+            swipeSuccessThreshold={swipeSuccessThreshold}
+            thumbIconBackgroundColor={thumbIconBackgroundColor}
+            thumbIconBorderColor={thumbIconBorderColor}
+            thumbIconImageSource={thumbIconImageSource}
             title={title}
           />
         )}
@@ -87,14 +154,45 @@ class SwipeButton extends React.Component {
 
 SwipeButton.defaultProps = {
   disabled: false,
-  navigationListener: () => {},
-  title: '',
+  disabledRailBackgroundColor: DISABLED_RAIL_BACKGROUND_COLOR,
+  disabledThumbIconBackgroundColor: DISABLED_THUMB_ICON_BACKGROUND_COLOR,
+  disabledThumbIconBorderColor: DISABLED_THUMB_ICON_BORDER_COLOR,
+  height: 50,
+  railBackgroundColor: RAIL_BACKGROUND_COLOR,
+  railBorderColor: RAIL_BORDER_COLOR,
+  railFillBackgroundColor: RAIL_FILL_BACKGROUND_COLOR,
+  railFillBorderColor: RAIL_FILL_BORDER_COLOR,
+  swipeSuccessThreshold: SWIPE_SUCCESS_THRESHOLD,
+  thumbIconBackgroundColor: THUMB_ICON_BACKGROUND_COLOR,
+  thumbIconBorderColor: THUMB_ICON_BORDER_COLOR,
+  thumbIconImageSource: thumbIcon,
+  title: 'Swipe to submit',
+  titleColor: TITLE_COLOR,
+  titleFontSize: 20,
 };
 
 SwipeButton.propTypes = {
-  onSwipeSuccess: PropTypes.func,
   disabled: PropTypes.bool,
+  disabledRailBackgroundColor: PropTypes.string,
+  disabledThumbIconBackgroundColor: PropTypes.string,
+  disabledThumbIconBorderColor: PropTypes.string,
+  height: PropTypes.number,
+  onSwipeSuccess: PropTypes.func,
+  railBackgroundColor: PropTypes.string,
+  railBorderColor: PropTypes.string,
+  railFillBackgroundColor: PropTypes.string,
+  railFillBorderColor: PropTypes.string,
+  swipeSuccessThreshold: PropTypes.number,
+  thumbIconBackgroundColor: PropTypes.string,
+  thumbIconBorderColor: PropTypes.string,
+  thumbIconImageSource: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
   title: PropTypes.string,
+  titleColor: PropTypes.string,
+  titleFontSize: PropTypes.number,
+  width: PropTypes.number,
 };
 
 export default SwipeButton;

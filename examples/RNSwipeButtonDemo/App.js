@@ -6,19 +6,22 @@
  * @flow
  */
 
-import React, {Fragment} from 'react';
-import {Text, ToastAndroid} from 'react-native';
+import React from 'react';
+import {View, Text, ToastAndroid} from 'react-native';
+import thumbIcon from './assets/thumbIcon.png';
 
-import SwipeButton from 'rn-swipe-button';
+import SwipeButton from './src/components/SwipeButton';
 
 const App = () => {
   return (
-    <Fragment>
-      <Text>React Native Swipe Button - Enabled</Text>
-      <SwipeButton />
-      <Text>React Native Swipe Button - Disabled</Text>
-      <SwipeButton disabled={true} />
-      <Text>React Native Swipe Button - With onSwipeSuccess callback</Text>
+    <View style={{padding: 15}}>
+      <Text style={{color: '#700D99', fontSize: 25}}>
+        React Native Swipe Button
+      </Text>
+      <Text style={{color: '#059478', fontSize: 30}}>**************</Text>
+      <Text style={{color: '#140866', fontSize: 20}}>
+        Set onSwipeSuccess callback and width
+      </Text>
       <SwipeButton
         disabled={false}
         onSwipeSuccess={() => {
@@ -28,8 +31,19 @@ const App = () => {
             ToastAndroid.CENTER,
           );
         }}
+        width={200}
       />
-    </Fragment>
+      <Text style={{color: '#140866', fontSize: 20}}>
+        Enabled and thumb icon
+      </Text>
+      <SwipeButton thumbIconImageSource={thumbIcon} />
+      <Text style={{color: '#140866', fontSize: 20}}>Disabled</Text>
+      <SwipeButton disabled={true} />
+      <Text style={{color: '#140866', fontSize: 20}}>Set height</Text>
+      <SwipeButton height={25} />
+      <Text style={{color: '#140866', fontSize: 20}}>Set height and width</Text>
+      <SwipeButton height={35} width={150} title="Swipe" />
+    </View>
   );
 };
 
