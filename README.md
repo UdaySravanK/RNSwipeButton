@@ -2,7 +2,8 @@
 <br>
 Code for below screenshot
 <br>
-<pre>
+
+```
 <Text>React Native Swipe Button - Enabled</Text>
 <SwipeButton />
 <Text>React Native Swipe Button - Disabled</Text>
@@ -18,7 +19,8 @@ Code for below screenshot
     );
   }}
 />
-</pre>   
+```
+
 <br>
 The below screenshot is from demo app under examples folder in the repo
 <hr>
