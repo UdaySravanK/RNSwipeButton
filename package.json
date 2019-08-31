@@ -1,0 +1,30 @@
+{
+  "name": "rn-swipe-button",
+  "version": "1.0.0",
+  "description": "react native swipe button component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UdaySravanK/RNSwipeButton.git"
+  },
+  "keywords": [
+    "react-native-swipe-button",
+    "swipe-button",
+    "rn-swipe-button",
+    "swipeable-button",
+    "swipeable",
+    "swipe"
+  ],
+  "author": "Uday Sravan Kumar Kamineni",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UdaySravanK/RNSwipeButton/issues"
+  },
+  "homepage": "https://github.com/UdaySravanK/RNSwipeButton#readme",
+  "devDependencies": {
+    "metro-react-native-babel-preset": "^0.56.0"
+  }
+}
