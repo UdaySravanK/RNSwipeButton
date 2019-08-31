@@ -32,7 +32,6 @@ const App = () => {
             ToastAndroid.CENTER,
           );
         }}
-        width={200}
       />
       <Text style={{color: '#140866', fontSize: 20}}>
         Enabled and thumb icon
