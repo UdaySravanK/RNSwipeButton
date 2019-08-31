@@ -1,8 +1,8 @@
 ## React Native Swipe Button component
 <br>
-code for below screenshot
+Code for below screenshot
 <br>
-```
+<pre>
 <Text>React Native Swipe Button - Enabled</Text>
 <SwipeButton />
 <Text>React Native Swipe Button - Disabled</Text>
@@ -18,7 +18,7 @@ code for below screenshot
     );
   }}
 />
-```     
+</pre>   
 <br>
 The below screenshot is from demo app under examples folder in the repo
 <hr>
