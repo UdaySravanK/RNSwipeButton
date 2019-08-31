@@ -1,6 +1,6 @@
 {
   "name": "rn-swipe-button",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react native swipe button component",
   "main": "index.js",
   "scripts": {
