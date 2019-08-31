@@ -3,7 +3,7 @@
 ![](https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.gif)
 
 <br>
-Code for below screenshot
+Code for above screen
 <br>
 
 ```
