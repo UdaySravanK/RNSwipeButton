@@ -155,7 +155,7 @@ class SwipeThumb extends React.Component {
     };
 
     return (
-      <View style={[styles.icon, ...dynamicStyles]}>
+      <View style={[styles.icon, {...dynamicStyles}]}>
         <Image resizeMethod="resize" source={thumbIconImageSource} />
       </View>
     );

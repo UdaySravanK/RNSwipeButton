@@ -10,7 +10,7 @@ import React from 'react';
 import {View, Text, ToastAndroid} from 'react-native';
 import thumbIcon from './assets/thumbIcon.png';
 
-import SwipeButton from './src/components/SwipeButton';
+import SwipeButton from 'rn-swipe-button';
 
 const App = () => {
   return (
@@ -31,7 +31,6 @@ const App = () => {
             ToastAndroid.CENTER,
           );
         }}
-        width={200}
       />
       <Text style={{color: '#140866', fontSize: 20}}>
         Enabled and thumb icon
