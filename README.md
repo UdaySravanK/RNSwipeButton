@@ -52,4 +52,6 @@ const App = () => {
 The below screenshot is from demo app under examples folder in the repo
 <hr>
 <img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.png" width="400" />
+<p>iOS demo screenshot</p>
+<img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-ios.png" width="400" />
 
