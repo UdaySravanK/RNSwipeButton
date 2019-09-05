@@ -1,10 +1,47 @@
-## React Native Swipe Button component
-
-![](https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.gif)
-
-<br>
-Code for above screen
-<br>
+<h2 style="color:darkgreen;">React Native Swipe Button Component</h2>
+<hr>
+<div style="color:darkcyan; font-size: 15px;">
+  <code>
+    <p>npm install rn-swipe-button --save</p>
+    <p>import SwipeButton from 'rn-swipe-button';</p>
+    &lt;SwipeButton /&gt; 
+  </code>
+</div>
+<hr>
+<div>
+  <h2 style="color:darkgreen;">Screenshots of Android and iOS</h2>
+  <img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/>
+  <img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.png" style="margin-right: 30px;" width="230"/>
+  <img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.gif" width="230" />
+  <p>These screenshots are from demo app under examples folder in the repo</p>
+</div>
+<hr>
+<h2 style="color:darkgreen;">Component properties</h2>
+<pre style="font-size: 15px; color: brown;">
+    <b>disabled</b>: PropTypes.bool,
+    <b>disabledRailBackgroundColor</b>: PropTypes.string,
+    <b>disabledThumbIconBackgroundColor</b>: PropTypes.string,
+    <b>disabledThumbIconBorderColor</b>: PropTypes.string,
+    <b>height</b>: PropTypes.number,
+    <b>onSwipeSuccess</b>: PropTypes.func,
+    <b>railBackgroundColor</b>: PropTypes.string,
+    <b>railBorderColor</b>: PropTypes.string,
+    <b>railFillBackgroundColor</b>: PropTypes.string,
+    <b>railFillBorderColor</b>: PropTypes.string,
+    <b>swipeSuccessThreshold</b>: PropTypes.number, <span style="color: blueviolet">// Ex: 70. Swipping 70% will be considered as successful swipe</span>
+    <b>thumbIconBackgroundColor</b>: PropTypes.string,
+    <b>thumbIconBorderColor</b>: PropTypes.string,
+    <b>thumbIconImageSource</b>: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
+    <b>title</b>: PropTypes.string,
+    <b>titleColor</b>: PropTypes.string,
+    <b>titleFontSize</b>: PropTypes.number,
+    <b>width</b>: PropTypes.number,
+</pre>
+<hr>
+<h2 style="color:darkgreen;">Code for above screenshots</h2>
 
 ```
 import React, {Fragment} from 'react';
@@ -47,11 +84,3 @@ const App = () => {
   );
 };
 ```
-
-<br>
-The below screenshot is from demo app under examples folder in the repo
-<hr>
-<img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.png" width="400" />
-<p>iOS demo screenshot</p>
-<img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-ios.png" width="400" />
-

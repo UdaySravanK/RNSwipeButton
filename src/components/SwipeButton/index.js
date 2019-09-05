@@ -172,7 +172,7 @@ SwipeButton.defaultProps = {
 };
 
 SwipeButton.propTypes = {
-  disabled: PropTypes.bool,
+  disable: PropTypes.bool,
   disabledRailBackgroundColor: PropTypes.string,
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
@@ -182,7 +182,7 @@ SwipeButton.propTypes = {
   railBorderColor: PropTypes.string,
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,
-  swipeSuccessThreshold: PropTypes.number,
+  swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe
   thumbIconBackgroundColor: PropTypes.string,
   thumbIconBorderColor: PropTypes.string,
   thumbIconImageSource: PropTypes.oneOfType([
