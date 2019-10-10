@@ -31,6 +31,7 @@
     <b>swipeSuccessThreshold</b>: PropTypes.number, <span style="color: blueviolet">// Ex: 70. Swipping 70% will be considered as successful swipe</span>
     <b>thumbIconBackgroundColor</b>: PropTypes.string,
     <b>thumbIconBorderColor</b>: PropTypes.string,
+    <b>thumbIconComponent</b>: PropTypes.node,
     <b>thumbIconImageSource</b>: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
@@ -47,10 +48,12 @@
 import React, {Fragment} from 'react';
 import {Text, ToastAndroid} from 'react-native';
 import thumbIcon from './assets/thumbIcon.png';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import SwipeButton from 'rn-swipe-button';
 
 const App = () => {
+  const TwitterIcon = () => <Icon name="twitter" color="#3b5998" size={30} />;
   return (
     <View style={{padding: 15}}>
       <Text style={{color: '#700D99', fontSize: 25}}>
@@ -80,6 +83,14 @@ const App = () => {
       <SwipeButton height={25} />
       <Text style={{color: '#140866', fontSize: 20}}>Set height and width</Text>
       <SwipeButton height={35} width={150} title="Swipe" />
+      <Text style={{color: '#140866', fontSize: 20}}>
+        Pass component to set as thumb icon
+      </Text>
+      <SwipeButton
+        thumbIconBackgroundColor="#FFFFFF"
+        thumbIconComponent={TwitterIcon}
+        title="Slide to unlock"
+      />
     </View>
   );
 };
