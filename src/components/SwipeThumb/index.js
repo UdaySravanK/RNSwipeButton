@@ -68,12 +68,12 @@ class SwipeThumb extends React.Component {
       this.finishRemainingSwipe();
       return;
     }
-    if (this.props.onSwipeSuccess) this.props.onSwipeSuccess();
+    if (this.props.onSwipeSuccess) {this.props.onSwipeSuccess();}
     this.reset();
   }
 
   onPanResponderMove(event, gestureState) {
-    if (this.props.disabled) return;
+    if (this.props.disabled) {return;}
     const newWidth = this.defaultContainerWidth + gestureState.dx;
     if (newWidth < this.defaultContainerWidth) {
       // Reached starting position
@@ -89,7 +89,7 @@ class SwipeThumb extends React.Component {
   }
 
   onPanResponderRelease(event, gestureState) {
-    if (this.props.disabled) return;
+    if (this.props.disabled) {return;}
     const newWidth = this.defaultContainerWidth + gestureState.dx;
     const successThresholdWidth =
       this.maxWidth * (this.props.swipeSuccessThreshold / 100);
@@ -117,7 +117,7 @@ class SwipeThumb extends React.Component {
       toValue: this.maxWidth,
       duration: 200,
     }).start(() => {
-      if (this.props.onSwipeSuccess) this.props.onSwipeSuccess();
+      if (this.props.onSwipeSuccess) {this.props.onSwipeSuccess();}
       // this.reset(); // Enable this line to reset the thumb after successful swipe
     });
   }
@@ -140,6 +140,7 @@ class SwipeThumb extends React.Component {
       iconSize,
       thumbIconBackgroundColor,
       thumbIconBorderColor,
+      thumbIconComponent: ThumbIconComponent,
       thumbIconImageSource,
     } = this.props;
     const dynamicStyles = {
@@ -156,7 +157,14 @@ class SwipeThumb extends React.Component {
 
     return (
       <View style={[styles.icon, {...dynamicStyles}]}>
-        <Image resizeMethod="resize" source={thumbIconImageSource} />
+        {!ThumbIconComponent && (
+          <Image resizeMethod="resize" source={thumbIconImageSource} />
+        )}
+        {ThumbIconComponent && (
+          <View>
+            <ThumbIconComponent />
+          </View>
+        )}
       </View>
     );
   }
@@ -211,6 +219,7 @@ SwipeThumb.propTypes = {
   swipeSuccessThreshold: PropTypes.number,
   thumbIconBackgroundColor: PropTypes.string,
   thumbIconBorderColor: PropTypes.string,
+  thumbIconComponent: PropTypes.node,
   thumbIconImageSource: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

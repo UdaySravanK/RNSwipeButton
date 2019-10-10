@@ -95,6 +95,7 @@ class SwipeButton extends React.Component {
       swipeSuccessThreshold,
       thumbIconBackgroundColor,
       thumbIconBorderColor,
+      thumbIconComponent,
       thumbIconImageSource,
       title,
       titleColor,
@@ -143,6 +144,7 @@ class SwipeButton extends React.Component {
             swipeSuccessThreshold={swipeSuccessThreshold}
             thumbIconBackgroundColor={thumbIconBackgroundColor}
             thumbIconBorderColor={thumbIconBorderColor}
+            thumbIconComponent={thumbIconComponent}
             thumbIconImageSource={thumbIconImageSource}
             title={title}
           />
@@ -185,6 +187,7 @@ SwipeButton.propTypes = {
   swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe
   thumbIconBackgroundColor: PropTypes.string,
   thumbIconBorderColor: PropTypes.string,
+  thumbIconComponent: PropTypes.node,
   thumbIconImageSource: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
