@@ -9,10 +9,12 @@
 import React from 'react';
 import {View, Text, ToastAndroid} from 'react-native';
 import thumbIcon from './assets/thumbIcon.png';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import SwipeButton from 'rn-swipe-button';
 
 const App = () => {
+  const TwitterIcon = () => <Icon name="twitter" color="#3b5998" size={30} />;
   return (
     <View style={{padding: 15}}>
       <Text style={{color: '#700D99', fontSize: 25}}>
@@ -42,6 +44,14 @@ const App = () => {
       <SwipeButton height={25} />
       <Text style={{color: '#140866', fontSize: 20}}>Set height and width</Text>
       <SwipeButton height={35} width={150} title="Swipe" />
+      <Text style={{color: '#140866', fontSize: 20}}>
+        Pass component to set as thumb icon
+      </Text>
+      <SwipeButton
+        thumbIconBackgroundColor="#FFFFFF"
+        thumbIconComponent={TwitterIcon}
+        title="Slide to unlock"
+      />
     </View>
   );
 };
