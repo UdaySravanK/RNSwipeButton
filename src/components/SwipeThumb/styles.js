@@ -6,8 +6,17 @@ const maxContainerHeight = 100;
 const Styles = StyleSheet.create({
   container: {
     alignItems: 'flex-end',
+    alignSelf: 'flex-start',
     borderRadius: maxContainerHeight / 2,
     borderRightWidth: 0,
+    borderWidth,
+    margin,
+  },
+  containerRTL: {
+    alignItems: 'flex-start',
+    alignSelf: 'flex-end',
+    borderRadius: maxContainerHeight / 2,
+    borderLeftWidth: 0,
     borderWidth,
     margin,
   },

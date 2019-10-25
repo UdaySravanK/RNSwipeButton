@@ -68,13 +68,19 @@ class SwipeThumb extends React.Component {
       this.finishRemainingSwipe();
       return;
     }
-    if (this.props.onSwipeSuccess) {this.props.onSwipeSuccess();}
+    if (this.props.onSwipeSuccess) {
+      this.props.onSwipeSuccess();
+    }
     this.reset();
   }
 
   onPanResponderMove(event, gestureState) {
-    if (this.props.disabled) {return;}
-    const newWidth = this.defaultContainerWidth + gestureState.dx;
+    if (this.props.disabled) {
+      return;
+    }
+    const rtlMultiplier = this.props.enableRightToLeftSwipe ? -1 : 1;
+    const newWidth =
+      this.defaultContainerWidth + rtlMultiplier * gestureState.dx;
     if (newWidth < this.defaultContainerWidth) {
       // Reached starting position
       this.reset();
@@ -89,8 +95,12 @@ class SwipeThumb extends React.Component {
   }
 
   onPanResponderRelease(event, gestureState) {
-    if (this.props.disabled) {return;}
-    const newWidth = this.defaultContainerWidth + gestureState.dx;
+    if (this.props.disabled) {
+      return;
+    }
+    const rtlMultiplier = this.props.enableRightToLeftSwipe ? -1 : 1;
+    const newWidth =
+      this.defaultContainerWidth + rtlMultiplier * gestureState.dx;
     const successThresholdWidth =
       this.maxWidth * (this.props.swipeSuccessThreshold / 100);
     if (newWidth < successThresholdWidth) {
@@ -117,7 +127,9 @@ class SwipeThumb extends React.Component {
       toValue: this.maxWidth,
       duration: 200,
     }).start(() => {
-      if (this.props.onSwipeSuccess) {this.props.onSwipeSuccess();}
+      if (this.props.onSwipeSuccess) {
+        this.props.onSwipeSuccess();
+      }
       // this.reset(); // Enable this line to reset the thumb after successful swipe
     });
   }
@@ -170,12 +182,18 @@ class SwipeThumb extends React.Component {
   }
 
   render() {
-    const {disabled, title, onSwipeSuccess, screenReaderEnabled} = this.props;
+    const {
+      disabled,
+      title,
+      onSwipeSuccess,
+      screenReaderEnabled,
+      enableRightToLeftSwipe,
+    } = this.props;
     const panStyle = {
       backgroundColor: this.state.backgroundColor,
       borderColor: this.state.borderColor,
       width: this.state.animatedWidth,
-      ...styles.container,
+      ...(enableRightToLeftSwipe ? styles.containerRTL : styles.container),
     };
     if (screenReaderEnabled) {
       return (
@@ -210,6 +228,7 @@ SwipeThumb.propTypes = {
   disabled: PropTypes.bool,
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
+  enableRightToLeftSwipe: PropTypes.bool,
   iconSize: PropTypes.number,
   layoutWidth: PropTypes.number,
   onSwipeSuccess: PropTypes.func,

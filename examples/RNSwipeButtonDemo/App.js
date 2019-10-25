@@ -7,16 +7,17 @@
  */
 
 import React from 'react';
-import {View, Text, ToastAndroid} from 'react-native';
+import {View, ScrollView, Text, ToastAndroid} from 'react-native';
 import thumbIcon from './assets/thumbIcon.png';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import SwipeButton from 'rn-swipe-button';
+// import SwipeButton from 'rn-swipe-button';
 
 const App = () => {
   const TwitterIcon = () => <Icon name="twitter" color="#3b5998" size={30} />;
+  const facebookIcon = () => <Icon name="facebook" color="#3b5998" size={30} />;
   return (
-    <View style={{padding: 15}}>
+    <ScrollView style={{padding: 15}}>
       <Text style={{color: '#700D99', fontSize: 25}}>
         React Native Swipe Button
       </Text>
@@ -40,6 +41,22 @@ const App = () => {
       <SwipeButton thumbIconImageSource={thumbIcon} />
       <Text style={{color: '#140866', fontSize: 20}}>Disabled</Text>
       <SwipeButton disabled={true} />
+      <Text style={{color: '#140866', fontSize: 20}}>
+        Enable right to left swipe
+      </Text>
+      <SwipeButton
+        enableRightToLeftSwipe
+        thumbIconBackgroundColor="#FFFFFF"
+        thumbIconComponent={facebookIcon}
+        title="Slide to unlock"
+        onSwipeSuccess={() => {
+          ToastAndroid.showWithGravity(
+            'Slide success!',
+            ToastAndroid.SHORT,
+            ToastAndroid.CENTER,
+          );
+        }}
+      />
       <Text style={{color: '#140866', fontSize: 20}}>Set height</Text>
       <SwipeButton height={25} />
       <Text style={{color: '#140866', fontSize: 20}}>Set height and width</Text>
@@ -52,7 +69,8 @@ const App = () => {
         thumbIconComponent={TwitterIcon}
         title="Slide to unlock"
       />
-    </View>
+      <View style={{width: 200, height: 300}} />
+    </ScrollView>
   );
 };
 

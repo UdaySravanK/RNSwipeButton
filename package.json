@@ -1,6 +1,6 @@
 {
   "name": "rn-swipe-button",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "react native swipe/slide button component",
   "main": "index.js",
   "scripts": {
@@ -24,6 +24,10 @@
     "react-native-slide",
     "swipe-to-unlock",
     "rn-slide-button",
+    "right-to-left-swipe-button",
+    "right-to-left-slide-button",
+    "swipe-right-to-left",
+    "swipe-left-to-right",
     "slide"
   ],
   "author": "Uday Sravan Kumar Kamineni",
