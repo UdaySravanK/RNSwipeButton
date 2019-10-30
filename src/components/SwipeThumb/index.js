@@ -27,6 +27,7 @@ class SwipeThumb extends React.Component {
       pan: new Animated.ValueXY(),
     };
     this.finishRemainingSwipe = this.finishRemainingSwipe.bind(this);
+    this.onPanResponderStart = this.onPanResponderStart.bind(this);
     this.onPanResponderMove = this.onPanResponderMove.bind(this);
     this.onPanResponderRelease = this.onPanResponderRelease.bind(this);
     this.onSwipeMetSuccessThreshold = this.onSwipeMetSuccessThreshold.bind(
@@ -46,6 +47,7 @@ class SwipeThumb extends React.Component {
       onStartShouldSetPanResponderCapture: () => true,
       onMoveShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
+      onPanResponderStart: this.onPanResponderStart,
       onPanResponderMove: this.onPanResponderMove,
       onPanResponderRelease: this.onPanResponderRelease,
       onShouldBlockNativeResponder: () => true,
@@ -61,6 +63,9 @@ class SwipeThumb extends React.Component {
     }).start(() => {
       this.reset();
     });
+    if (this.props.onSwipeFail) {
+      this.props.onSwipeFail();
+    }
   }
 
   onSwipeMetSuccessThreshold(newWidth) {
@@ -72,6 +77,12 @@ class SwipeThumb extends React.Component {
       this.props.onSwipeSuccess();
     }
     this.reset();
+  }
+
+  onPanResponderStart() {
+    if (this.props.onSwipeStart) {
+      this.props.onSwipeStart();
+    }
   }
 
   onPanResponderMove(event, gestureState) {
@@ -231,6 +242,8 @@ SwipeThumb.propTypes = {
   enableRightToLeftSwipe: PropTypes.bool,
   iconSize: PropTypes.number,
   layoutWidth: PropTypes.number,
+  onSwipeFail: PropTypes.func,
+  onSwipeStart: PropTypes.func,
   onSwipeSuccess: PropTypes.func,
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,

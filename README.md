@@ -24,6 +24,8 @@
     <b>disabledThumbIconBorderColor</b>: PropTypes.string,
     <b>enableRightToLeftSwipe</b>: PropTypes.bool,
     <b>height</b>: PropTypes.number,
+    <b>onSwipeFail</b>: PropTypes.func,
+    <b>onSwipeStart</b>: PropTypes.func,
     <b>onSwipeSuccess</b>: PropTypes.func,
     <b>railBackgroundColor</b>: PropTypes.string,
     <b>railBorderColor</b>: PropTypes.string,
@@ -46,71 +48,77 @@
 <h2 style="color:darkgreen;">Code for above screenshots</h2>
 
 ```
-import React, {Fragment} from 'react';
-import {View, ScrollView, Text, ToastAndroid} from 'react-native';
-import thumbIcon from './assets/thumbIcon.png';
+import React from 'react';
+import {View, Text} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
+
+import thumbIcon from './assets/thumbIcon.png';
+import styles from './styles';
 
 import SwipeButton from 'rn-swipe-button';
 
-const App = () => {
-  const TwitterIcon = () => <Icon name="twitter" color="#3b5998" size={30} />;
-  const facebookIcon = () => <Icon name="facebook" color="#3b5998" size={30} />;
-  return (
-    <View style={{padding: 15}}>
-      <Text style={{color: '#700D99', fontSize: 25}}>
-        React Native Swipe Button
-      </Text>
-      <Text style={{color: '#059478', fontSize: 30}}>**************</Text>
-      <Text style={{color: '#140866', fontSize: 20}}>
-        Set onSwipeSuccess callback and width
-      </Text>
-      <SwipeButton
-        disabled={false}
-        onSwipeSuccess={() => {
-          ToastAndroid.showWithGravity(
-            'Submitted successfully!',
-            ToastAndroid.SHORT,
-            ToastAndroid.CENTER,
-          );
-        }}
-      />
-      <Text style={{color: '#140866', fontSize: 20}}>
-        Enabled and thumb icon
-      </Text>
-      <SwipeButton thumbIconImageSource={thumbIcon} />
-      <Text style={{color: '#140866', fontSize: 20}}>Disabled</Text>
-      <SwipeButton disabled={true} />
-      <Text style={{color: '#140866', fontSize: 20}}>
-        Enable right to left swipe
-      </Text>
-      <SwipeButton
-        enableRightToLeftSwipe
-        thumbIconBackgroundColor="#FFFFFF"
-        thumbIconComponent={facebookIcon}
-        title="Slide to unlock"
-        onSwipeSuccess={() => {
-          ToastAndroid.showWithGravity(
-            'Slide success!',
-            ToastAndroid.SHORT,
-            ToastAndroid.CENTER,
-          );
-        }}
-      />
-      <Text style={{color: '#140866', fontSize: 20}}>Set height</Text>
-      <SwipeButton height={25} />
-      <Text style={{color: '#140866', fontSize: 20}}>Set height and width</Text>
-      <SwipeButton height={35} width={150} title="Swipe" />
-      <Text style={{color: '#140866', fontSize: 20}}>
-        Pass component to set as thumb icon
-      </Text>
-      <SwipeButton
-        thumbIconBackgroundColor="#FFFFFF"
-        thumbIconComponent={TwitterIcon}
-        title="Slide to unlock"
-      />
-      <View style={{width: 200, height: 300}} />
-    </View>
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'swipe status appears here',
+    };
+  }
+  showToastMessage = message => this.setState({message});
+  renderSubHeading = heading => (
+    <Text style={styles.subHeading}>{heading}</Text>
   );
-};
+  renderSwipeStatus = () => (
+    <Text style={styles.swipeStatus}>{this.state.message}</Text>
+  );
+  render() {
+    const TwitterIcon = () => <Icon name="twitter" color="#3b5998" size={30} />;
+    const facebookIcon = () => (
+      <Icon name="facebook" color="#3b5998" size={30} />
+    );
+
+    setInterval(
+      () => this.setState({message: 'swipe status appears here'}),
+      5000,
+    );
+
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>React Native Swipe Button</Text>
+        {this.renderSwipeStatus()}
+        {this.renderSubHeading('Disabled')}
+        <SwipeButton disabled={true} />
+        {this.renderSubHeading('Swipe status callbacks')}
+        <SwipeButton
+          disabled={false}
+          onSwipeStart={() => this.showToastMessage('Swipe started!')}
+          onSwipeFail={() => this.showToastMessage('Incomplete swipe!')}
+          onSwipeSuccess={() =>
+            this.showToastMessage('Submitted successfully!')
+          }
+        />
+        {this.renderSubHeading('Right to left swipe enabled')}
+        <SwipeButton
+          enableRightToLeftSwipe
+          thumbIconBackgroundColor="#FFFFFF"
+          thumbIconComponent={facebookIcon}
+          title="Slide to unlock"
+          onSwipeSuccess={() => this.showToastMessage('Slide success!')}
+        />
+        {this.renderSubHeading('Set a component as thumb icon')}
+        <SwipeButton
+          thumbIconBackgroundColor="#FFFFFF"
+          thumbIconComponent={TwitterIcon}
+          title="Slide to unlock"
+        />
+        {this.renderSubHeading('Set .png image as thumb icon')}
+        <SwipeButton thumbIconImageSource={thumbIcon} />
+        {this.renderSubHeading('Set height')}
+        <SwipeButton height={25} />
+        {this.renderSubHeading('Set height and width')}
+        <SwipeButton height={35} width={150} title="Swipe" />
+      </View>
+    );
+  }
+}
 ```

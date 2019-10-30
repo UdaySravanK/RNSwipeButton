@@ -29,6 +29,7 @@ target 'RNSwipeButtonDemo' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+
   target 'RNSwipeButtonDemoTests' do
     inherit! :search_paths
     # Pods for testing

@@ -88,6 +88,8 @@ class SwipeButton extends React.Component {
       disabledThumbIconBorderColor,
       enableRightToLeftSwipe,
       height,
+      onSwipeFail,
+      onSwipeStart,
       onSwipeSuccess,
       railBackgroundColor,
       railBorderColor,
@@ -139,6 +141,8 @@ class SwipeButton extends React.Component {
             enableRightToLeftSwipe={enableRightToLeftSwipe}
             iconSize={height}
             layoutWidth={this.state.layoutWidth}
+            onSwipeFail={onSwipeFail}
+            onSwipeStart={onSwipeStart}
             onSwipeSuccess={onSwipeSuccess}
             railFillBackgroundColor={railFillBackgroundColor}
             railFillBorderColor={railFillBorderColor}
@@ -182,6 +186,8 @@ SwipeButton.propTypes = {
   disabledThumbIconBorderColor: PropTypes.string,
   enableRightToLeftSwipe: PropTypes.bool,
   height: PropTypes.number,
+  onSwipeFail: PropTypes.func,
+  onSwipeStart: PropTypes.func,
   onSwipeSuccess: PropTypes.func,
   railBackgroundColor: PropTypes.string,
   railBorderColor: PropTypes.string,
