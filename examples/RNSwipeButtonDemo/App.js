@@ -31,7 +31,7 @@ class App extends React.Component {
   );
   render() {
     const TwitterIcon = () => <Icon name="twitter" color="#3b5998" size={30} />;
-    const facebookIcon = () => (
+    const FacebookIcon = () => (
       <Icon name="facebook" color="#3b5998" size={30} />
     );
 
@@ -59,7 +59,7 @@ class App extends React.Component {
         <SwipeButton
           enableRightToLeftSwipe
           thumbIconBackgroundColor="#FFFFFF"
-          thumbIconComponent={facebookIcon}
+          thumbIconComponent={FacebookIcon}
           title="Slide to unlock"
           onSwipeSuccess={() => this.showToastMessage('Slide success!')}
         />

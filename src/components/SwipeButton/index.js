@@ -45,7 +45,7 @@ class SwipeButton extends React.Component {
       this.handleScreenReaderToggled,
     );
     AccessibilityInfo.fetch().then(isEnabled => {
-      if (this.isUnmounting) return;
+      if (this.isUnmounting) {return;}
       this.setState({
         screenReaderEnabled: isEnabled,
       });
@@ -66,7 +66,7 @@ class SwipeButton extends React.Component {
    * So render SwipeThumb only if layoutWidth > 0
    */
   async onLayoutContainer(e) {
-    if (this.isUnmounting || this.state.layoutWidth) return;
+    if (this.isUnmounting || this.state.layoutWidth) {return;}
     await this.setState({
       layoutWidth: e.nativeEvent.layout.width,
     });
@@ -74,7 +74,7 @@ class SwipeButton extends React.Component {
 
   handleScreenReaderToggled(isEnabled) {
     if (this.isUnmounting || this.state.screenReaderEnabled === isEnabled)
-      return;
+      {return;}
     this.setState({
       screenReaderEnabled: isEnabled,
     });
@@ -196,7 +196,11 @@ SwipeButton.propTypes = {
   swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe
   thumbIconBackgroundColor: PropTypes.string,
   thumbIconBorderColor: PropTypes.string,
-  thumbIconComponent: PropTypes.node,
+  thumbIconComponent: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.node,
+    PropTypes.func,
+  ]),
   thumbIconImageSource: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

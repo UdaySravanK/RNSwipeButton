@@ -251,7 +251,11 @@ SwipeThumb.propTypes = {
   swipeSuccessThreshold: PropTypes.number,
   thumbIconBackgroundColor: PropTypes.string,
   thumbIconBorderColor: PropTypes.string,
-  thumbIconComponent: PropTypes.node,
+  thumbIconComponent: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.node,
+    PropTypes.func,
+  ]),
   thumbIconImageSource: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,

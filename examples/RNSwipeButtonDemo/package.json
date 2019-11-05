@@ -11,16 +11,16 @@
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-native-vector-icons": "^6.6.0",
-    "rn-swipe-button": "^1.0.6"
+    "rn-swipe-button": "^1.2.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/runtime": "^7.5.5",
+    "@babel/core": "^7.7.0",
+    "@babel/runtime": "^7.7.1",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
-    "eslint": "^6.3.0",
+    "eslint": "^6.6.0",
     "jest": "^24.9.0",
-    "metro-react-native-babel-preset": "^0.56.0",
+    "metro-react-native-babel-preset": "^0.56.3",
     "react-test-renderer": "16.8.6"
   },
   "jest": {
