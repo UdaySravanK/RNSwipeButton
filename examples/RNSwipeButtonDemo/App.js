@@ -14,6 +14,7 @@ import thumbIcon from './assets/thumbIcon.png';
 import styles from './styles';
 
 import SwipeButton from 'rn-swipe-button';
+// import SwipeButton from './src/components/SwipeButton';
 
 class App extends React.Component {
   constructor(props) {
@@ -45,10 +46,9 @@ class App extends React.Component {
         <Text style={styles.title}>React Native Swipe Button</Text>
         {this.renderSwipeStatus()}
         {this.renderSubHeading('Disabled')}
-        <SwipeButton disabled={true} />
+        <SwipeButton disabled />
         {this.renderSubHeading('Swipe status callbacks')}
         <SwipeButton
-          disabled={false}
           onSwipeStart={() => this.showToastMessage('Swipe started!')}
           onSwipeFail={() => this.showToastMessage('Incomplete swipe!')}
           onSwipeSuccess={() =>

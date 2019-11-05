@@ -80,6 +80,9 @@ class SwipeThumb extends React.Component {
   }
 
   onPanResponderStart() {
+    if (this.props.disabled) {
+      return;
+    }
     if (this.props.onSwipeStart) {
       this.props.onSwipeStart();
     }
