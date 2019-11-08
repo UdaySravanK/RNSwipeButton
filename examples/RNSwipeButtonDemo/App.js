@@ -13,8 +13,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import thumbIcon from './assets/thumbIcon.png';
 import styles from './styles';
 
-import SwipeButton from 'rn-swipe-button';
-// import SwipeButton from './src/components/SwipeButton';
+// import SwipeButton from 'rn-swipe-button';
+import SwipeButton from './src/components/SwipeButton';
 
 class App extends React.Component {
   constructor(props) {
@@ -49,13 +49,16 @@ class App extends React.Component {
         <SwipeButton disabled />
         {this.renderSubHeading('Swipe status callbacks')}
         <SwipeButton
+          railBackgroundColor="#00000000"
+          railFillBackgroundColor="#00000000"
           onSwipeStart={() => this.showToastMessage('Swipe started!')}
           onSwipeFail={() => this.showToastMessage('Incomplete swipe!')}
           onSwipeSuccess={() =>
             this.showToastMessage('Submitted successfully!')
           }
+          titleColor="#ffffff"
         />
-        {this.renderSubHeading('Right to left swipe enabled')}
+        {/* {this.renderSubHeading('Right to left swipe enabled')}
         <SwipeButton
           enableRightToLeftSwipe
           thumbIconBackgroundColor="#FFFFFF"
@@ -74,7 +77,7 @@ class App extends React.Component {
         {this.renderSubHeading('Set height')}
         <SwipeButton height={25} />
         {this.renderSubHeading('Set height and width')}
-        <SwipeButton height={35} width={150} title="Swipe" />
+        <SwipeButton height={35} width={150} title="Swipe" /> */}
       </View>
     );
   }
