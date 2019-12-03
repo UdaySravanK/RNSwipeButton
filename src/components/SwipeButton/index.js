@@ -109,6 +109,8 @@ class SwipeButton extends React.Component {
       titleColor,
       titleFontSize,
       width,
+      shouldResetAfterSuccess,
+      resetAfterSuccessDuration,
     } = this.props;
     const {screenReaderEnabled} = this.state;
 
@@ -158,6 +160,8 @@ class SwipeButton extends React.Component {
             thumbIconComponent={thumbIconComponent}
             thumbIconImageSource={thumbIconImageSource}
             title={title}
+            shouldResetAfterSuccess={shouldResetAfterSuccess}
+            resetAfterSuccessDuration={resetAfterSuccessDuration}
           />
         )}
       </View>
@@ -214,6 +218,8 @@ SwipeButton.propTypes = {
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
   width: PropTypes.number,
+  shouldResetAfterSuccess: PropTypes.bool,
+  resetAfterSuccessDuration: PropTypes.number,
 };
 
 export default SwipeButton;
