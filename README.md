@@ -122,3 +122,5 @@ class App extends React.Component {
   }
 }
 ```
+
+Note: In accessibility mode this component works like a regular button (double tap to activate)
