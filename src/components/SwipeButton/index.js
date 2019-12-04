@@ -219,7 +219,7 @@ SwipeButton.propTypes = {
   titleFontSize: PropTypes.number,
   width: PropTypes.number,
   shouldResetAfterSuccess: PropTypes.bool,
-  resetAfterSuccessDuration: PropTypes.number,
+  resetAfterSuccessAnimDuration: PropTypes.number,
 };
 
 export default SwipeButton;
