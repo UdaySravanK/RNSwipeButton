@@ -1,11 +1,9 @@
 <h2 style="color:darkgreen;">React Native Swipe Button Component</h2>
 <hr>
 <div style="color:darkcyan; font-size: 15px;">
-  <code>
     <p>npm install rn-swipe-button --save</p>
     <p>import SwipeButton from 'rn-swipe-button';</p>
     &lt;SwipeButton /&gt; 
-  </code>
 </div>
 <hr>
 <div>
