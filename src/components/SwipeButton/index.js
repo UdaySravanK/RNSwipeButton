@@ -108,6 +108,7 @@ class SwipeButton extends React.Component {
       title,
       titleColor,
       titleFontSize,
+      titleStyles,
       width,
       shouldResetAfterSuccess,
       resetAfterSuccessAnimDuration,
@@ -136,6 +137,7 @@ class SwipeButton extends React.Component {
             {
               color: titleColor,
               fontSize: titleFontSize,
+              ...titleStyles,
             },
           ]}>
           {title}
@@ -186,6 +188,7 @@ SwipeButton.defaultProps = {
   title: 'Swipe to submit',
   titleColor: TITLE_COLOR,
   titleFontSize: 20,
+  titleStyles: {},
 };
 
 SwipeButton.propTypes = {
@@ -217,6 +220,7 @@ SwipeButton.propTypes = {
   title: PropTypes.string,
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
+  titleStyles: PropTypes.object,
   width: PropTypes.number,
   shouldResetAfterSuccess: PropTypes.bool,
   resetAfterSuccessAnimDuration: PropTypes.number,

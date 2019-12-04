@@ -29,6 +29,9 @@
     <b>railBorderColor</b>: PropTypes.string,
     <b>railFillBackgroundColor</b>: PropTypes.string,
     <b>railFillBorderColor</b>: PropTypes.string,
+    <b>resetAfterSuccessAnimDuration</b>: PropTypes.number,
+    <b>screenReaderEnabled</b>: PropTypes.bool,
+    <b>shouldResetAfterSuccess</b>: PropTypes.bool,
     <b>swipeSuccessThreshold</b>: PropTypes.number, <span style="color: blueviolet">// Ex: 70. Swipping 70% will be considered as successful swipe</span>
     <b>thumbIconBackgroundColor</b>: PropTypes.string,
     <b>thumbIconBorderColor</b>: PropTypes.string,
@@ -40,9 +43,8 @@
     <b>title</b>: PropTypes.string,
     <b>titleColor</b>: PropTypes.string,
     <b>titleFontSize</b>: PropTypes.number,
+    <b>titleStyles</b>: PropTypes.object,
     <b>width</b>: PropTypes.number,
-    <b>shouldResetAfterSuccess</b>: PropTypes.bool,
-    <b>resetAfterSuccessAnimDuration</b>: PropTypes.number,
 </pre>
 <hr>
 <h2 style="color:darkgreen;">Code for above screenshots</h2>
