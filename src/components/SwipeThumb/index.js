@@ -149,7 +149,7 @@ class SwipeThumb extends React.Component {
       if (this.props.shouldResetAfterSuccess)
         Animated.timing(this.state.animatedWidth, {
           toValue: this.defaultContainerWidth,
-          duration: this.props.resetAfterSuccessDuration || 200,
+          duration: this.props.resetAfterSuccessAnimDuration || 200,
         }).start(() => this.reset());
     });
   }
@@ -272,7 +272,7 @@ SwipeThumb.propTypes = {
   ]),
   title: PropTypes.string,
   shouldResetAfterSuccess: PropTypes.bool,
-  resetAfterSuccessDuration: PropTypes.number,
+  resetAfterSuccessAnimDuration: PropTypes.number,
 };
 
 export default SwipeThumb;
