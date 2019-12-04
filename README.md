@@ -43,6 +43,8 @@
     <b>titleColor</b>: PropTypes.string,
     <b>titleFontSize</b>: PropTypes.number,
     <b>width</b>: PropTypes.number,
+    <b>shouldResetAfterSuccess</b>: PropTypes.bool,
+    <b>resetAfterSuccessAnimDuration</b>: PropTypes.number,
 </pre>
 <hr>
 <h2 style="color:darkgreen;">Code for above screenshots</h2>

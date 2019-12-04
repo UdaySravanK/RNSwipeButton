@@ -144,12 +144,19 @@ class SwipeThumb extends React.Component {
       if (this.props.onSwipeSuccess) {
         this.props.onSwipeSuccess();
       }
-      // this.reset(); // Enable this line to reset the thumb after successful swipe
+
+      //Animate back to initial position
+      if (this.props.shouldResetAfterSuccess)
+        Animated.timing(this.state.animatedWidth, {
+          toValue: this.defaultContainerWidth,
+          duration: this.props.resetAfterSuccessAnimDuration || 200,
+        }).start(() => this.reset());
     });
   }
 
   reset() {
     this.state.animatedWidth.setValue(this.defaultContainerWidth);
+
     if (this.state.backgroundColor !== TRANSPARENT_COLOR) {
       this.setState({
         backgroundColor: TRANSPARENT_COLOR,
@@ -264,6 +271,8 @@ SwipeThumb.propTypes = {
     PropTypes.number,
   ]),
   title: PropTypes.string,
+  shouldResetAfterSuccess: PropTypes.bool,
+  resetAfterSuccessAnimDuration: PropTypes.number,
 };
 
 export default SwipeThumb;
