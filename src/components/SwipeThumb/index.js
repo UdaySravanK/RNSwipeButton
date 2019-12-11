@@ -146,11 +146,12 @@ class SwipeThumb extends React.Component {
       }
 
       //Animate back to initial position
-      if (this.props.shouldResetAfterSuccess)
+      if (this.props.shouldResetAfterSuccess) {
         Animated.timing(this.state.animatedWidth, {
           toValue: this.defaultContainerWidth,
           duration: this.props.resetAfterSuccessAnimDuration,
         }).start(() => this.reset());
+      }
     });
   }
 
@@ -190,13 +191,16 @@ class SwipeThumb extends React.Component {
 
     return (
       <View style={[styles.icon, {...dynamicStyles}]}>
-        {!ThumbIconComponent && (
+        {!ThumbIconComponent && thumbIconImageSource && (
           <Image resizeMethod="resize" source={thumbIconImageSource} />
         )}
         {ThumbIconComponent && (
           <View>
             <ThumbIconComponent />
           </View>
+        )}
+        {!ThumbIconComponent && !thumbIconImageSource && (
+          <View style={styles.defaultThumbIcon} />
         )}
       </View>
     );

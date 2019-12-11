@@ -23,9 +23,6 @@ import {
   TITLE_COLOR,
 } from '../../constants';
 
-// Assets
-import thumbIcon from '../../assets/images/arrow-right.png';
-
 class SwipeButton extends React.Component {
   constructor(props) {
     super(props);
@@ -184,7 +181,6 @@ SwipeButton.defaultProps = {
   swipeSuccessThreshold: SWIPE_SUCCESS_THRESHOLD,
   thumbIconBackgroundColor: THUMB_ICON_BACKGROUND_COLOR,
   thumbIconBorderColor: THUMB_ICON_BORDER_COLOR,
-  thumbIconImageSource: thumbIcon,
   title: 'Swipe to submit',
   titleColor: TITLE_COLOR,
   titleFontSize: 20,

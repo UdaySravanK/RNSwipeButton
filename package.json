@@ -1,6 +1,6 @@
 {
   "name": "rn-swipe-button",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "react native swipe/slide button component",
   "main": "index.js",
   "scripts": {
@@ -37,8 +37,8 @@
   },
   "homepage": "https://github.com/UdaySravanK/RNSwipeButton#readme",
   "devDependencies": {
-    "metro-react-native-babel-preset": "^0.56.0",
     "@react-native-community/eslint-config": "^0.0.5",
-    "eslint": "^6.3.0"
+    "eslint": "^6.3.0",
+    "metro-react-native-babel-preset": "^0.56.0"
   }
 }
