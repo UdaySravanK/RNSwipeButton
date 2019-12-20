@@ -1,9 +1,11 @@
-<h2 style="color:darkgreen;">React Native Swipe Button Component</h2>
+## React Native Swipe Button Component <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" /> 
+<a href="https://nodei.co/npm/rn-swipe-button/"><img src="https://nodei.co/npm/rn-swipe-button.png?downloads=true&downloadRank=true&stars=true"></a>
+
 <hr>
 <div style="color:darkcyan; font-size: 15px;">
     <p>npm install rn-swipe-button --save</p>
     <p>import SwipeButton from 'rn-swipe-button';</p>
-    &lt;SwipeButton /&gt; 
+    const renderSwipeButton = () => (&lt;SwipeButton /&gt;) 
 </div>
 <hr>
 <div>
