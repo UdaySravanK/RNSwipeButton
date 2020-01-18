@@ -23,7 +23,10 @@
     <b>disabledThumbIconBackgroundColor</b>: PropTypes.string,
     <b>disabledThumbIconBorderColor</b>: PropTypes.string,
     <b>enableRightToLeftSwipe</b>: PropTypes.bool,
-    <b>height</b>: PropTypes.number,
+    <b>height</b>: PropTypes.oneOfType([
+       PropTypes.string,
+       PropTypes.number,
+    ]),
     <b>onSwipeFail</b>: PropTypes.func,
     <b>onSwipeStart</b>: PropTypes.func,
     <b>onSwipeSuccess</b>: PropTypes.func,
@@ -45,8 +48,12 @@
     <b>title</b>: PropTypes.string,
     <b>titleColor</b>: PropTypes.string,
     <b>titleFontSize</b>: PropTypes.number,
+    <b>containerStyles</b>: PropTypes.object,
     <b>titleStyles</b>: PropTypes.object,
-    <b>width</b>: PropTypes.number,
+    <b>width</b>: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.number,
+    ]),
 </pre>
 <hr>
 <h2 style="color:darkgreen;">Code for above screenshots</h2>
