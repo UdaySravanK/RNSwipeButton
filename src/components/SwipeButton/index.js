@@ -107,6 +107,7 @@ class SwipeButton extends React.Component {
       titleFontSize,
       titleStyles,
       width,
+      containerStyles,
       shouldResetAfterSuccess,
       resetAfterSuccessAnimDuration,
     } = this.props;
@@ -122,6 +123,7 @@ class SwipeButton extends React.Component {
               : railBackgroundColor,
             borderColor: railBorderColor,
             ...(width ? {width} : {}),
+            ...containerStyles,
           },
         ]}
         onLayout={this.onLayoutContainer}>
@@ -185,6 +187,7 @@ SwipeButton.defaultProps = {
   titleColor: TITLE_COLOR,
   titleFontSize: 20,
   titleStyles: {},
+  containerStyles: {},
 };
 
 SwipeButton.propTypes = {
@@ -193,7 +196,10 @@ SwipeButton.propTypes = {
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
   enableRightToLeftSwipe: PropTypes.bool,
-  height: PropTypes.number,
+  height: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
   onSwipeFail: PropTypes.func,
   onSwipeStart: PropTypes.func,
   onSwipeSuccess: PropTypes.func,
@@ -217,7 +223,11 @@ SwipeButton.propTypes = {
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
   titleStyles: PropTypes.object,
-  width: PropTypes.number,
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  containerStyles: PropTypes.object,
   shouldResetAfterSuccess: PropTypes.bool,
   resetAfterSuccessAnimDuration: PropTypes.number,
 };
