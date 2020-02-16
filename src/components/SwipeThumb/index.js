@@ -176,8 +176,10 @@ class SwipeThumb extends React.Component {
       thumbIconBorderColor,
       thumbIconComponent: ThumbIconComponent,
       thumbIconImageSource,
+      thumbIconStyles,
     } = this.props;
     const dynamicStyles = {
+      ...thumbIconStyles,
       height: iconSize,
       width: iconSize,
       backgroundColor: disabled
@@ -209,10 +211,10 @@ class SwipeThumb extends React.Component {
   render() {
     const {
       disabled,
-      title,
+      enableRightToLeftSwipe,
       onSwipeSuccess,
       screenReaderEnabled,
-      enableRightToLeftSwipe,
+      title,
     } = this.props;
     const panStyle = {
       backgroundColor: this.state.backgroundColor,
@@ -246,8 +248,9 @@ class SwipeThumb extends React.Component {
 SwipeThumb.defaultProps = {
   disabled: false,
   layoutWidth: 0,
-  screenReaderEnabled: false,
   resetAfterSuccessAnimDuration: 200,
+  screenReaderEnabled: false,
+  thumbIconStyles: {},
 };
 
 SwipeThumb.propTypes = {
@@ -277,6 +280,7 @@ SwipeThumb.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
+  thumbIconStyles: PropTypes.object,
   title: PropTypes.string,
 };
 
