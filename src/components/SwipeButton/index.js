@@ -84,6 +84,7 @@ class SwipeButton extends React.Component {
 
   render() {
     const {
+      containerStyles,
       disabled,
       disabledRailBackgroundColor,
       disabledThumbIconBackgroundColor,
@@ -97,19 +98,19 @@ class SwipeButton extends React.Component {
       railBorderColor,
       railFillBackgroundColor,
       railFillBorderColor,
+      resetAfterSuccessAnimDuration,
+      shouldResetAfterSuccess,
       swipeSuccessThreshold,
       thumbIconBackgroundColor,
       thumbIconBorderColor,
       thumbIconComponent,
       thumbIconImageSource,
+      thumbIconStyles,
       title,
       titleColor,
       titleFontSize,
       titleStyles,
       width,
-      containerStyles,
-      shouldResetAfterSuccess,
-      resetAfterSuccessAnimDuration,
     } = this.props;
     const {screenReaderEnabled} = this.state;
 
@@ -118,12 +119,12 @@ class SwipeButton extends React.Component {
         style={[
           styles.container,
           {
+            ...containerStyles,
             backgroundColor: disabled
               ? disabledRailBackgroundColor
               : railBackgroundColor,
             borderColor: railBorderColor,
             ...(width ? {width} : {}),
-            ...containerStyles,
           },
         ]}
         onLayout={this.onLayoutContainer}>
@@ -154,15 +155,16 @@ class SwipeButton extends React.Component {
             onSwipeSuccess={onSwipeSuccess}
             railFillBackgroundColor={railFillBackgroundColor}
             railFillBorderColor={railFillBorderColor}
+            resetAfterSuccessAnimDuration={resetAfterSuccessAnimDuration}
             screenReaderEnabled={screenReaderEnabled}
+            shouldResetAfterSuccess={shouldResetAfterSuccess}
             swipeSuccessThreshold={swipeSuccessThreshold}
             thumbIconBackgroundColor={thumbIconBackgroundColor}
             thumbIconBorderColor={thumbIconBorderColor}
             thumbIconComponent={thumbIconComponent}
             thumbIconImageSource={thumbIconImageSource}
+            thumbIconStyles={thumbIconStyles}
             title={title}
-            shouldResetAfterSuccess={shouldResetAfterSuccess}
-            resetAfterSuccessAnimDuration={resetAfterSuccessAnimDuration}
           />
         )}
       </View>
@@ -171,6 +173,7 @@ class SwipeButton extends React.Component {
 }
 
 SwipeButton.defaultProps = {
+  containerStyles: {},
   disabled: false,
   disabledRailBackgroundColor: DISABLED_RAIL_BACKGROUND_COLOR,
   disabledThumbIconBackgroundColor: DISABLED_THUMB_ICON_BACKGROUND_COLOR,
@@ -183,23 +186,21 @@ SwipeButton.defaultProps = {
   swipeSuccessThreshold: SWIPE_SUCCESS_THRESHOLD,
   thumbIconBackgroundColor: THUMB_ICON_BACKGROUND_COLOR,
   thumbIconBorderColor: THUMB_ICON_BORDER_COLOR,
+  thumbIconStyles: {},
   title: 'Swipe to submit',
   titleColor: TITLE_COLOR,
   titleFontSize: 20,
   titleStyles: {},
-  containerStyles: {},
 };
 
 SwipeButton.propTypes = {
+  containerStyles: PropTypes.object,
   disable: PropTypes.bool,
   disabledRailBackgroundColor: PropTypes.string,
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
   enableRightToLeftSwipe: PropTypes.bool,
-  height: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
+  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onSwipeFail: PropTypes.func,
   onSwipeStart: PropTypes.func,
   onSwipeSuccess: PropTypes.func,
@@ -207,6 +208,8 @@ SwipeButton.propTypes = {
   railBorderColor: PropTypes.string,
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,
+  resetAfterSuccessAnimDuration: PropTypes.number,
+  shouldResetAfterSuccess: PropTypes.bool,
   swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe
   thumbIconBackgroundColor: PropTypes.string,
   thumbIconBorderColor: PropTypes.string,
@@ -219,17 +222,12 @@ SwipeButton.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
+  thumbIconStyles: PropTypes.object,
   title: PropTypes.string,
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
   titleStyles: PropTypes.object,
-  width: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
-  containerStyles: PropTypes.object,
-  shouldResetAfterSuccess: PropTypes.bool,
-  resetAfterSuccessAnimDuration: PropTypes.number,
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default SwipeButton;

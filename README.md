@@ -18,6 +18,7 @@
 <hr>
 <h2 style="color:darkgreen;">Component properties</h2>
 <pre style="font-size: 15px; color: brown;">
+    <b>containerStyles</b>: PropTypes.object,
     <b>disabled</b>: PropTypes.bool,
     <b>disabledRailBackgroundColor</b>: PropTypes.string,
     <b>disabledThumbIconBackgroundColor</b>: PropTypes.string,
@@ -45,10 +46,10 @@
       PropTypes.string,
       PropTypes.number,
     ]),
+    <b>thumbIconStyles</b>: PropTypes.object
     <b>title</b>: PropTypes.string,
     <b>titleColor</b>: PropTypes.string,
     <b>titleFontSize</b>: PropTypes.number,
-    <b>containerStyles</b>: PropTypes.object,
     <b>titleStyles</b>: PropTypes.object,
     <b>width</b>: PropTypes.oneOfType([
       PropTypes.string,
