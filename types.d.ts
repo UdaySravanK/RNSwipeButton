@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import { StyleProp, ViewStyle, TextStyle } from 'react-native';
 
-declare module RNSwipeButton {
+declare module 'rn-swipe-button' {
     class RNSwipeButton {
         containerStyle?: StyleProp<ViewStyle>;
         disabled?: boolean;
