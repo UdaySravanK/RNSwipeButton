@@ -40,5 +40,10 @@
     "@react-native-community/eslint-config": "^0.0.5",
     "eslint": "^6.3.0",
     "metro-react-native-babel-preset": "^0.56.0"
-  }
+  },
+  "peerDependencies": {
+    "react": "16.8.6",
+    "react-native": "0.60.5"
+  },
+  "types": "./types.d.ts"
 }
