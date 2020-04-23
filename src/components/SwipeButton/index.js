@@ -98,6 +98,7 @@ class SwipeButton extends React.Component {
       railBorderColor,
       railFillBackgroundColor,
       railFillBorderColor,
+      resetAfterSuccessAnimDelay,
       resetAfterSuccessAnimDuration,
       shouldResetAfterSuccess,
       swipeSuccessThreshold,
@@ -155,6 +156,7 @@ class SwipeButton extends React.Component {
             onSwipeSuccess={onSwipeSuccess}
             railFillBackgroundColor={railFillBackgroundColor}
             railFillBorderColor={railFillBorderColor}
+            resetAfterSuccessAnimDelay={resetAfterSuccessAnimDelay}
             resetAfterSuccessAnimDuration={resetAfterSuccessAnimDuration}
             screenReaderEnabled={screenReaderEnabled}
             shouldResetAfterSuccess={shouldResetAfterSuccess}
@@ -208,6 +210,7 @@ SwipeButton.propTypes = {
   railBorderColor: PropTypes.string,
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,
+  resetAfterSuccessAnimDelay: PropTypes.number,
   resetAfterSuccessAnimDuration: PropTypes.number,
   shouldResetAfterSuccess: PropTypes.bool,
   swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe
