@@ -35,6 +35,7 @@
     <b>railBorderColor</b>: PropTypes.string,
     <b>railFillBackgroundColor</b>: PropTypes.string,
     <b>railFillBorderColor</b>: PropTypes.string,
+    <b>resetAfterSuccessAnimDelay</b>: PropTypes.number,
     <b>resetAfterSuccessAnimDuration</b>: PropTypes.number,
     <b>screenReaderEnabled</b>: PropTypes.bool,
     <b>shouldResetAfterSuccess</b>: PropTypes.bool,
