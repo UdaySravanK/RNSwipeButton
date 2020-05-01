@@ -17,6 +17,7 @@ declare module 'rn-swipe-button' {
         railBorderColor?: string;
         railFillBackgroundColor?: string;
         railFillBorderColor?: string;
+        railStyles?: StyleProp<ViewStyle>;
         resetAfterSuccessAnimDuration?: number;
         screenReaderEnabled?: boolean;
         shouldResetAfterSuccess?: boolean;
