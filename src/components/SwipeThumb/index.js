@@ -218,7 +218,7 @@ class SwipeThumb extends React.Component {
       onSwipeSuccess,
       screenReaderEnabled,
       title,
-      railStyles
+      railStyles,
     } = this.props;
     const panStyle = {
       backgroundColor: this.state.backgroundColor,
@@ -231,7 +231,7 @@ class SwipeThumb extends React.Component {
         <TouchableNativeFeedback
           accessibilityLabel={`${title}. ${
             disabled ? 'Disabled' : 'Double-tap to activate'
-            }`}
+          }`}
           accessible
           disabled={disabled}
           onPress={onSwipeSuccess}>
@@ -242,7 +242,9 @@ class SwipeThumb extends React.Component {
       );
     }
     return (
-      <Animated.View style={{...panStyle, ...railStyles}} {...this.panResponder.panHandlers}>
+      <Animated.View
+        style={{ ...panStyle, ...railStyles }}
+        {...this.panResponder.panHandlers}>
         {this.renderThumbIcon()}
       </Animated.View>
     );

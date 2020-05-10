@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const borderWidth = 3;
 const margin = 1;
@@ -36,4 +36,4 @@ const Styles = StyleSheet.create({
 });
 
 export default Styles;
-export {borderWidth, margin};
+export { borderWidth, margin };

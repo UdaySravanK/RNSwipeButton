@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Text, View, AccessibilityInfo} from 'react-native';
+import { Text, View, AccessibilityInfo } from 'react-native';
 
 // Components
 import SwipeThumb from '../../components/SwipeThumb';
@@ -114,7 +114,7 @@ class SwipeButton extends React.Component {
       titleStyles,
       width,
     } = this.props;
-    const {screenReaderEnabled} = this.state;
+    const { screenReaderEnabled } = this.state;
 
     return (
       <View
@@ -126,7 +126,7 @@ class SwipeButton extends React.Component {
               ? disabledRailBackgroundColor
               : railBackgroundColor,
             borderColor: railBorderColor,
-            ...(width ? {width} : {}),
+            ...(width ? { width } : {}),
           },
         ]}
         onLayout={this.onLayoutContainer}>
