@@ -216,9 +216,9 @@ class SwipeThumb extends React.Component {
       disabled,
       enableRightToLeftSwipe,
       onSwipeSuccess,
+      railStyles,
       screenReaderEnabled,
       title,
-      railStyles,
     } = this.props;
     const panStyle = {
       backgroundColor: this.state.backgroundColor,

@@ -15,6 +15,11 @@ import arrowRight from './assets/arrow-right.png';
 import styles from './styles';
 
 // import SwipeButton from 'rn-swipe-button';
+/**
+ * NPM linking has some issue.
+ * Move 'RNSwipeButton/src' folder to 'RNSwipeButton/examples/RNSwipeButtonDemo' folder
+ */
+
 import SwipeButton from './src/components/SwipeButton';
 
 class App extends React.Component {
