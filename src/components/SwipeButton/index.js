@@ -212,6 +212,7 @@ SwipeButton.propTypes = {
   railBorderColor: PropTypes.string,
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,
+  railStyles: PropTypes.object,
   resetAfterSuccessAnimDelay: PropTypes.number,
   resetAfterSuccessAnimDuration: PropTypes.number,
   shouldResetAfterSuccess: PropTypes.bool,

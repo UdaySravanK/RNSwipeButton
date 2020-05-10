@@ -75,6 +75,7 @@ class App extends React.Component {
           thumbIconBackgroundColor="#FFFFFF"
           thumbIconComponent={TwitterIcon}
           title="Slide to unlock"
+          railStyles={{backgroundColor:'#44000088', borderColor: '#880000FF'}}
         />
         {this.renderSubHeading('Set .png image as thumb icon')}
         <SwipeButton thumbIconImageSource={thumbIcon} />
