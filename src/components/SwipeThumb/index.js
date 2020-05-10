@@ -243,9 +243,7 @@ class SwipeThumb extends React.Component {
       );
     }
     return (
-      <Animated.View
-        style={[panStyle]}
-        {...this.panResponder.panHandlers}>
+      <Animated.View style={[panStyle]} {...this.panResponder.panHandlers}>
         {this.renderThumbIcon()}
       </Animated.View>
     );
