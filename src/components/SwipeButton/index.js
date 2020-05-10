@@ -98,6 +98,7 @@ class SwipeButton extends React.Component {
       railBorderColor,
       railFillBackgroundColor,
       railFillBorderColor,
+      railStyles,
       resetAfterSuccessAnimDelay,
       resetAfterSuccessAnimDuration,
       shouldResetAfterSuccess,
@@ -166,6 +167,7 @@ class SwipeButton extends React.Component {
             thumbIconComponent={thumbIconComponent}
             thumbIconImageSource={thumbIconImageSource}
             thumbIconStyles={thumbIconStyles}
+            railStyles={railStyles}
             title={title}
           />
         )}
