@@ -9,10 +9,10 @@ import {
 } from 'react-native';
 
 // Styles
-import styles, {borderWidth, margin} from './styles';
+import styles, { borderWidth, margin } from './styles';
 
 // Constants
-import {TRANSPARENT_COLOR} from '../../constants';
+import { TRANSPARENT_COLOR } from '../../constants';
 
 class SwipeThumb extends React.Component {
   constructor(props) {
@@ -60,6 +60,7 @@ class SwipeThumb extends React.Component {
     Animated.timing(this.state.animatedWidth, {
       toValue: this.defaultContainerWidth,
       duration: 200,
+      useNativeDriver: false,
     }).start(() => {
       this.reset();
     });
@@ -125,7 +126,7 @@ class SwipeThumb extends React.Component {
   }
 
   setBackgroundColors() {
-    const {railFillBackgroundColor, railFillBorderColor} = this.props;
+    const { railFillBackgroundColor, railFillBorderColor } = this.props;
     // Set backgroundColor only if not already set
     if (this.state.backgroundColor === TRANSPARENT_COLOR) {
       this.setState({
@@ -140,6 +141,7 @@ class SwipeThumb extends React.Component {
     Animated.timing(this.state.animatedWidth, {
       toValue: this.maxWidth,
       duration: 200,
+      useNativeDriver: false,
     }).start(() => {
       if (this.props.onSwipeSuccess) {
         this.props.onSwipeSuccess();
@@ -149,8 +151,8 @@ class SwipeThumb extends React.Component {
       if (this.props.shouldResetAfterSuccess) {
         Animated.timing(this.state.animatedWidth, {
           toValue: this.defaultContainerWidth,
-          delay: this.props.resetAfterSuccessAnimDelay,
           duration: this.props.resetAfterSuccessAnimDuration,
+          useNativeDriver: false,
         }).start(() => this.reset());
       }
     });
@@ -193,7 +195,7 @@ class SwipeThumb extends React.Component {
     };
 
     return (
-      <View style={[styles.icon, {...dynamicStyles}]}>
+      <View style={[styles.icon, { ...dynamicStyles }]}>
         {!ThumbIconComponent && thumbIconImageSource && (
           <Image resizeMethod="resize" source={thumbIconImageSource} />
         )}
@@ -229,11 +231,11 @@ class SwipeThumb extends React.Component {
         <TouchableNativeFeedback
           accessibilityLabel={`${title}. ${
             disabled ? 'Disabled' : 'Double-tap to activate'
-          }`}
+            }`}
           accessible
           disabled={disabled}
           onPress={onSwipeSuccess}>
-          <View style={[panStyle, {width: this.defaultContainerWidth}]}>
+          <View style={[panStyle, { width: this.defaultContainerWidth }]}>
             {this.renderThumbIcon()}
           </View>
         </TouchableNativeFeedback>
@@ -250,7 +252,6 @@ class SwipeThumb extends React.Component {
 SwipeThumb.defaultProps = {
   disabled: false,
   layoutWidth: 0,
-  resetAfterSuccessAnimDelay: 0,
   resetAfterSuccessAnimDuration: 200,
   screenReaderEnabled: false,
   thumbIconStyles: {},
