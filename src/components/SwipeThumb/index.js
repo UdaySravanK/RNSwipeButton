@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import {
   Animated,
@@ -14,162 +14,126 @@ import styles, { borderWidth, margin } from './styles';
 // Constants
 import { TRANSPARENT_COLOR } from '../../constants';
 
-class SwipeThumb extends React.Component {
-  constructor(props) {
-    super(props);
-    const paddingAndMarginsOffset = borderWidth + 2 * margin;
-    this.defaultContainerWidth = props.iconSize;
-    this.maxWidth = props.layoutWidth - paddingAndMarginsOffset;
-    this.state = {
-      animatedWidth: new Animated.Value(),
-      backgroundColor: TRANSPARENT_COLOR,
-      borderColor: TRANSPARENT_COLOR,
-      pan: new Animated.ValueXY(),
-    };
-    this.finishRemainingSwipe = this.finishRemainingSwipe.bind(this);
-    this.onPanResponderStart = this.onPanResponderStart.bind(this);
-    this.onPanResponderMove = this.onPanResponderMove.bind(this);
-    this.onPanResponderRelease = this.onPanResponderRelease.bind(this);
-    this.onSwipeMetSuccessThreshold = this.onSwipeMetSuccessThreshold.bind(
-      this,
-    );
-    this.onSwipeNotMetSuccessThreshold = this.onSwipeNotMetSuccessThreshold.bind(
-      this,
-    );
-    this.renderThumbIcon = this.renderThumbIcon.bind(this);
-    this.reset = this.reset.bind(this);
-    this.setBackgroundColors = this.setBackgroundColors.bind(this);
-  }
+const SwipeThumb = props => {
+  const paddingAndMarginsOffset = borderWidth + 2 * margin;
+  const defaultContainerWidth = props.iconSize;
+  const maxWidth = props.layoutWidth - paddingAndMarginsOffset;
 
-  UNSAFE_componentWillMount() {
-    this.panResponder = PanResponder.create({
+  const animatedWidth = useRef(new Animated.Value(defaultContainerWidth))
+    .current;
+  const [defaultWidth, setDefaultWidth] = useState(defaultContainerWidth);
+
+  const [backgroundColor, setBackgroundColor] = useState(TRANSPARENT_COLOR);
+  const [borderColor, setBorderColor] = useState(TRANSPARENT_COLOR);
+
+  const [panResponder] = useState(
+    PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onStartShouldSetPanResponderCapture: () => true,
       onMoveShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
-      onPanResponderStart: this.onPanResponderStart,
-      onPanResponderMove: this.onPanResponderMove,
-      onPanResponderRelease: this.onPanResponderRelease,
+      onPanResponderStart: onPanResponderStart,
+      onPanResponderMove: onPanResponderMove,
+      onPanResponderRelease: onPanResponderRelease,
       onShouldBlockNativeResponder: () => true,
-    });
-    this.reset();
-  }
+    }),
+  );
 
-  onSwipeNotMetSuccessThreshold() {
+  useEffect(() => {
+    Animated.timing(animatedWidth, {
+      toValue: defaultWidth,
+      duration: 400,
+      useNativeDriver: false,
+    }).start();
+  }, [animatedWidth, defaultWidth]);
+
+  function onSwipeNotMetSuccessThreshold() {
     // Animate to initial position
-    Animated.timing(this.state.animatedWidth, {
-      toValue: this.defaultContainerWidth,
-      duration: 200,
-      useNativeDriver: false,
-    }).start(() => {
-      this.reset();
-    });
-    if (this.props.onSwipeFail) {
-      this.props.onSwipeFail();
-    }
+    setDefaultWidth(defaultContainerWidth);
+    props.onSwipeFail && props.onSwipeFail();
   }
 
-  onSwipeMetSuccessThreshold(newWidth) {
-    if (newWidth !== this.maxWidth) {
-      this.finishRemainingSwipe();
+  function onSwipeMetSuccessThreshold(newWidth) {
+    if (newWidth !== maxWidth) {
+      finishRemainingSwipe();
       return;
     }
-    if (this.props.onSwipeSuccess) {
-      this.props.onSwipeSuccess();
-    }
-    this.reset();
+    props.onSwipeSuccess && props.onSwipeSuccess();
+    reset();
   }
 
-  onPanResponderStart() {
-    if (this.props.disabled) {
+  function onPanResponderStart() {
+    if (props.disabled) {
       return;
     }
-    if (this.props.onSwipeStart) {
-      this.props.onSwipeStart();
-    }
+    props.onSwipeStart && props.onSwipeStart();
   }
 
-  onPanResponderMove(event, gestureState) {
-    if (this.props.disabled) {
+  async function onPanResponderMove(event, gestureState) {
+    if (props.disabled) {
       return;
     }
-    const rtlMultiplier = this.props.enableRightToLeftSwipe ? -1 : 1;
-    const newWidth =
-      this.defaultContainerWidth + rtlMultiplier * gestureState.dx;
-    if (newWidth < this.defaultContainerWidth) {
+    const rtlMultiplier = props.enableRightToLeftSwipe ? -1 : 1;
+    const newWidth = defaultContainerWidth + rtlMultiplier * gestureState.dx;
+    if (newWidth < defaultContainerWidth) {
       // Reached starting position
-      this.reset();
-    } else if (newWidth > this.maxWidth) {
+      reset();
+    } else if (newWidth > maxWidth) {
       // Reached end position
-      this.setBackgroundColors();
-      this.state.animatedWidth.setValue(this.maxWidth);
+      setBackgroundColors();
+      setDefaultWidth(maxWidth);
     } else {
-      this.setBackgroundColors();
-      this.state.animatedWidth.setValue(newWidth);
+      setBackgroundColors();
+      await Animated.timing(animatedWidth, {
+        toValue: newWidth,
+        duration: 0,
+        useNativeDriver: false,
+      }).start();
+      setDefaultWidth(newWidth);
     }
   }
 
-  onPanResponderRelease(event, gestureState) {
-    if (this.props.disabled) {
+  function onPanResponderRelease(event, gestureState) {
+    if (props.disabled) {
       return;
     }
-    const rtlMultiplier = this.props.enableRightToLeftSwipe ? -1 : 1;
-    const newWidth =
-      this.defaultContainerWidth + rtlMultiplier * gestureState.dx;
+    const rtlMultiplier = props.enableRightToLeftSwipe ? -1 : 1;
+    const newWidth = defaultContainerWidth + rtlMultiplier * gestureState.dx;
     const successThresholdWidth =
-      this.maxWidth * (this.props.swipeSuccessThreshold / 100);
-    if (newWidth < successThresholdWidth) {
-      this.onSwipeNotMetSuccessThreshold();
-      return;
-    }
-    this.onSwipeMetSuccessThreshold(newWidth);
+      maxWidth * (props.swipeSuccessThreshold / 100);
+    newWidth < successThresholdWidth
+      ? onSwipeNotMetSuccessThreshold()
+      : onSwipeMetSuccessThreshold(newWidth);
   }
 
-  setBackgroundColors() {
-    const { railFillBackgroundColor, railFillBorderColor } = this.props;
+  function setBackgroundColors() {
+    const { railFillBackgroundColor, railFillBorderColor } = props;
     // Set backgroundColor only if not already set
-    if (this.state.backgroundColor === TRANSPARENT_COLOR) {
-      this.setState({
-        backgroundColor: railFillBackgroundColor,
-        borderColor: railFillBorderColor,
-      });
+    if (backgroundColor === TRANSPARENT_COLOR) {
+      setBackgroundColor(railFillBackgroundColor);
+      setBorderColor(railFillBorderColor);
     }
   }
 
-  finishRemainingSwipe() {
+  function finishRemainingSwipe() {
     // Animate to final position
-    Animated.timing(this.state.animatedWidth, {
-      toValue: this.maxWidth,
-      duration: 200,
-      useNativeDriver: false,
-    }).start(() => {
-      if (this.props.onSwipeSuccess) {
-        this.props.onSwipeSuccess();
-      }
+    setDefaultWidth(maxWidth);
+    props.onSwipeSuccess && props.onSwipeSuccess();
 
-      //Animate back to initial position
-      if (this.props.shouldResetAfterSuccess) {
-        Animated.timing(this.state.animatedWidth, {
-          toValue: this.defaultContainerWidth,
-          duration: this.props.resetAfterSuccessAnimDuration,
-          useNativeDriver: false,
-        }).start(() => this.reset());
-      }
-    });
+    //Animate back to initial position
+    props.shouldResetAfterSuccess && reset();
   }
 
-  reset() {
-    this.state.animatedWidth.setValue(this.defaultContainerWidth);
+  function reset() {
+    setDefaultWidth(defaultContainerWidth);
 
-    if (this.state.backgroundColor !== TRANSPARENT_COLOR) {
-      this.setState({
-        backgroundColor: TRANSPARENT_COLOR,
-        borderColor: TRANSPARENT_COLOR,
-      });
+    if (backgroundColor !== TRANSPARENT_COLOR) {
+      setBackgroundColor(TRANSPARENT_COLOR);
+      setBorderColor(TRANSPARENT_COLOR);
     }
   }
 
-  renderThumbIcon() {
+  function renderThumbIcon() {
     const {
       disabled,
       disabledThumbIconBackgroundColor,
@@ -180,7 +144,7 @@ class SwipeThumb extends React.Component {
       thumbIconComponent: ThumbIconComponent,
       thumbIconImageSource,
       thumbIconStyles,
-    } = this.props;
+    } = props;
     const dynamicStyles = {
       ...thumbIconStyles,
       height: iconSize,
@@ -211,44 +175,45 @@ class SwipeThumb extends React.Component {
     );
   }
 
-  render() {
-    const {
-      disabled,
-      enableRightToLeftSwipe,
-      onSwipeSuccess,
-      railStyles,
-      screenReaderEnabled,
-      title,
-    } = this.props;
-    const panStyle = {
-      backgroundColor: this.state.backgroundColor,
-      borderColor: this.state.borderColor,
-      width: this.state.animatedWidth,
-      ...railStyles,
-      ...(enableRightToLeftSwipe ? styles.containerRTL : styles.container),
-    };
-    if (screenReaderEnabled) {
-      return (
+  const {
+    disabled,
+    enableRightToLeftSwipe,
+    onSwipeSuccess,
+    railStyles,
+    screenReaderEnabled,
+    title,
+  } = props;
+
+  const panStyle = {
+    backgroundColor,
+    borderColor,
+    width: animatedWidth,
+    ...railStyles,
+    ...(enableRightToLeftSwipe ? styles.containerRTL : styles.container),
+  };
+
+  return (
+    <>
+      {screenReaderEnabled ? (
         <TouchableNativeFeedback
           accessibilityLabel={`${title}. ${
             disabled ? 'Disabled' : 'Double-tap to activate'
-          }`}
+            }`}
           disabled={disabled}
           onPress={onSwipeSuccess}
           accessible>
-          <View style={[panStyle, { width: this.defaultContainerWidth }]}>
-            {this.renderThumbIcon()}
+          <View style={[panStyle, { width: defaultContainerWidth }]}>
+            {renderThumbIcon()}
           </View>
         </TouchableNativeFeedback>
-      );
-    }
-    return (
-      <Animated.View style={[panStyle]} {...this.panResponder.panHandlers}>
-        {this.renderThumbIcon()}
-      </Animated.View>
-    );
-  }
-}
+      ) : (
+          <Animated.View style={[panStyle]} {...panResponder.panHandlers}>
+            {renderThumbIcon()}
+          </Animated.View>
+        )}
+    </>
+  );
+};
 
 SwipeThumb.defaultProps = {
   disabled: false,
