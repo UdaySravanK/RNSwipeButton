@@ -33,6 +33,7 @@ const SwipeThumb = props => {
       onMoveShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
       onShouldBlockNativeResponder: () => true,
+      onPanResponderStart,
       onPanResponderMove,
       onPanResponderRelease,
     }),
