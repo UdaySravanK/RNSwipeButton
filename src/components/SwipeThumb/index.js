@@ -26,18 +26,17 @@ const SwipeThumb = props => {
   const [backgroundColor, setBackgroundColor] = useState(TRANSPARENT_COLOR);
   const [borderColor, setBorderColor] = useState(TRANSPARENT_COLOR);
 
-  const [panResponder] = useState(
+  const panResponder = useRef(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onStartShouldSetPanResponderCapture: () => true,
       onMoveShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponderCapture: () => true,
-      onPanResponderStart: onPanResponderStart,
-      onPanResponderMove: onPanResponderMove,
-      onPanResponderRelease: onPanResponderRelease,
       onShouldBlockNativeResponder: () => true,
+      onPanResponderMove,
+      onPanResponderRelease,
     }),
-  );
+  ).current;
 
   useEffect(() => {
     Animated.timing(animatedWidth, {
