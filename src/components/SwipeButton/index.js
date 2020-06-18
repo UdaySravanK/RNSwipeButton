@@ -41,7 +41,7 @@ class SwipeButton extends React.Component {
       'change',
       this.handleScreenReaderToggled,
     );
-    AccessibilityInfo.fetch().then(isEnabled => {
+    AccessibilityInfo.isScreenReaderEnabled().then(isEnabled => {
       if (this.isUnmounting) {
         return;
       }
