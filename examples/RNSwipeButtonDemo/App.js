@@ -14,13 +14,18 @@ import thumbIcon from './assets/thumbIcon.png';
 import arrowRight from './assets/arrow-right.png';
 import styles from './styles';
 
-// import SwipeButton from 'rn-swipe-button';
+import SwipeButton from 'rn-swipe-button';
 /**
- * NPM linking has some issue.
- * Move 'RNSwipeButton/src' folder to 'RNSwipeButton/examples/RNSwipeButtonDemo' folder
+ *
+ * Follow below steps to test live changes of rn-swipe-button.
+ *
+ * 1. Copy 'src' folder from RNSwipeButton to 'RNSwipeButton/examples/RNSwipeButtonDemo' folder
+ * 2. Comment above SwipeButton import and uncomment below one
+ *
+ * Note: NPM linking has some issue react-native/HAUL build tools.
  */
 
-import SwipeButton from './src/components/SwipeButton';
+// import SwipeButton from './src/components/SwipeButton';
 
 class App extends React.Component {
   constructor(props) {

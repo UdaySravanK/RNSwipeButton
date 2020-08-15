@@ -3,19 +3,23 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start",
+    "start": "haul start",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/toolbar-android": "^0.1.0-rc.2",
     "react": "16.8.6",
     "react-native": "0.60.5",
-    "react-native-vector-icons": "^6.6.0",
-    "rn-swipe-button": "^1.2.1"
+    "react-native-vector-icons": "^6.7.0",
+    "rn-swipe-button": "^1.2.8"
   },
   "devDependencies": {
     "@babel/core": "^7.7.0",
     "@babel/runtime": "^7.7.1",
+    "@haul-bundler/babel-preset-react-native": "^0.16.0",
+    "@haul-bundler/cli": "^0.22.1",
+    "@haul-bundler/preset-0.60": "^0.18.0",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
     "eslint": "^6.6.0",

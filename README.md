@@ -139,3 +139,12 @@ class App extends React.Component {
 ```
 
 Note: In accessibility mode this component works like a regular button (double tap to activate)
+
+### Tech Stack
+<ul>
+<li>Node</li>
+<li>Yarn</li>
+<li>JavaScript</li>
+<li>TypeScript</li>
+<li>ReactNative</li>
+</ul>
