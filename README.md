@@ -10,9 +10,18 @@
 <hr>
 <div>
   <h2 style="color:darkgreen;">Screenshots of Android and iOS</h2>
-  <img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/>
-  <img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.png" style="margin-right: 30px;" width="230"/>
-  <img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.gif" width="230" />
+  <table>
+	<tr">
+	  <td><p style="text-align: 'center';">iOS</p></td>
+	  <td><p style="text-align: 'center';">Android</p></td>
+  	  <td><p style="text-align: 'center';">iOS GIF</p></td>
+	</tr>
+	<tr>
+     	  <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/></td>
+     	  <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.png" style="margin-right: 30px;" width="200"/></td>
+          <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/></td>
+	</tr>
+  </table>
   <p>These screenshots are from demo app under examples folder in the repo</p>
 </div>
 <hr>
