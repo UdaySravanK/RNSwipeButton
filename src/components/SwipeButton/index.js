@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import {Text, View, AccessibilityInfo} from 'react-native';
+import { Text, View, AccessibilityInfo } from 'react-native';
 
 // Components
 import SwipeThumb from '../../components/SwipeThumb';
@@ -23,154 +23,138 @@ import {
   TITLE_COLOR,
 } from '../../constants';
 
-class SwipeButton extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      layoutWidth: 0,
-      screenReaderEnabled: false,
-    };
-    this.handleScreenReaderToggled = this.handleScreenReaderToggled.bind(this);
-    this.onLayoutContainer = this.onLayoutContainer.bind(this);
-    this.isUnmounting = false;
-  }
-
-  componentDidMount() {
-    this.isUnmounting = false;
-    AccessibilityInfo.addEventListener(
-      'change',
-      this.handleScreenReaderToggled,
-    );
-    AccessibilityInfo.fetch().then(isEnabled => {
-      if (this.isUnmounting) {
-        return;
-      }
-      this.setState({
-        screenReaderEnabled: isEnabled,
-      });
-    });
-  }
-
-  componentWillUnmount() {
-    this.isUnmounting = true;
-    AccessibilityInfo.removeEventListener(
-      'change',
-      this.handleScreenReaderToggled,
-    );
-  }
+const SwipeButton = props => {
+  const [layoutWidth, setLayoutWidth] = useState(0);
+  const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
+  const [isUnmounting, setIsUnmounting] = useState(false);
 
   /**
    * Retrieve layoutWidth to set maximum swipeable area.
    * Correct layout width will be received only after first render but we need it before render.
    * So render SwipeThumb only if layoutWidth > 0
    */
-  async onLayoutContainer(e) {
-    if (this.isUnmounting || this.state.layoutWidth) {
+  const onLayoutContainer = async e => {
+    if (isUnmounting || layoutWidth) {
       return;
     }
-    await this.setState({
-      layoutWidth: e.nativeEvent.layout.width,
+    setLayoutWidth(e.nativeEvent.layout.width);
+  };
+
+  useEffect(() => {
+    const handleScreenReaderToggled = isEnabled => {
+      if (isUnmounting || screenReaderEnabled === isEnabled) {
+        return;
+      }
+      setScreenReaderEnabled(isEnabled);
+    };
+    setIsUnmounting(false);
+    AccessibilityInfo.addEventListener('change', handleScreenReaderToggled);
+
+    AccessibilityInfo.isScreenReaderEnabled().then(isEnabled => {
+      if (isUnmounting) {
+        return;
+      }
+      setScreenReaderEnabled(isEnabled);
     });
-  }
 
-  handleScreenReaderToggled(isEnabled) {
-    if (this.isUnmounting || this.state.screenReaderEnabled === isEnabled) {
-      return;
-    }
-    this.setState({
-      screenReaderEnabled: isEnabled,
-    });
-  }
+    return () => {
+      setIsUnmounting(true);
+      AccessibilityInfo.removeEventListener(
+        'change',
+        handleScreenReaderToggled,
+      );
+    };
+  }, [isUnmounting, screenReaderEnabled]);
 
-  render() {
-    const {
-      containerStyles,
-      disabled,
-      disabledRailBackgroundColor,
-      disabledThumbIconBackgroundColor,
-      disabledThumbIconBorderColor,
-      enableRightToLeftSwipe,
-      height,
-      onSwipeFail,
-      onSwipeStart,
-      onSwipeSuccess,
-      railBackgroundColor,
-      railBorderColor,
-      railFillBackgroundColor,
-      railFillBorderColor,
-      resetAfterSuccessAnimDuration,
-      shouldResetAfterSuccess,
-      swipeSuccessThreshold,
-      thumbIconBackgroundColor,
-      thumbIconBorderColor,
-      thumbIconComponent,
-      thumbIconImageSource,
-      thumbIconStyles,
-      title,
-      titleColor,
-      titleFontSize,
-      titleStyles,
-      width,
-    } = this.props;
-    const {screenReaderEnabled} = this.state;
-
-    return (
-      <View
+  const {
+    containerStyles,
+    disabled,
+    disabledRailBackgroundColor,
+    disabledThumbIconBackgroundColor,
+    disabledThumbIconBorderColor,
+    enableRightToLeftSwipe,
+    height,
+    onSwipeFail,
+    onSwipeStart,
+    onSwipeSuccess,
+    railBackgroundColor,
+    railBorderColor,
+    railFillBackgroundColor,
+    railFillBorderColor,
+    railStyles,
+    resetAfterSuccessAnimDelay,
+    resetAfterSuccessAnimDuration,
+    shouldResetAfterSuccess,
+    swipeSuccessThreshold,
+    thumbIconBackgroundColor,
+    thumbIconBorderColor,
+    thumbIconComponent,
+    thumbIconImageSource,
+    thumbIconStyles,
+    title,
+    titleColor,
+    titleFontSize,
+    titleStyles,
+    width,
+  } = props;
+  return (
+    <View
+      style={[
+        styles.container,
+        {
+          ...containerStyles,
+          backgroundColor: disabled
+            ? disabledRailBackgroundColor
+            : railBackgroundColor,
+          borderColor: railBorderColor,
+          ...(width ? { width } : {}),
+        },
+      ]}
+      onLayout={onLayoutContainer}>
+      <Text
+        importantForAccessibility={
+          screenReaderEnabled ? 'no-hide-descendants' : ''
+        }
         style={[
-          styles.container,
+          styles.title,
           {
-            ...containerStyles,
-            backgroundColor: disabled
-              ? disabledRailBackgroundColor
-              : railBackgroundColor,
-            borderColor: railBorderColor,
-            ...(width ? {width} : {}),
+            color: titleColor,
+            fontSize: titleFontSize,
+            ...titleStyles,
           },
-        ]}
-        onLayout={this.onLayoutContainer}>
-        <Text
-          importantForAccessibility={
-            screenReaderEnabled ? 'no-hide-descendants' : ''
-          }
-          style={[
-            styles.title,
-            {
-              color: titleColor,
-              fontSize: titleFontSize,
-              ...titleStyles,
-            },
-          ]}>
-          {title}
-        </Text>
-        {this.state.layoutWidth > 0 && (
-          <SwipeThumb
-            disabled={disabled}
-            disabledThumbIconBackgroundColor={disabledThumbIconBackgroundColor}
-            disabledThumbIconBorderColor={disabledThumbIconBorderColor}
-            enableRightToLeftSwipe={enableRightToLeftSwipe}
-            iconSize={height}
-            layoutWidth={this.state.layoutWidth}
-            onSwipeFail={onSwipeFail}
-            onSwipeStart={onSwipeStart}
-            onSwipeSuccess={onSwipeSuccess}
-            railFillBackgroundColor={railFillBackgroundColor}
-            railFillBorderColor={railFillBorderColor}
-            resetAfterSuccessAnimDuration={resetAfterSuccessAnimDuration}
-            screenReaderEnabled={screenReaderEnabled}
-            shouldResetAfterSuccess={shouldResetAfterSuccess}
-            swipeSuccessThreshold={swipeSuccessThreshold}
-            thumbIconBackgroundColor={thumbIconBackgroundColor}
-            thumbIconBorderColor={thumbIconBorderColor}
-            thumbIconComponent={thumbIconComponent}
-            thumbIconImageSource={thumbIconImageSource}
-            thumbIconStyles={thumbIconStyles}
-            title={title}
-          />
-        )}
-      </View>
-    );
-  }
-}
+        ]}>
+        {title}
+      </Text>
+      {layoutWidth > 0 && (
+        <SwipeThumb
+          disabled={disabled}
+          disabledThumbIconBackgroundColor={disabledThumbIconBackgroundColor}
+          disabledThumbIconBorderColor={disabledThumbIconBorderColor}
+          enableRightToLeftSwipe={enableRightToLeftSwipe}
+          iconSize={height}
+          layoutWidth={layoutWidth}
+          onSwipeFail={onSwipeFail}
+          onSwipeStart={onSwipeStart}
+          onSwipeSuccess={onSwipeSuccess}
+          railFillBackgroundColor={railFillBackgroundColor}
+          railFillBorderColor={railFillBorderColor}
+          railStyles={railStyles}
+          resetAfterSuccessAnimDelay={resetAfterSuccessAnimDelay}
+          resetAfterSuccessAnimDuration={resetAfterSuccessAnimDuration}
+          screenReaderEnabled={screenReaderEnabled}
+          shouldResetAfterSuccess={shouldResetAfterSuccess}
+          swipeSuccessThreshold={swipeSuccessThreshold}
+          thumbIconBackgroundColor={thumbIconBackgroundColor}
+          thumbIconBorderColor={thumbIconBorderColor}
+          thumbIconComponent={thumbIconComponent}
+          thumbIconImageSource={thumbIconImageSource}
+          thumbIconStyles={thumbIconStyles}
+          title={title}
+        />
+      )}
+    </View>
+  );
+};
 
 SwipeButton.defaultProps = {
   containerStyles: {},
@@ -208,6 +192,8 @@ SwipeButton.propTypes = {
   railBorderColor: PropTypes.string,
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,
+  railStyles: PropTypes.object,
+  resetAfterSuccessAnimDelay: PropTypes.number,
   resetAfterSuccessAnimDuration: PropTypes.number,
   shouldResetAfterSuccess: PropTypes.bool,
   swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe

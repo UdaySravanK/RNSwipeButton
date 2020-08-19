@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 const borderWidth = 3;
 const margin = 1;
@@ -27,13 +27,7 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: -borderWidth,
   },
-  defaultThumbIcon: {
-    width: 100,
-    height: 100,
-    borderRadius: 100 / 2,
-    backgroundColor: '#800080',
-  },
 });
 
 export default Styles;
-export {borderWidth, margin};
+export { borderWidth, margin };
