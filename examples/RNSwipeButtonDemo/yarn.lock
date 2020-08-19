@@ -1210,9 +1210,9 @@
   integrity sha512-7+2BITlgjgDhH0vvwZU/HZJVyk+2XUlvxXe8dFMedNX/aMkaOq++rMAFXc0tM7ij15QaWlbdQASBR9dihi+bDQ==
 
 "@types/node@*":
-  version "14.0.27"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.27.tgz#a151873af5a5e851b51b3b065c9e63390a9e0eb1"
-  integrity sha512-kVrqXhbclHNHGu9ztnAwSncIgJv/FaxmzXJvGXNdcCpV1b8u1/Mi6z6m0vwy0LzKeXFTPLH0NzwmoJ3fNCIq0g==
+  version "14.6.0"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.6.0.tgz#7d4411bf5157339337d7cff864d9ff45f177b499"
+  integrity sha512-mikldZQitV94akrc4sCcSjtJfsTKt4p+e/s0AGscVA6XArQ9kFclP+ZiYUMnq987rc6QlYxXv/EivqlfSLxpKA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -5763,10 +5763,10 @@ rimraf@~2.2.6:
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
-rn-swipe-button@^1.2.8:
-  version "1.2.8"
-  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.2.8.tgz#2a85527b419c1df705f24258b61a286e19a66211"
-  integrity sha512-vT+9QIIvVoWsayuhSwRAxC3K1P5SW1ziljgy03fKkqXUGKSPxaP738HhjjaZ6hWmYlqNApHF4cxk9Ms1ptD7jg==
+rn-swipe-button@^1.2.9:
+  version "1.2.9"
+  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.2.9.tgz#079bfabaee87e9d929107d3443aaf5bd7eba48eb"
+  integrity sha512-KQatMI2gQH4BBX/it4h+i8ihkK6cdOo0BdGeQO6rKAB1fmfVZW5NM/VQRgSZ6IWnmV7Sxrydvzf5ooFLA/E4EA==
 
 rsvp@^4.8.4:
   version "4.8.5"
