@@ -27,12 +27,6 @@ const Styles = StyleSheet.create({
     justifyContent: 'center',
     marginVertical: -borderWidth,
   },
-  defaultThumbIcon: {
-    width: 100,
-    height: 100,
-    borderRadius: 100 / 2,
-    backgroundColor: '#800080',
-  },
 });
 
 export default Styles;

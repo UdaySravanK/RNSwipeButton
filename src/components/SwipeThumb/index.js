@@ -168,9 +168,6 @@ const SwipeThumb = props => {
             <ThumbIconComponent />
           </View>
         )}
-        {!ThumbIconComponent && !thumbIconImageSource && (
-          <View style={styles.defaultThumbIcon} />
-        )}
       </View>
     );
   }
