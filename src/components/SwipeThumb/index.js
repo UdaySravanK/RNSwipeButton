@@ -17,6 +17,7 @@ import { TRANSPARENT_COLOR } from '../../constants';
 const SwipeThumb = props => {
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
   const defaultContainerWidth = props.iconSize;
+  const forceReset = props.forceReset;
   const maxWidth = props.layoutWidth - paddingAndMarginsOffset;
 
   const animatedWidth = useRef(new Animated.Value(defaultContainerWidth))
@@ -46,6 +47,10 @@ const SwipeThumb = props => {
       useNativeDriver: false,
     }).start();
   }, [animatedWidth, defaultWidth]);
+
+  useEffect(() => {
+    forceReset && forceReset(reset)
+  }, [forceReset])
 
   function onSwipeNotMetSuccessThreshold() {
     // Animate to initial position
@@ -225,6 +230,7 @@ SwipeThumb.propTypes = {
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
   enableRightToLeftSwipe: PropTypes.bool,
+  forceReset: PropTypes.func,
   iconSize: PropTypes.number,
   layoutWidth: PropTypes.number,
   onSwipeFail: PropTypes.func,
