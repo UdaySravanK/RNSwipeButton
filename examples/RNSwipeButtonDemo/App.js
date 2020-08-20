@@ -86,8 +86,8 @@ const App: () => React$Node = () => {
           </View>  
           {renderSubHeading('Set .png image as thumb icon')}
           <SwipeButton thumbIconImageSource={thumbIcon} />
-          {renderSubHeading('Set height')}
-          <SwipeButton height={25} shouldResetAfterSuccess={true} resetAfterSuccessAnimDelay={0} />
+          {renderSubHeading('Set height & reset after successful swipe')}
+          <SwipeButton height={25} shouldResetAfterSuccess={true} resetAfterSuccessAnimDelay={1000} />
           {renderSubHeading('Set height and width')}
           <SwipeButton height={35} width={150} title="Swipe" />
         </View>

@@ -25,6 +25,7 @@
   <p>These screenshots are from demo app under examples folder in the repo</p>
 </div>
 <hr>
+
 <h2 style="color:darkgreen;">Component properties</h2>
 <pre style="font-size: 15px; color: brown;">
     <b>containerStyles</b>: PropTypes.object,
@@ -33,7 +34,7 @@
     <b>disabledThumbIconBackgroundColor</b>: PropTypes.string,
     <b>disabledThumbIconBorderColor</b>: PropTypes.string,
     <b>enableRightToLeftSwipe</b>: PropTypes.bool,
-    <b>forceReset</b>: PropTypes.func, <span>// Check below example code</span>
+    <b>forceReset</b>: PropTypes.func, <span style="color: blueviolet"> // RNSwipeButton will call this function by passing a "reset" function as argument. Calling "reset" will reset the swipe thumb.</span>
     <b>height</b>: PropTypes.oneOfType([
        PropTypes.string,
        PropTypes.number,
@@ -46,14 +47,14 @@
     <b>railFillBackgroundColor</b>: PropTypes.string,
     <b>railFillBorderColor</b>: PropTypes.string,
     <b>railStyles</b>: PropTypes.object,
-    <b>resetAfterSuccessAnimDelay</b>: PropTypes.number,
+    <b>resetAfterSuccessAnimDelay</b>: PropTypes.number, <span style="color: blueviolet">// This is delay before resetting the button after successful swipe When shouldResetAfterSuccess = true </span>
     <b>resetAfterSuccessAnimDuration</b>: PropTypes.number,
     <b>screenReaderEnabled</b>: PropTypes.bool,
-    <b>shouldResetAfterSuccess</b>: PropTypes.bool,
+    <b>shouldResetAfterSuccess</b>: PropTypes.bool, <span style="color: blueviolet">// If set to true, buttun resets automatically after swipe success with default delay of 1000ms</span>
     <b>swipeSuccessThreshold</b>: PropTypes.number, <span style="color: blueviolet">// Ex: 70. Swipping 70% will be considered as successful swipe</span>
     <b>thumbIconBackgroundColor</b>: PropTypes.string,
     <b>thumbIconBorderColor</b>: PropTypes.string,
-    <b>thumbIconComponent</b>: PropTypes.node,
+    <b>thumbIconComponent</b>: PropTypes.node, <span style="color: blueviolet">Pass any react component to replace swipable thumb icon</span>
     <b>thumbIconImageSource</b>: PropTypes.oneOfType([
       PropTypes.string,
       PropTypes.number,
@@ -144,8 +145,8 @@ const App: () => React$Node = () => {
           </View>  
           {renderSubHeading('Set .png image as thumb icon')}
           <SwipeButton thumbIconImageSource={thumbIcon} />
-          {renderSubHeading('Set height')}
-          <SwipeButton height={25} />
+          {renderSubHeading('Set height & reset after successful swipe')}
+          <SwipeButton height={25} shouldResetAfterSuccess={true} resetAfterSuccessAnimDelay={1000} />
           {renderSubHeading('Set height and width')}
           <SwipeButton height={35} width={150} title="Swipe" />
         </View>
@@ -154,10 +155,12 @@ const App: () => React$Node = () => {
   );
 };
 ```
+<hr/>
 
-Note: In accessibility mode this component works like a regular button (double tap to activate)
+### Note 
+In accessibility mode this component works like a regular button (double tap to activate)
 
-### Tech Stack
+<h2 style="color:darkgreen;">Tech Stack</h2>
 <ul>
 <li>Node</li>
 <li>Yarn</li>
@@ -165,3 +168,43 @@ Note: In accessibility mode this component works like a regular button (double t
 <li>TypeScript</li>
 <li>ReactNative</li>
 </ul>
+
+<div>
+    <h2 style="color:darkgreen;">Running example app</h2>
+    <ol>
+      <li><code>git close https://github.com/UdaySravanK/RNSwipeButton.git</code></li>
+      <li><code>cd RNSwipeButton/examples/RNSwipeButtonDemo</code></li>
+      <li><code>yarn</code></li>
+      <li><p>To run on an android emulator</p>
+        <code>yarn android</code> 
+        <details>
+          <summary>Make sure of</summary>
+          <ul>
+            <li>Android Studio is configured</li>
+            <li>Global paths set correctly for Android SDK i.e ANDROID_HOME, tools, platform-tools</li>
+            <li>Java8 is installed</li>
+            <li>At least one emulator is ready</li>
+          </ul>
+        </details>
+      </li>
+      <li><p>To run on an ios simulator</p>
+        <code>yarn ios</code> 
+        <details>
+          <summary>Make sure of</summary>
+          <ul>
+            <li>xcode is configured</li>
+            <li>cocoapods installed</li>
+            <li>If seeing issues then run <code>pod deintegrate & pod install</code></li>
+            <li>If seeing issues with fonts
+               <ol>
+                 <li>Open ios workspace project in xcode</li>
+                 <li>Select RNSwipeButtonDemo</li>
+                 <li>Go to Build phases</li>
+                 <li>Open 'Copy Bundle Resources' and delete all .ttf files</li>
+               </ol>
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ol>
+   </div>
