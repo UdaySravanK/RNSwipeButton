@@ -13,6 +13,8 @@ import styles, { borderWidth, margin } from './styles';
 
 // Constants
 import { TRANSPARENT_COLOR } from '../../constants';
+const DEFAULT_ANIMATION_DURATION = 400
+const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000
 
 const SwipeThumb = props => {
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
@@ -121,9 +123,10 @@ const SwipeThumb = props => {
     props.onSwipeSuccess && props.onSwipeSuccess();
 
     //Animate back to initial position after successfully swiped
+    const resetDelay = DEFAULT_ANIMATION_DURATION + (props.resetAfterSuccessAnimDelay !== undefined ? props.resetAfterSuccessAnimDelay : RESET_AFTER_SUCCESS_DEFAULT_DELAY)
     setTimeout(() => {
       props.shouldResetAfterSuccess && reset();
-    }, props.resetAfterSuccessAnimDelay ? props.resetAfterSuccessAnimDelay : 1000)
+    }, resetDelay)
   }
 
   function reset() {
