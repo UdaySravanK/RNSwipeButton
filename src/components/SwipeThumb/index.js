@@ -120,8 +120,10 @@ const SwipeThumb = props => {
     setDefaultWidth(maxWidth);
     props.onSwipeSuccess && props.onSwipeSuccess();
 
-    //Animate back to initial position
-    props.shouldResetAfterSuccess && reset();
+    //Animate back to initial position after successfully swiped
+    setTimeout(() => {
+      props.shouldResetAfterSuccess && reset();
+    }, props.resetAfterSuccessAnimDelay ? props.resetAfterSuccessAnimDelay : 1000)
   }
 
   function reset() {
