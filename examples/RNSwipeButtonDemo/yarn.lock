@@ -5763,10 +5763,10 @@ rimraf@~2.2.6:
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
-rn-swipe-button@^1.2.9:
-  version "1.2.9"
-  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.2.9.tgz#079bfabaee87e9d929107d3443aaf5bd7eba48eb"
-  integrity sha512-KQatMI2gQH4BBX/it4h+i8ihkK6cdOo0BdGeQO6rKAB1fmfVZW5NM/VQRgSZ6IWnmV7Sxrydvzf5ooFLA/E4EA==
+rn-swipe-button@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.3.0.tgz#a88b8eea6845eff501bb30fef0f534b86a4350ea"
+  integrity sha512-uHm03IR7njrEo+mVLbiHOnmef49oWLkwtVr859xFi8rz0IdGb/iuOMwfDXe0vaqChpaSOAv0bN4yDAxk+Hlp6A==
 
 rsvp@^4.8.4:
   version "4.8.5"
