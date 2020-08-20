@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html style="padding: 30px;">
   <head>
-    
+    <style>
+      table {
+       background-color: rgb(15, 40, 48);
+      }
+      tr.table-heading {
+        background-color: rgb(47, 104, 126);
+      }
+      .title {
+        color: white;
+        text-align: center;
+        font-size: 16px;
+      }
+      .img-asset {
+        padding: 5px;
+      }
+      </style>
   </head>
   <body>
     <h2 style="color:darkgreen;">React Native Swipe Button Component</h2>
@@ -15,10 +30,19 @@
     </div>
     <hr>
     <div>
-      <h2 style="color:darkgreen;">Screenshots of Android and iOS</h2>
-      <img src="./rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/>
-      <img src="./rn-swipe-button.png" style="margin-right: 30px;" width="230"/>
-      <img src="./rn-swipe-button.gif" width="230" />
+      <h2 style="color:darkgreen;">Screenshots</h2>
+      <table border="1px">
+        <tr class="table-heading">
+          <td><p class="title">Android</p></td>
+          <td><p class="title">iOS</p></td>
+          <td><p class="title">iOS gif</p></td>
+        </tr>
+        <tr>
+          <td class="img-asset"><img width="200" src="./rn-swipe-button.png" /></td>
+          <td class="img-asset"><img width="200" src="./rn-swipe-button-ios.png" /></td>
+          <td class="img-asset"><img width="200" src="./rn-swipe-button.gif" /></td>
+        </tr>
+        </table>
     </div>
     <br>
     <hr/>
@@ -36,6 +60,8 @@
 
     <b>enableRightToLeftSwipe</b>: PropTypes.bool,
 
+    <b>forceReset</b>: PropTypes.func, // Check example code App.js
+    
     <b>height</b>: PropTypes.number,
 
     <b>onSwipeFail</b>: PropTypes.func,
@@ -52,7 +78,7 @@
 
     <b>railFillBorderColor</b>: PropTypes.string,
 
-    <br>railStyles</b>: PropTypes.object,
+    <b>railStyles</b>: PropTypes.object,
     
     <b>resetAfterSuccessAnimDuration</b>: PropTypes.number,
     

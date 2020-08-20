@@ -7,7 +7,7 @@
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, View, Text, StatusBar} from 'react-native';
+import {SafeAreaView, View, Text, StatusBar, Button} from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -40,6 +40,7 @@ const App: () => React$Node = () => {
   const renderSubHeading = (heading) => (
     <Text style={styles.subHeading}>{heading}</Text>
   );
+  let forceResetLastButton = null;
 
   return (
     <>
@@ -67,7 +68,7 @@ const App: () => React$Node = () => {
             title="Slide to unlock"
             onSwipeSuccess={() => updateSwipeStatusMessage('Slide success!')}
           />
-          {renderSubHeading('Set a component as thumb icon')}
+          {renderSubHeading('Set a component as thumb icon & use forceReset')}
           <SwipeButton
             thumbIconBackgroundColor="#FFFFFF"
             thumbIconComponent={TwitterIcon}
@@ -76,7 +77,13 @@ const App: () => React$Node = () => {
               backgroundColor: '#44000088',
               borderColor: '#880000FF',
             }}
+            forceReset={ reset => {
+              forceResetLastButton = reset
+            }}
           />
+          <View style={{ alignItems: 'center', marginBottom: 5 }}>
+            <Button onPress={() => forceResetLastButton && forceResetLastButton()} title="Force reset" />
+          </View>  
           {renderSubHeading('Set .png image as thumb icon')}
           <SwipeButton thumbIconImageSource={thumbIcon} />
           {renderSubHeading('Set height')}
