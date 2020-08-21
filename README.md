@@ -172,7 +172,7 @@ In accessibility mode this component works like a regular button (double tap to 
 <div>
     <h2 style="color:darkgreen;">Running example app</h2>
     <ol>
-      <li><code>git close https://github.com/UdaySravanK/RNSwipeButton.git</code></li>
+      <li><code>git clone https://github.com/UdaySravanK/RNSwipeButton.git</code></li>
       <li><code>cd RNSwipeButton/examples/RNSwipeButtonDemo</code></li>
       <li><code>yarn</code></li>
       <li><p>To run on an android emulator</p>
