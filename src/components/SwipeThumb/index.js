@@ -189,6 +189,7 @@ const SwipeThumb = props => {
     railStyles,
     screenReaderEnabled,
     title,
+    isRTL
   } = props;
 
   const panStyle = {
@@ -196,7 +197,7 @@ const SwipeThumb = props => {
     borderColor,
     width: animatedWidth,
     ...railStyles,
-    ...(enableRightToLeftSwipe ? styles.containerRTL : styles.container),
+    ...(enableRightToLeftSwipe ? ( isRTL ? styles.container: styles.containerRTL ) : (isRTL ? styles.containerRTL : styles.container)),
   };
 
   return (
@@ -228,6 +229,7 @@ SwipeThumb.defaultProps = {
   resetAfterSuccessAnimDuration: 200,
   screenReaderEnabled: false,
   thumbIconStyles: {},
+  isRTL:false
 };
 
 SwipeThumb.propTypes = {
@@ -261,6 +263,7 @@ SwipeThumb.propTypes = {
   ]),
   thumbIconStyles: PropTypes.object,
   title: PropTypes.string,
+  isRTL:PropTypes.bool
 };
 
 export default SwipeThumb;

@@ -68,6 +68,7 @@
       PropTypes.string,
       PropTypes.number,
     ]),
+    <b>isRTL</b>: PropTypes.bool, // for Right to left layout based Applications 
 </pre>
 <hr>
 <h2 style="color:darkgreen;">Code for above screenshots</h2>
