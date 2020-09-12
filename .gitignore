@@ -9,5 +9,3 @@ dist
 
 # Dependency directory
 node_modules
-.idea
-*.zip
