@@ -72,7 +72,7 @@ const SwipeButton = props => {
     disabledRailBackgroundColor,
     disabledThumbIconBackgroundColor,
     disabledThumbIconBorderColor,
-    enableRightToLeftSwipe,
+    enableReverseSwipe,
     forceReset,
     height,
     onSwipeFail,
@@ -97,7 +97,6 @@ const SwipeButton = props => {
     titleFontSize,
     titleStyles,
     width,
-    isRTL
   } = props;
   return (
     <View
@@ -132,7 +131,7 @@ const SwipeButton = props => {
           disabled={disabled}
           disabledThumbIconBackgroundColor={disabledThumbIconBackgroundColor}
           disabledThumbIconBorderColor={disabledThumbIconBorderColor}
-          enableRightToLeftSwipe={enableRightToLeftSwipe}
+          enableReverseSwipe={enableReverseSwipe}
           forceReset={forceReset}
           iconSize={height}
           layoutWidth={layoutWidth}
@@ -153,7 +152,6 @@ const SwipeButton = props => {
           thumbIconImageSource={thumbIconImageSource}
           thumbIconStyles={thumbIconStyles}
           title={title}
-          isRTL={isRTL}
         />
       )}
     </View>
@@ -179,7 +177,6 @@ SwipeButton.defaultProps = {
   titleColor: TITLE_COLOR,
   titleFontSize: 20,
   titleStyles: {},
-  isRTL: false,
 };
 
 SwipeButton.propTypes = {
@@ -188,7 +185,7 @@ SwipeButton.propTypes = {
   disabledRailBackgroundColor: PropTypes.string,
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
-  enableRightToLeftSwipe: PropTypes.bool,
+  enableReverseSwipe: PropTypes.bool,
   forceReset: PropTypes.func,
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onSwipeFail: PropTypes.func,
@@ -220,7 +217,6 @@ SwipeButton.propTypes = {
   titleFontSize: PropTypes.number,
   titleStyles: PropTypes.object,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  isRTL:PropTypes.bool
 };
 
 export default SwipeButton;
