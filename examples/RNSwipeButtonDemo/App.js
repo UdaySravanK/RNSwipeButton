@@ -60,9 +60,9 @@ const App: () => React$Node = () => {
               updateSwipeStatusMessage('Submitted successfully!')
             }
           />
-          {renderSubHeading('Right to left swipe enabled')}
+          {renderSubHeading('Reverse swipe enabled')}
           <SwipeButton
-            enableRightToLeftSwipe
+            enableReverseSwipe
             thumbIconBackgroundColor="#FFFFFF"
             thumbIconComponent={FacebookIcon}
             title="Slide to unlock"

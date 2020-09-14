@@ -33,7 +33,7 @@
     <b>disabledRailBackgroundColor</b>: PropTypes.string,
     <b>disabledThumbIconBackgroundColor</b>: PropTypes.string,
     <b>disabledThumbIconBorderColor</b>: PropTypes.string,
-    <b>enableRightToLeftSwipe</b>: PropTypes.bool,
+    <b>enableReverseSwipe</b>: PropTypes.bool,
     <b>forceReset</b>: PropTypes.func, <span style="color: blueviolet"> // RNSwipeButton will call this function by passing a "reset" function as argument. Calling "reset" will reset the swipe thumb.</span>
     <b>height</b>: PropTypes.oneOfType([
        PropTypes.string,
@@ -119,9 +119,9 @@ const App: () => React$Node = () => {
               updateSwipeStatusMessage('Submitted successfully!')
             }
           />
-          {renderSubHeading('Right to left swipe enabled')}
+          {renderSubHeading('Reverse swipe enabled')}
           <SwipeButton
-            enableRightToLeftSwipe
+            enableReverseSwipe
             thumbIconBackgroundColor="#FFFFFF"
             thumbIconComponent={FacebookIcon}
             title="Slide to unlock"
