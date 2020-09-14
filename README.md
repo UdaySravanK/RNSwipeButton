@@ -119,7 +119,7 @@ const App: () => React$Node = () => {
               updateSwipeStatusMessage('Submitted successfully!')
             }
           />
-          {renderSubHeading('Right to left swipe enabled')}
+          {renderSubHeading('Reverse swipe enabled')}
           <SwipeButton
             enableReverseSwipe
             thumbIconBackgroundColor="#FFFFFF"
