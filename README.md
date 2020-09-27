@@ -26,7 +26,7 @@
      	  <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/></td>
      	  <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.png" style="margin-right: 30px;" width="200"/></td>
         <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/></td>
-        <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button-rtl.gif" style="margin-right: 30px;" width="200"/></td>
+        <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button-rtl.png" style="margin-right: 30px;" width="200"/></td>
 	</tr>
   </table>
   <p>These screenshots are from demo app under examples folder in the repo</p>
