@@ -9,17 +9,24 @@
 </div>
 <hr>
 <div>
+  <h2 style="color:darkgreen;">NPM Package</h2>
+  <a href="https://www.npmjs.com/package/rn-swipe-button">https://www.npmjs.com/package/rn-swipe-button</a>
+</div>
+<hr>
+<div>
   <h2 style="color:darkgreen;">Screenshots</h2>
   <table border>
 	<tr">
 	  <td style="padding: 5px;"><span>iOS</span></td>
 	  <td style="padding: 5px;"><span>Android</span></td>
   	<td style="padding: 5px;"><span>iOS GIF</span></td>
+    <td style="padding: 5px;"><span>Android RTL</span></td>
 	</tr>
 	<tr>
      	  <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/></td>
      	  <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.png" style="margin-right: 30px;" width="200"/></td>
         <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/></td>
+        <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button-rtl.gif" style="margin-right: 30px;" width="200"/></td>
 	</tr>
   </table>
   <p>These screenshots are from demo app under examples folder in the repo</p>
@@ -158,7 +165,10 @@ const App: () => React$Node = () => {
 <hr/>
 
 ### Note 
-In accessibility mode this component works like a regular button (double tap to activate)
+<ul>
+  <li>In accessibility mode this component works like a regular button (double tap to activate)</li>
+  <li>We are supporting RTL out of the box. For RTL layouts, swipe button works by default as right to left swipe.</li>
+</ul>
 
 <h2 style="color:darkgreen;">Tech Stack</h2>
 <ul>
