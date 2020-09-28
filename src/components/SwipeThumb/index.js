@@ -207,8 +207,8 @@ const SwipeThumb = props => {
     backgroundColor,
     borderColor,
     width: animatedWidth,
-    ...railStyles,
     ...(enableReverseSwipe ? styles.containerRTL : styles.container),
+    ...railStyles,
   };
 
   return (
