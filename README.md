@@ -93,6 +93,7 @@ import SwipeButton from 'rn-swipe-button';
 
 
 const App: () => React$Node = () => {
+  const [disableCBButton, setDisableCBButton] = useState(false)
   const defaultStatusMessage = 'swipe status appears here';
   const [swipeStatusMessage, setSwipeStatusMessage] = useState(
     defaultStatusMessage,
@@ -155,7 +156,10 @@ const App: () => React$Node = () => {
           {renderSubHeading('Set height & reset after successful swipe')}
           <SwipeButton height={25} shouldResetAfterSuccess={true} resetAfterSuccessAnimDelay={1000} />
           {renderSubHeading('Set height and width')}
-          <SwipeButton height={35} width={150} title="Swipe" />
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <SwipeButton height={35} width={200} title="Swipe" disabled={disableCBButton} />
+            <View style={{ marginLeft: 15, width: 150, height: 32 }}><Button onPress={() => setDisableCBButton(!disableCBButton)} title="Toggle disable" /></View>
+          </View>  
         </View>
       </SafeAreaView>
     </>
