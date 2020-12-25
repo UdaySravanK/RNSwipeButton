@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useCallback, useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { I18nManager } from 'react-native';
 import {
@@ -31,7 +31,7 @@ const SwipeThumb = props => {
   const [backgroundColor, setBackgroundColor] = useState(TRANSPARENT_COLOR);
   const [borderColor, setBorderColor] = useState(TRANSPARENT_COLOR);
 
-  const panResponder = useRef(
+  const panResponder = useCallback(
     PanResponder.create({
       onStartShouldSetPanResponder: () => true,
       onStartShouldSetPanResponderCapture: () => true,
@@ -42,7 +42,8 @@ const SwipeThumb = props => {
       onPanResponderMove,
       onPanResponderRelease,
     }),
-  ).current;
+    [props],
+  );
 
   useEffect(() => {
     Animated.timing(animatedWidth, {
