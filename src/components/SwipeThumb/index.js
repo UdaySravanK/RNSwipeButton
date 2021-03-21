@@ -27,6 +27,7 @@ const SwipeThumb = props => {
   const animatedWidth = useRef(new Animated.Value(defaultContainerWidth))
     .current;
   const [defaultWidth, setDefaultWidth] = useState(defaultContainerWidth);
+  const [shouldDisableTouch, disableTouch] = useState(false)
 
   const [backgroundColor, setBackgroundColor] = useState(TRANSPARENT_COLOR);
   const [borderColor, setBorderColor] = useState(TRANSPARENT_COLOR);
@@ -68,7 +69,7 @@ const SwipeThumb = props => {
       finishRemainingSwipe();
       return;
     }
-    props.onSwipeSuccess && props.onSwipeSuccess();
+    invokeOnSwipeSuccess()
     reset();
   }
 
@@ -134,7 +135,7 @@ const SwipeThumb = props => {
   function finishRemainingSwipe() {
     // Animate to final position
     setDefaultWidth(maxWidth);
-    props.onSwipeSuccess && props.onSwipeSuccess();
+    invokeOnSwipeSuccess()
 
     //Animate back to initial position after successfully swiped
     const resetDelay =
@@ -147,7 +148,13 @@ const SwipeThumb = props => {
     }, resetDelay);
   }
 
+  function invokeOnSwipeSuccess() {
+    disableTouch(props.disableResetOnTap)
+    props.onSwipeSuccess && props.onSwipeSuccess();
+  }
+
   function reset() {
+    disableTouch(false)
     setDefaultWidth(defaultContainerWidth);
 
     if (backgroundColor !== TRANSPARENT_COLOR) {
@@ -227,7 +234,10 @@ const SwipeThumb = props => {
           </View>
         </TouchableNativeFeedback>
       ) : (
-        <Animated.View style={[panStyle]} {...panResponder.panHandlers}>
+        <Animated.View 
+          style={[panStyle]} {...panResponder.panHandlers}
+          pointerEvents= {shouldDisableTouch ? "none" : "auto"}
+        >
           {renderThumbIcon()}
         </Animated.View>
       )}
@@ -239,12 +249,14 @@ SwipeThumb.defaultProps = {
   disabled: false,
   layoutWidth: 0,
   resetAfterSuccessAnimDuration: 200,
+  disableResetOnTap: false,
   screenReaderEnabled: false,
   thumbIconStyles: {},
 };
 
 SwipeThumb.propTypes = {
   disabled: PropTypes.bool,
+  disableResetOnTap: PropTypes.bool,
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
   enableReverseSwipe: PropTypes.bool,

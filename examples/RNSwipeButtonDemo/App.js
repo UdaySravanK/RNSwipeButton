@@ -54,33 +54,34 @@ const App: () => React$Node = () => {
           <SwipeButton thumbIconImageSource={arrowRight} disabled />
           {renderSubHeading('Swipe status callbacks')}
           <SwipeButton
-            thumbIconImageSource={arrowRight}
-            onSwipeStart={() => updateSwipeStatusMessage('Swipe started!')}
             onSwipeFail={() => updateSwipeStatusMessage('Incomplete swipe!')}
+            onSwipeStart={() => updateSwipeStatusMessage('Swipe started!')}
             onSwipeSuccess={() =>
               updateSwipeStatusMessage('Submitted successfully!')
             }
+            thumbIconImageSource={arrowRight}
           />
           {renderSubHeading('Reverse swipe enabled')}
           <SwipeButton
             enableReverseSwipe
+            onSwipeSuccess={() => updateSwipeStatusMessage('Slide success!')}
             thumbIconBackgroundColor="#FFFFFF"
             thumbIconComponent={FacebookIcon}
             title="Slide to unlock"
-            onSwipeSuccess={() => updateSwipeStatusMessage('Slide success!')}
           />
           {renderSubHeading('Set a component as thumb icon & use forceReset')}
           <SwipeButton
-            thumbIconBackgroundColor="#FFFFFF"
-            thumbIconComponent={TwitterIcon}
-            title="Slide to unlock"
+            disableResetOnTap
+            forceReset={ reset => {
+              forceResetLastButton = reset
+            }}
             railStyles={{
               backgroundColor: '#44000088',
               borderColor: '#880000FF',
             }}
-            forceReset={ reset => {
-              forceResetLastButton = reset
-            }}
+            thumbIconBackgroundColor="#FFFFFF"
+            thumbIconComponent={TwitterIcon}
+            title="Slide to unlock"
           />
           <View style={{ alignItems: 'center', marginBottom: 5 }}>
             <Button onPress={() => forceResetLastButton && forceResetLastButton()} title="Force reset" />

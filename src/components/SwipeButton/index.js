@@ -72,6 +72,7 @@ const SwipeButton = props => {
     disabledRailBackgroundColor,
     disabledThumbIconBackgroundColor,
     disabledThumbIconBorderColor,
+    disableResetOnTap,
     enableReverseSwipe,
     forceReset,
     height,
@@ -131,6 +132,7 @@ const SwipeButton = props => {
           disabled={disabled}
           disabledThumbIconBackgroundColor={disabledThumbIconBackgroundColor}
           disabledThumbIconBorderColor={disabledThumbIconBorderColor}
+          disableResetOnTap={disableResetOnTap}
           enableReverseSwipe={enableReverseSwipe}
           forceReset={forceReset}
           iconSize={height}
@@ -164,6 +166,7 @@ SwipeButton.defaultProps = {
   disabledRailBackgroundColor: DISABLED_RAIL_BACKGROUND_COLOR,
   disabledThumbIconBackgroundColor: DISABLED_THUMB_ICON_BACKGROUND_COLOR,
   disabledThumbIconBorderColor: DISABLED_THUMB_ICON_BORDER_COLOR,
+  disableResetOnTap: false,
   height: 50,
   railBackgroundColor: RAIL_BACKGROUND_COLOR,
   railBorderColor: RAIL_BORDER_COLOR,
@@ -185,6 +188,7 @@ SwipeButton.propTypes = {
   disabledRailBackgroundColor: PropTypes.string,
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
+  disableResetOnTap: PropTypes.bool,
   enableReverseSwipe: PropTypes.bool,
   forceReset: PropTypes.func,
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
