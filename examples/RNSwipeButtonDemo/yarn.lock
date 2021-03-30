@@ -5763,10 +5763,10 @@ rimraf@~2.2.6:
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
-rn-swipe-button@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.3.1.tgz#82ce45d996707566a58b1698340ec80769640f38"
-  integrity sha512-kzgC9pTdjNf++2VfbnjEIxq6zY6Klokn4bgL0Pfb2XLXdj1+oyITfbhfK2xPH54zqvQQhH/SC6910mZTCd16Fg==
+rn-swipe-button@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.3.4.tgz#0e27082f10d7a2222cb9e9a039e2da90bc1af872"
+  integrity sha512-J/JX2EY0CipSU21aSZf0Njmk4D034/6jO8LrwTyDHrZ1qqvFfJ5abCbbLi3Hvo0U229ndz59qf44UzuumxodQA==
 
 rsvp@^4.8.4:
   version "4.8.5"
@@ -6909,9 +6909,9 @@ xtend@~4.0.1:
   integrity sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ==
 
 y18n@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.0.tgz#95ef94f85ecc81d007c264e190a120f0a3c8566b"
-  integrity sha512-r9S/ZyXu/Xu9q1tYlpsLIsa3EeLXXk0VwlxqTcFRfg9EhMW+17kbt9G0NrgCmhGb5vT2hyhJZLfDGx+7+5Uj/w==
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/y18n/-/y18n-4.0.1.tgz#8db2b83c31c5d75099bb890b23f3094891e247d4"
+  integrity sha512-wNcy4NvjMYL8gogWWYAO7ZFWFfHcbdbE57tZO8e4cbpj8tfUcwrwqSl3ad8HxpYWCdXcJUCeKKZS62Av1affwQ==
 
 yallist@^2.1.2:
   version "2.1.2"
