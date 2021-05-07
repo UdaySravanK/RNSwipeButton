@@ -5763,10 +5763,10 @@ rimraf@~2.2.6:
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
   integrity sha1-5Dm+Kq7jJzIZUnMPmaiSnk/FBYI=
 
-rn-swipe-button@^1.3.1:
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.3.1.tgz#82ce45d996707566a58b1698340ec80769640f38"
-  integrity sha512-kzgC9pTdjNf++2VfbnjEIxq6zY6Klokn4bgL0Pfb2XLXdj1+oyITfbhfK2xPH54zqvQQhH/SC6910mZTCd16Fg==
+rn-swipe-button@^1.3.4:
+  version "1.3.4"
+  resolved "https://registry.yarnpkg.com/rn-swipe-button/-/rn-swipe-button-1.3.4.tgz#0e27082f10d7a2222cb9e9a039e2da90bc1af872"
+  integrity sha512-J/JX2EY0CipSU21aSZf0Njmk4D034/6jO8LrwTyDHrZ1qqvFfJ5abCbbLi3Hvo0U229ndz59qf44UzuumxodQA==
 
 rsvp@^4.8.4:
   version "4.8.5"
@@ -6556,9 +6556,9 @@ typedarray@^0.0.6:
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
 ua-parser-js@^0.7.18:
-  version "0.7.21"
-  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.21.tgz#853cf9ce93f642f67174273cc34565ae6f308777"
-  integrity sha512-+O8/qh/Qj8CgC6eYBVBykMrNtp5Gebn4dlGD/kKXVkJNDwyrAwSIqwz8CDf+tsAIWVycKcku6gIXJ0qwx/ZXaQ==
+  version "0.7.28"
+  resolved "https://registry.yarnpkg.com/ua-parser-js/-/ua-parser-js-0.7.28.tgz#8ba04e653f35ce210239c64661685bf9121dec31"
+  integrity sha512-6Gurc1n//gjp9eQNXjD9O3M/sMwVtN5S8Lv9bvOYBfKfDNiIIhqiyi01vMBO45u4zkDE420w/e0se7Vs+sIg+g==
 
 uglify-es@^3.1.9:
   version "3.3.9"
