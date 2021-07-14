@@ -94,6 +94,7 @@ const SwipeButton = props => {
     thumbIconImageSource,
     thumbIconStyles,
     title,
+    titleMaxFontScale,
     titleColor,
     titleFontSize,
     titleStyles,
@@ -114,6 +115,7 @@ const SwipeButton = props => {
       ]}
       onLayout={onLayoutContainer}>
       <Text
+        maxFontSizeMultiplier={titleMaxFontScale} ellipsizeMode={'tail'} numberOfLines={1}
         importantForAccessibility={
           screenReaderEnabled ? 'no-hide-descendants' : ''
         }
@@ -177,6 +179,7 @@ SwipeButton.defaultProps = {
   thumbIconBorderColor: THUMB_ICON_BORDER_COLOR,
   thumbIconStyles: {},
   title: 'Swipe to submit',
+  titleMaxFontScale: 2,
   titleColor: TITLE_COLOR,
   titleFontSize: 20,
   titleStyles: {},
@@ -217,6 +220,7 @@ SwipeButton.propTypes = {
   ]),
   thumbIconStyles: PropTypes.object,
   title: PropTypes.string,
+  titleMaxFontScale: PropTypes.number,
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
   titleStyles: PropTypes.object,
