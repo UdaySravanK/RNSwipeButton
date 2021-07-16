@@ -9,8 +9,6 @@
 import React, {useState} from 'react';
 import {SafeAreaView, View, Text, StatusBar, Button} from 'react-native';
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-
 import thumbIcon from './assets/thumbIcon.png';
 import arrowRight from './assets/arrow-right.png';
 import styles from './styles';
@@ -32,9 +30,6 @@ const App: () => React$Node = () => {
   const [swipeStatusMessage, setSwipeStatusMessage] = useState(
     defaultStatusMessage,
   );
-
-  const TwitterIcon = () => <Icon name="twitter" color="#3b5998" size={30} />;
-  const FacebookIcon = () => <Icon name="facebook" color="#3b5998" size={30} />;
 
   setInterval(() => setSwipeStatusMessage(defaultStatusMessage), 5000);
   const updateSwipeStatusMessage = (message) => setSwipeStatusMessage(message);
@@ -83,7 +78,6 @@ const App: () => React$Node = () => {
             onSwipeSuccess={() => updateSwipeStatusMessage('Slide success!')}
             railBackgroundColor="#a493d6"
             thumbIconBackgroundColor="#FFFFFF"
-            thumbIconComponent={FacebookIcon}
             title="Slide to unlock"
           />
           {renderSubHeading('Set a component as thumb icon & use forceReset')}
@@ -98,7 +92,6 @@ const App: () => React$Node = () => {
               borderColor: '#880000FF',
             }}
             thumbIconBackgroundColor="#FFFFFF"
-            thumbIconComponent={TwitterIcon}
             title="Slide to unlock"
           />
           <View style={{ alignItems: 'center', marginBottom: 5 }}>
