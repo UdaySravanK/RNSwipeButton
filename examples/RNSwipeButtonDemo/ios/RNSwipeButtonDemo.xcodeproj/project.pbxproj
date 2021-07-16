@@ -245,10 +245,12 @@
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "RNSwipeButtonDemoTests" */;
 			buildPhases = (
 				275CB21FF064FA32AB99C9B6 /* [CP] Check Pods Manifest.lock */,
+				2EFDFBC7CBA5B3FB03C1C66F /* [CP] Prepare Artifacts */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				B2560F5A354EAAA7FBF739B4 /* [CP] Copy Pods Resources */,
+				B248B322D276480129B7F74E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -266,11 +268,13 @@
 			buildPhases = (
 				72FEC2690EFCB1EF55FB4740 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
+				7DBC6A519EB2593383708A10 /* [CP] Prepare Artifacts */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				740B1C0EC870E49DA9CD98F9 /* [CP] Copy Pods Resources */,
+				8F819710EC1895D8349FFB10 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -474,6 +478,24 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		2EFDFBC7CBA5B3FB03C1C66F /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo-RNSwipeButtonDemoTests/Pods-RNSwipeButtonDemo-RNSwipeButtonDemoTests-artifacts.sh",
+				"${PODS_ROOT}/OpenSSL-Universal/Frameworks/OpenSSL.xcframework",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo-RNSwipeButtonDemoTests/Pods-RNSwipeButtonDemo-RNSwipeButtonDemoTests-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		72FEC2690EFCB1EF55FB4740 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -544,6 +566,58 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo/Pods-RNSwipeButtonDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DBC6A519EB2593383708A10 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo/Pods-RNSwipeButtonDemo-artifacts.sh",
+				"${PODS_ROOT}/OpenSSL-Universal/Frameworks/OpenSSL.xcframework",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputPaths = (
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo/Pods-RNSwipeButtonDemo-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F819710EC1895D8349FFB10 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo/Pods-RNSwipeButtonDemo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo/Pods-RNSwipeButtonDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B248B322D276480129B7F74E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo-RNSwipeButtonDemoTests/Pods-RNSwipeButtonDemo-RNSwipeButtonDemoTests-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/cocoapods-artifacts-${CONFIGURATION}.txt",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RNSwipeButtonDemo-RNSwipeButtonDemoTests/Pods-RNSwipeButtonDemo-RNSwipeButtonDemoTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2560F5A354EAAA7FBF739B4 /* [CP] Copy Pods Resources */ = {
