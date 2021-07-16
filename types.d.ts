@@ -2,7 +2,7 @@ import { Component, ReactElement } from 'react';
 import { StyleProp, ViewStyle, TextStyle } from 'react-native';
 
 interface Props {
-    containerStyle?: StyleProp<ViewStyle>;
+    containerStyles?: StyleProp<ViewStyle>;
     disabled?: boolean;
     disabledRailBackgroundColor?: string;
     disabledThumbIconBackgroundColor?: string;
