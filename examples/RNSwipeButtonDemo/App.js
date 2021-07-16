@@ -43,6 +43,14 @@ const App: () => React$Node = () => {
   );
   let forceResetLastButton = null;
 
+  const CheckoutButton = () => {
+    return(
+        <View style={{width: 100, height: 30, backgroundColor: '#C70039', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={{color: '#ffffff'}}>Checkout</Text>
+        </View>
+    );
+  } 
+
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -54,17 +62,26 @@ const App: () => React$Node = () => {
           <SwipeButton thumbIconImageSource={arrowRight} disabled />
           {renderSubHeading('Swipe status callbacks')}
           <SwipeButton
+            containerStyles={{borderRadius: 5}}
+            height={30}
             onSwipeFail={() => updateSwipeStatusMessage('Incomplete swipe!')}
             onSwipeStart={() => updateSwipeStatusMessage('Swipe started!')}
             onSwipeSuccess={() =>
               updateSwipeStatusMessage('Submitted successfully!')
             }
+            railBackgroundColor="#31a57c"
+            railStyles={{borderRadius: 5}}
+            thumbIconComponent={CheckoutButton}
             thumbIconImageSource={arrowRight}
+            thumbIconStyles={{borderRadius: 5}}
+            thumbIconWidth={100} 
+            title="Submit order"
           />
           {renderSubHeading('Reverse swipe enabled')}
           <SwipeButton
             enableReverseSwipe
             onSwipeSuccess={() => updateSwipeStatusMessage('Slide success!')}
+            railBackgroundColor="#a493d6"
             thumbIconBackgroundColor="#FFFFFF"
             thumbIconComponent={FacebookIcon}
             title="Slide to unlock"
@@ -75,6 +92,7 @@ const App: () => React$Node = () => {
             forceReset={ reset => {
               forceResetLastButton = reset
             }}
+            railBackgroundColor="#9fc7e8"
             railStyles={{
               backgroundColor: '#44000088',
               borderColor: '#880000FF',
@@ -87,7 +105,7 @@ const App: () => React$Node = () => {
             <Button onPress={() => forceResetLastButton && forceResetLastButton()} title="Force reset" />
           </View>  
           {renderSubHeading('Set .png image as thumb icon')}
-          <SwipeButton thumbIconImageSource={thumbIcon} />
+          <SwipeButton thumbIconImageSource={thumbIcon} railBackgroundColor="#cfb0dd"/>
           {renderSubHeading('Set height & reset after successful swipe')}
           <SwipeButton height={25} shouldResetAfterSuccess={true} resetAfterSuccessAnimDelay={1000} />
           {renderSubHeading('Set height and width')}
