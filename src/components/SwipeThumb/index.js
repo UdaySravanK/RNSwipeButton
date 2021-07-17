@@ -179,12 +179,18 @@ const SwipeThumb = props => {
       thumbIconHeight,
       thumbIconImageSource,
       thumbIconStyles,
-      thumbIconWidth = thumbIconHeight,
+      thumbIconWidth,
     } = props;
+    var iconWidth = 0
+    if (thumbIconWidth == undefined) {
+      iconWidth = thumbIconHeight
+    } else {
+      iconWidth = thumbIconWidth
+    }
     const dynamicStyles = {
       ...thumbIconStyles,
       height: thumbIconHeight,
-      width: thumbIconWidth,
+      width: iconWidth,
       backgroundColor: disabled
         ? disabledThumbIconBackgroundColor
         : thumbIconBackgroundColor,
