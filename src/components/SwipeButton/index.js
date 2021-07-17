@@ -215,7 +215,6 @@ SwipeButton.propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
-  thumbIconHeight: PropTypes.number,
   thumbIconImageSource: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
