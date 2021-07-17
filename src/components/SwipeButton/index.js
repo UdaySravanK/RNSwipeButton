@@ -97,6 +97,7 @@ const SwipeButton = props => {
     title,
     titleColor,
     titleFontSize,
+    titleMaxFontScale,
     titleStyles,
     width,
   } = props;
@@ -115,6 +116,7 @@ const SwipeButton = props => {
       ]}
       onLayout={onLayoutContainer}>
       <Text
+        maxFontSizeMultiplier={titleMaxFontScale} ellipsizeMode={'tail'} numberOfLines={1}
         importantForAccessibility={
           screenReaderEnabled ? 'no-hide-descendants' : ''
         }
@@ -223,6 +225,7 @@ SwipeButton.propTypes = {
   title: PropTypes.string,
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
+  titleMaxFontScale: PropTypes.number,
   titleStyles: PropTypes.object,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };

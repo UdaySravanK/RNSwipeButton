@@ -72,6 +72,7 @@
     <b>title</b>: PropTypes.string,
     <b>titleColor</b>: PropTypes.string,
     <b>titleFontSize</b>: PropTypes.number,
+    <b>titleMaxFontScale</b>: PropTypes.number, <span style="color: blueviolet">// Ex: 2. will limit font size increasing to 200% when user increases font size in device properties</span>
     <b>titleStyles</b>: PropTypes.object,
     <b>width</b>: PropTypes.oneOfType([
       PropTypes.string,
