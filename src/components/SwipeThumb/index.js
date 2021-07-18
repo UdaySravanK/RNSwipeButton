@@ -19,7 +19,12 @@ const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
 const SwipeThumb = props => {
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
-  const defaultContainerWidth = props.iconSize;
+  var defaultContainerWidth = 0
+  if (props.thumbIconWidth == undefined) { 
+    defaultContainerWidth = props.thumbIconHeight 
+  } else { 
+    defaultContainerWidth = props.thumbIconWidth 
+  }
   const forceReset = props.forceReset;
   const maxWidth = props.layoutWidth - paddingAndMarginsOffset;
   const isRTL = I18nManager.isRTL;
@@ -168,17 +173,24 @@ const SwipeThumb = props => {
       disabled,
       disabledThumbIconBackgroundColor,
       disabledThumbIconBorderColor,
-      iconSize,
       thumbIconBackgroundColor,
       thumbIconBorderColor,
       thumbIconComponent: ThumbIconComponent,
+      thumbIconHeight,
       thumbIconImageSource,
       thumbIconStyles,
+      thumbIconWidth,
     } = props;
+    var iconWidth = 0
+    if (thumbIconWidth == undefined) {
+      iconWidth = thumbIconHeight
+    } else {
+      iconWidth = thumbIconWidth
+    }
     const dynamicStyles = {
       ...thumbIconStyles,
-      height: iconSize,
-      width: iconSize,
+      height: thumbIconHeight,
+      width: iconWidth,
       backgroundColor: disabled
         ? disabledThumbIconBackgroundColor
         : thumbIconBackgroundColor,
@@ -261,7 +273,6 @@ SwipeThumb.propTypes = {
   disabledThumbIconBorderColor: PropTypes.string,
   enableReverseSwipe: PropTypes.bool,
   forceReset: PropTypes.func,
-  iconSize: PropTypes.number,
   layoutWidth: PropTypes.number,
   onSwipeFail: PropTypes.func,
   onSwipeStart: PropTypes.func,
@@ -280,11 +291,13 @@ SwipeThumb.propTypes = {
     PropTypes.node,
     PropTypes.func,
   ]),
+  thumbIconHeight: PropTypes.number,
   thumbIconImageSource: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
   ]),
   thumbIconStyles: PropTypes.object,
+  thumbIconWidth: PropTypes.number,
   title: PropTypes.string,
 };
 

@@ -23,10 +23,10 @@
     <td style="padding: 5px;"><span>Android RTL</span></td>
 	</tr>
 	<tr>
-     	  <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/></td>
-     	  <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.png" style="margin-right: 30px;" width="200"/></td>
-        <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/></td>
-        <td><img src="https://udaysravank.github.io/RNSwipeButton/rn-swipe-button-rtl.png" style="margin-right: 30px;" width="200"/></td>
+     	  <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/></td>
+     	  <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button.png" style="margin-right: 30px;" width="200"/></td>
+        <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/></td>
+        <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button-rtl.png" style="margin-right: 30px;" width="200"/></td>
 	</tr>
   </table>
   <p>These screenshots are from demo app under examples folder in the repo</p>
@@ -67,7 +67,8 @@
       PropTypes.string,
       PropTypes.number,
     ]),
-    <b>thumbIconStyles</b>: PropTypes.object
+    <b>thumbIconStyles</b>: PropTypes.object,
+    <b>thumbIconWidth</b>: PropTypes.number,
     <b>title</b>: PropTypes.string,
     <b>titleColor</b>: PropTypes.string,
     <b>titleFontSize</b>: PropTypes.number,
@@ -101,15 +102,21 @@ const App: () => React$Node = () => {
     defaultStatusMessage,
   );
 
-  const TwitterIcon = () => <Icon name="twitter" color="#3b5998" size={30} />;
-  const FacebookIcon = () => <Icon name="facebook" color="#3b5998" size={30} />;
-
   setInterval(() => setSwipeStatusMessage(defaultStatusMessage), 5000);
   const updateSwipeStatusMessage = (message) => setSwipeStatusMessage(message);
   const renderSubHeading = (heading) => (
     <Text style={styles.subHeading}>{heading}</Text>
   );
   let forceResetLastButton = null;
+
+  const CheckoutButton = () => {
+    return(
+        <View style={{width: 100, height: 30, backgroundColor: '#C70039', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
+            <Text style={{color: '#ffffff'}}>Checkout</Text>
+        </View>
+    );
+  } 
+
 
   return (
     <>
@@ -122,19 +129,27 @@ const App: () => React$Node = () => {
           <SwipeButton thumbIconImageSource={arrowRight} disabled />
           {renderSubHeading('Swipe status callbacks')}
           <SwipeButton
+            containerStyles={{borderRadius: 5}}
+            height={30}
             onSwipeFail={() => updateSwipeStatusMessage('Incomplete swipe!')}
             onSwipeStart={() => updateSwipeStatusMessage('Swipe started!')}
             onSwipeSuccess={() =>
               updateSwipeStatusMessage('Submitted successfully!')
             }
+            railBackgroundColor="#31a57c"
+            railStyles={{borderRadius: 5}}
+            thumbIconComponent={CheckoutButton}
             thumbIconImageSource={arrowRight}
+            thumbIconStyles={{borderRadius: 5}}
+            thumbIconWidth={100} 
+            title="Submit order"
           />
           {renderSubHeading('Reverse swipe enabled')}
           <SwipeButton
             enableReverseSwipe
             onSwipeSuccess={() => updateSwipeStatusMessage('Slide success!')}
+            railBackgroundColor="#a493d6"
             thumbIconBackgroundColor="#FFFFFF"
-            thumbIconComponent={FacebookIcon}
             title="Slide to unlock"
           />
           {renderSubHeading('Set a component as thumb icon & use forceReset')}
@@ -142,20 +157,20 @@ const App: () => React$Node = () => {
             disableResetOnTap
             forceReset={ reset => {
               forceResetLastButton = reset
-            }}  
+            }}
+            railBackgroundColor="#9fc7e8"  
             railStyles={{
               backgroundColor: '#44000088',
               borderColor: '#880000FF',
             }}
             thumbIconBackgroundColor="#FFFFFF"
-            thumbIconComponent={TwitterIcon}
             title="Slide to unlock"
           />
           <View style={{ alignItems: 'center', marginBottom: 5 }}>
             <Button onPress={() => forceResetLastButton && forceResetLastButton()} title="Force reset" />
           </View>  
           {renderSubHeading('Set .png image as thumb icon')}
-          <SwipeButton thumbIconImageSource={thumbIcon} />
+          <SwipeButton thumbIconImageSource={thumbIcon} railBackgroundColor="#cfb0dd"/>
           {renderSubHeading('Set height & reset after successful swipe')}
           <SwipeButton height={25} shouldResetAfterSuccess={true} resetAfterSuccessAnimDelay={1000} />
           {renderSubHeading('Set height and width')}

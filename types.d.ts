@@ -2,7 +2,7 @@ import { Component, ReactElement } from 'react';
 import { StyleProp, ViewStyle, TextStyle } from 'react-native';
 
 interface Props {
-    containerStyle?: StyleProp<ViewStyle>;
+    containerStyles?: StyleProp<ViewStyle>;
     disabled?: boolean;
     disabledRailBackgroundColor?: string;
     disabledThumbIconBackgroundColor?: string;
@@ -26,9 +26,11 @@ interface Props {
     thumbIconComponent?: ReactElement;
     thumbIconImageSource?: string | number;
     thumbIconStyles?: StyleProp<ViewStyle>;
+    thumbIconWidth?: number;
     title?: string;
     titleColor?: string;
     titleFontSize?: number;
+    titleMaxFontScale?: number;
     titleStyles?: StyleProp<TextStyle>;
     width?: string | number;
 }

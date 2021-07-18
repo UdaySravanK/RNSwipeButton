@@ -93,6 +93,7 @@ const SwipeButton = props => {
     thumbIconComponent,
     thumbIconImageSource,
     thumbIconStyles,
+    thumbIconWidth,
     title,
     titleColor,
     titleFontSize,
@@ -137,7 +138,6 @@ const SwipeButton = props => {
           disableResetOnTap={disableResetOnTap}
           enableReverseSwipe={enableReverseSwipe}
           forceReset={forceReset}
-          iconSize={height}
           layoutWidth={layoutWidth}
           onSwipeFail={onSwipeFail}
           onSwipeStart={onSwipeStart}
@@ -153,8 +153,10 @@ const SwipeButton = props => {
           thumbIconBackgroundColor={thumbIconBackgroundColor}
           thumbIconBorderColor={thumbIconBorderColor}
           thumbIconComponent={thumbIconComponent}
+          thumbIconHeight={height}
           thumbIconImageSource={thumbIconImageSource}
           thumbIconStyles={thumbIconStyles}
+          thumbIconWidth={thumbIconWidth}
           title={title}
         />
       )}
@@ -218,6 +220,7 @@ SwipeButton.propTypes = {
     PropTypes.number,
   ]),
   thumbIconStyles: PropTypes.object,
+  thumbIconWidth: PropTypes.number,
   title: PropTypes.string,
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
