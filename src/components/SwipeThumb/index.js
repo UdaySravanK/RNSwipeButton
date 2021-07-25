@@ -19,11 +19,11 @@ const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
 const SwipeThumb = props => {
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
-  var defaultContainerWidth = 0;
-  if (props.thumbIconWidth == undefined) {
-    defaultContainerWidth = props.thumbIconHeight;
-  } else {
-    defaultContainerWidth = props.thumbIconWidth;
+  var defaultContainerWidth = 0
+  if (props.thumbIconWidth == undefined) { 
+    defaultContainerWidth = props.thumbIconHeight 
+  } else { 
+    defaultContainerWidth = props.thumbIconWidth 
   }
   const forceReset = props.forceReset;
   const maxWidth = props.layoutWidth - paddingAndMarginsOffset;
@@ -32,7 +32,7 @@ const SwipeThumb = props => {
   const animatedWidth = useRef(new Animated.Value(defaultContainerWidth))
     .current;
   const [defaultWidth, setDefaultWidth] = useState(defaultContainerWidth);
-  const [shouldDisableTouch, disableTouch] = useState(false);
+  const [shouldDisableTouch, disableTouch] = useState(false)
 
   const [backgroundColor, setBackgroundColor] = useState(TRANSPARENT_COLOR);
   const [borderColor, setBorderColor] = useState(TRANSPARENT_COLOR);
@@ -74,7 +74,7 @@ const SwipeThumb = props => {
       finishRemainingSwipe();
       return;
     }
-    invokeOnSwipeSuccess();
+    invokeOnSwipeSuccess()
     reset();
   }
 
@@ -140,7 +140,7 @@ const SwipeThumb = props => {
   function finishRemainingSwipe() {
     // Animate to final position
     setDefaultWidth(maxWidth);
-    invokeOnSwipeSuccess();
+    invokeOnSwipeSuccess()
 
     //Animate back to initial position after successfully swiped
     const resetDelay =
@@ -154,12 +154,12 @@ const SwipeThumb = props => {
   }
 
   function invokeOnSwipeSuccess() {
-    disableTouch(props.disableResetOnTap);
+    disableTouch(props.disableResetOnTap)
     props.onSwipeSuccess && props.onSwipeSuccess();
   }
 
   function reset() {
-    disableTouch(false);
+    disableTouch(false)
     setDefaultWidth(defaultContainerWidth);
 
     if (backgroundColor !== TRANSPARENT_COLOR) {
@@ -181,11 +181,11 @@ const SwipeThumb = props => {
       thumbIconStyles,
       thumbIconWidth,
     } = props;
-    var iconWidth = 0;
+    var iconWidth = 0
     if (thumbIconWidth == undefined) {
-      iconWidth = thumbIconHeight;
+      iconWidth = thumbIconHeight
     } else {
-      iconWidth = thumbIconWidth;
+      iconWidth = thumbIconWidth
     }
     const dynamicStyles = {
       ...thumbIconStyles,
@@ -246,10 +246,10 @@ const SwipeThumb = props => {
           </View>
         </TouchableNativeFeedback>
       ) : (
-        <Animated.View
-          style={[panStyle]}
-          {...panResponder.panHandlers}
-          pointerEvents={shouldDisableTouch ? 'none' : 'auto'}>
+        <Animated.View 
+          style={[panStyle]} {...panResponder.panHandlers}
+          pointerEvents= {shouldDisableTouch ? "none" : "auto"}
+        >
           {renderThumbIcon()}
         </Animated.View>
       )}
