@@ -116,7 +116,9 @@ const SwipeButton = props => {
       ]}
       onLayout={onLayoutContainer}>
       <Text
-        maxFontSizeMultiplier={titleMaxFontScale} ellipsizeMode={'tail'} numberOfLines={1}
+        maxFontSizeMultiplier={titleMaxFontScale}
+        ellipsizeMode={'tail'}
+        numberOfLines={1}
         importantForAccessibility={
           screenReaderEnabled ? 'no-hide-descendants' : ''
         }
