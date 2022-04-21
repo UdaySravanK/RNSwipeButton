@@ -52,7 +52,7 @@
   },
   "peerDependencies": {
     "react": ">=16.8.6",
-    "react-native": "^0.60.5"
+    "react-native": ">=0.60.5"
   },
   "types": "./types.d.ts",
   "husky": {
