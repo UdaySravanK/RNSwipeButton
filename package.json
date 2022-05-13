@@ -51,8 +51,8 @@
     "tslint-plugin-prettier": "^2.3.0"
   },
   "peerDependencies": {
-    "react": "^16.8.6",
-    "react-native": "^0.60.5"
+    "react": ">=16.8.6",
+    "react-native": ">=0.60.5"
   },
   "types": "./types.d.ts",
   "husky": {
