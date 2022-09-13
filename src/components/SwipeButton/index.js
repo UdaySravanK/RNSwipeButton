@@ -48,7 +48,7 @@ const SwipeButton = props => {
       setScreenReaderEnabled(isEnabled);
     };
     setIsUnmounting(false);
-    AccessibilityInfo.addEventListener('change', handleScreenReaderToggled);
+    const subscription = AccessibilityInfo.addEventListener('change', handleScreenReaderToggled);
 
     AccessibilityInfo.isScreenReaderEnabled().then(isEnabled => {
       if (isUnmounting) {
@@ -59,10 +59,7 @@ const SwipeButton = props => {
 
     return () => {
       setIsUnmounting(true);
-      AccessibilityInfo.removeEventListener(
-        'change',
-        handleScreenReaderToggled,
-      );
+      subscription.remove();
     };
   }, [isUnmounting, screenReaderEnabled]);
 
