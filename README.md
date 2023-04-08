@@ -2,11 +2,23 @@
 <a href="https://nodei.co/npm/rn-swipe-button/"><img src="https://nodei.co/npm/rn-swipe-button.png?downloads=true&downloadRank=true&stars=true"></a>
 
 <hr>
-<div style="color:darkcyan; font-size: 15px;">
-    <p>npm install rn-swipe-button --save</p>
-    <p>import SwipeButton from 'rn-swipe-button';</p>
-    const renderSwipeButton = () => (&lt;SwipeButton /&gt;) 
-</div>
+
+## Installation 
+
+```bash
+npm install rn-swipe-button --save
+# OR
+yarn add rn-swipe-button
+
+```
+
+## Usage
+```js
+import SwipeButton from 'rn-swipe-button'; 
+
+</SwipeButton/>
+```
+
 <hr>
 <div>
   <h2 style="color:darkgreen;">NPM Package</h2>
@@ -82,7 +94,7 @@
 <hr>
 <h2 style="color:darkgreen;">Code for above screenshots</h2>
 
-```
+```js
 import React, {useState} from 'react';
 import {SafeAreaView, View, Text, StatusBar, Button} from 'react-native';
 
