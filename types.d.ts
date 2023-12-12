@@ -23,7 +23,7 @@ interface Props {
     swipeSuccessThreshold?: number; // Ex: 70. Swipping 70% will be considered as successful swipe
     thumbIconBackgroundColor?: string;
     thumbIconBorderColor?: string;
-    thumbIconComponent?: ReactElement;
+    thumbIconComponent?: () => ReactElement;
     thumbIconImageSource?: string | number;
     thumbIconStyles?: StyleProp<ViewStyle>;
     thumbIconWidth?: number;
