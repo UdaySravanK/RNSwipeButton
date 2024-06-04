@@ -17,7 +17,7 @@ import { TRANSPARENT_COLOR } from '../../constants';
 const DEFAULT_ANIMATION_DURATION = 400;
 const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
-const SwipeThumb = props => {
+const SwipeThumb = (props) => {
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
   var defaultContainerWidth = 0;
   if (props.thumbIconWidth == undefined) {
@@ -29,8 +29,9 @@ const SwipeThumb = props => {
   const maxWidth = props.layoutWidth - paddingAndMarginsOffset;
   const isRTL = I18nManager.isRTL;
 
-  const animatedWidth = useRef(new Animated.Value(defaultContainerWidth))
-    .current;
+  const animatedWidth = useRef(
+    new Animated.Value(defaultContainerWidth),
+  ).current;
   const [defaultWidth, setDefaultWidth] = useState(defaultContainerWidth);
   const [shouldDisableTouch, disableTouch] = useState(false);
 
@@ -240,7 +241,8 @@ const SwipeThumb = props => {
           }`}
           disabled={disabled}
           onPress={onSwipeSuccess}
-          accessible>
+          accessible
+        >
           <View style={[panStyle, { width: defaultContainerWidth }]}>
             {renderThumbIcon()}
           </View>
@@ -249,7 +251,8 @@ const SwipeThumb = props => {
         <Animated.View
           style={[panStyle]}
           {...panResponder.panHandlers}
-          pointerEvents={shouldDisableTouch ? 'none' : 'auto'}>
+          pointerEvents={shouldDisableTouch ? 'none' : 'auto'}
+        >
           {renderThumbIcon()}
         </Animated.View>
       )}
