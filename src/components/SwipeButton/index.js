@@ -1,12 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Text, View, AccessibilityInfo } from 'react-native';
+import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
+import { Text, View, AccessibilityInfo } from "react-native";
 
 // Components
-import SwipeThumb from '../../components/SwipeThumb';
+import SwipeThumb from "../../components/SwipeThumb";
 
 // Styles
-import styles from './styles';
+import styles from "./styles";
 
 // Constants
 import {
@@ -21,9 +21,9 @@ import {
   THUMB_ICON_BACKGROUND_COLOR,
   THUMB_ICON_BORDER_COLOR,
   TITLE_COLOR,
-} from '../../constants';
+} from "../../constants";
 
-const SwipeButton = props => {
+const SwipeButton = (props) => {
   const [layoutWidth, setLayoutWidth] = useState(0);
   const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
   const [isUnmounting, setIsUnmounting] = useState(false);
@@ -33,7 +33,7 @@ const SwipeButton = props => {
    * Correct layout width will be received only after first render but we need it before render.
    * So render SwipeThumb only if layoutWidth > 0
    */
-  const onLayoutContainer = async e => {
+  const onLayoutContainer = async (e) => {
     if (isUnmounting || layoutWidth) {
       return;
     }
@@ -41,7 +41,7 @@ const SwipeButton = props => {
   };
 
   useEffect(() => {
-    const handleScreenReaderToggled = isEnabled => {
+    const handleScreenReaderToggled = (isEnabled) => {
       if (isUnmounting || screenReaderEnabled === isEnabled) {
         return;
       }
@@ -49,11 +49,11 @@ const SwipeButton = props => {
     };
     setIsUnmounting(false);
     const subscription = AccessibilityInfo.addEventListener(
-      'change',
+      "change",
       handleScreenReaderToggled,
     );
 
-    AccessibilityInfo.isScreenReaderEnabled().then(isEnabled => {
+    AccessibilityInfo.isScreenReaderEnabled().then((isEnabled) => {
       if (isUnmounting) {
         return;
       }
@@ -114,13 +114,14 @@ const SwipeButton = props => {
           ...(width ? { width } : {}),
         },
       ]}
-      onLayout={onLayoutContainer}>
+      onLayout={onLayoutContainer}
+    >
       <Text
         maxFontSizeMultiplier={titleMaxFontScale}
-        ellipsizeMode={'tail'}
+        ellipsizeMode={"tail"}
         numberOfLines={1}
         importantForAccessibility={
-          screenReaderEnabled ? 'no-hide-descendants' : ''
+          screenReaderEnabled ? "no-hide-descendants" : ""
         }
         style={[
           styles.title,
@@ -129,7 +130,8 @@ const SwipeButton = props => {
             fontSize: titleFontSize,
             ...titleStyles,
           },
-        ]}>
+        ]}
+      >
         {title}
       </Text>
       {layoutWidth > 0 && (
@@ -182,7 +184,7 @@ SwipeButton.defaultProps = {
   thumbIconBackgroundColor: THUMB_ICON_BACKGROUND_COLOR,
   thumbIconBorderColor: THUMB_ICON_BORDER_COLOR,
   thumbIconStyles: {},
-  title: 'Swipe to submit',
+  title: "Swipe to submit",
   titleColor: TITLE_COLOR,
   titleFontSize: 20,
   titleStyles: {},

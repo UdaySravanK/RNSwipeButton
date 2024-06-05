@@ -1,23 +1,23 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
-import { I18nManager } from 'react-native';
+import React, { useCallback, useState, useEffect, useRef } from "react";
+import PropTypes from "prop-types";
+import { I18nManager } from "react-native";
 import {
   Animated,
   Image,
   PanResponder,
   TouchableNativeFeedback,
   View,
-} from 'react-native';
+} from "react-native";
 
 // Styles
-import styles, { borderWidth, margin } from './styles';
+import styles, { borderWidth, margin } from "./styles";
 
 // Constants
-import { TRANSPARENT_COLOR } from '../../constants';
+import { TRANSPARENT_COLOR } from "../../constants";
 const DEFAULT_ANIMATION_DURATION = 400;
 const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
-const SwipeThumb = props => {
+const SwipeThumb = (props) => {
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
   var defaultContainerWidth = 0;
   if (props.thumbIconWidth == undefined) {
@@ -198,7 +198,7 @@ const SwipeThumb = props => {
       borderColor: disabled
         ? disabledThumbIconBorderColor
         : thumbIconBorderColor,
-      overflow: 'hidden',
+      overflow: "hidden",
     };
 
     return (
@@ -237,11 +237,12 @@ const SwipeThumb = props => {
       {screenReaderEnabled ? (
         <TouchableNativeFeedback
           accessibilityLabel={`${title}. ${
-            disabled ? 'Disabled' : 'Double-tap to activate'
+            disabled ? "Disabled" : "Double-tap to activate"
           }`}
           disabled={disabled}
           onPress={onSwipeSuccess}
-          accessible>
+          accessible
+        >
           <View style={[panStyle, { width: defaultContainerWidth }]}>
             {renderThumbIcon()}
           </View>
@@ -250,7 +251,8 @@ const SwipeThumb = props => {
         <Animated.View
           style={[panStyle]}
           {...panResponder.panHandlers}
-          pointerEvents={shouldDisableTouch ? 'none' : 'auto'}>
+          pointerEvents={shouldDisableTouch ? "none" : "auto"}
+        >
           {renderThumbIcon()}
         </Animated.View>
       )}
