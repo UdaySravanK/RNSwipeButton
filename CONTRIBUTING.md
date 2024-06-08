@@ -1,10 +1,12 @@
-# Hello there 👋 thanks for checking the contribution guidelines 🎊.
+# Hello there 👋 
+
+#### Thanks for checking the contribution guidelines 🎊
 
 - The `rn-swipe-button` is a very simple react-native component. 
 - I request more developers from the open-source community to contributing to improve this project.
-- You can find work through the project associated with this repository. You can find issues related to defects, new features and dev only related tasks like writing unit tests.
+- You can find the work by visiting the [project](https://github.com/users/UdaySravanK/projects/1) associated with this repository. You can find issues related to defects, new feature requests and dev only related tasks like writing unit tests.
 
-# Contribution Guideline
+# Contribution Guidelines
 - Please fork the repository
 - Create a new branch
 - Before openeing the pull request, please test the code by using the [demo app](https://github.com/UdaySravanK/RNSwipeButtonDemo), either by `npm link` or simply by copy pasting the source code in the demo app.
