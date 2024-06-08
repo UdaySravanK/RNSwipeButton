@@ -35,10 +35,18 @@ import SwipeButton from 'rn-swipe-button';
     <td style="padding: 5px;"><span>Android RTL</span></td>
 	</tr>
 	<tr>
-     	  <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/></td>
-     	  <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button.png" style="margin-right: 30px;" width="200"/></td>
-        <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/></td>
-        <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button-rtl.png" style="margin-right: 30px;" width="200"/></td>
+    <td>
+      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/>
+    </td>
+    <td>
+      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/rn-swipe-button.png" style="margin-right: 30px;" width="200"/>
+    </td>
+    <td>
+      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/>
+    </td>
+    <td>
+      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/rn-swipe-button-rtl.png" style="margin-right: 30px;" width="200"/>
+    </td>
 	</tr>
   </table>
   <p>These screenshots are from <a href="https://github.com/UdaySravanK/RNSwipeButtonDemo.git" target="_blank">the demo app</a>.</p>
