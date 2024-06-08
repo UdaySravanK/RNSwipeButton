@@ -41,7 +41,7 @@ import SwipeButton from 'rn-swipe-button';
         <td><img src="https://github.com/UdaySravanK/RNSwipeButton/blob/master/docs/rn-swipe-button-rtl.png" style="margin-right: 30px;" width="200"/></td>
 	</tr>
   </table>
-  <p>These screenshots are from demo app under examples folder in the repo</p>
+  <p>These screenshots are from <a href="https://github.com/UdaySravanK/RNSwipeButtonDemo.git" target="_blank">the demo app</a>.</p>
 </div>
 <hr>
 
@@ -207,48 +207,54 @@ const App: () => React$Node = () => {
 <h2 style="color:darkgreen;">Tech Stack</h2>
 <ul>
 <li>Node</li>
-<li>Yarn</li>
+<li>Yarn/NPM</li>
 <li>JavaScript</li>
 <li>TypeScript</li>
 <li>ReactNative</li>
 </ul>
 
 <div>
-    <h2 style="color:darkgreen;">Running example app</h2>
-    <ol>
-      <li><code>git clone https://github.com/UdaySravanK/RNSwipeButton.git</code></li>
-      <li><code>cd RNSwipeButton/examples/RNSwipeButtonDemo</code></li>
-      <li><code>yarn</code></li>
-      <li><p>To run on an android emulator</p>
-        <code>yarn android</code> 
-        <details>
-          <summary>Make sure of</summary>
-          <ul>
-            <li>Android Studio is configured</li>
-            <li>Global paths set correctly for Android SDK i.e ANDROID_HOME, tools, platform-tools</li>
-            <li>Java8 is installed</li>
-            <li>At least one emulator is ready</li>
-          </ul>
-        </details>
-      </li>
-      <li><p>To run on an ios simulator</p>
-        <code>yarn ios</code> 
-        <details>
-          <summary>Make sure of</summary>
-          <ul>
-            <li>xcode is configured</li>
-            <li>cocoapods installed</li>
-            <li>If seeing issues then run <code>pod deintegrate & pod install</code></li>
-            <li>If seeing issues with fonts
-               <ol>
-                 <li>Open ios workspace project in xcode</li>
-                 <li>Select RNSwipeButtonDemo</li>
-                 <li>Go to Build phases</li>
-                 <li>Open 'Copy Bundle Resources' and delete all .ttf files</li>
-               </ol>
-            </li>
-          </ul>
-        </details>
-      </li>
-    </ol>
-   </div>
+  <h2 style="color:darkgreen;">Running the demo app</h2>
+  <ol>
+    <li><code>git clone https://github.com/UdaySravanK/RNSwipeButtonDemo.git</code></li>
+    <li><code>cd RNSwipeButtonDemo</code></li>
+    <li><code>yarn</code></li>
+    <li><p>To run on an android emulator</p>
+      <code>yarn android</code> 
+      <details>
+        <summary>Make sure of</summary>
+        <ul>
+          <li>Android Studio is configured</li>
+          <li>Global paths set correctly for Android SDK i.e ANDROID_HOME, tools, platform-tools</li>
+          <li>Java8 is installed</li>
+          <li>At least one emulator is ready</li>
+        </ul>
+      </details>
+    </li>
+    <li><p>To run on an ios simulator</p>
+      <code>yarn ios</code> 
+      <details>
+        <summary>Make sure of</summary>
+        <ul>
+          <li>xcode is configured</li>
+          <li>cocoapods installed</li>
+          <li>If seeing issues then run <code>pod deintegrate & pod install</code></li>
+          <li>If seeing issues with fonts
+              <ol>
+                <li>Open ios workspace project in xcode</li>
+                <li>Select RNSwipeButtonDemo</li>
+                <li>Go to Build phases</li>
+                <li>Open 'Copy Bundle Resources' and delete all .ttf files</li>
+              </ol>
+          </li>
+        </ul>
+      </details>
+    </li>
+  </ol>
+</div>
+
+<div>
+  <h2 style="color:darkgreen;">Making changes and seeing them in the demo app</h2>
+  <p>Mapping the local npm package using `npm link` is not working for me but you can give a try and update this readme to help others.<p>
+  <p>Workaroud is simply copy the `src` folder from the `RNSwipeButton` and paste it in `RNSwipeButtonDemo` app. In the demo app, you see `App.tsx`. When you open it, you will see a commented import and a note. Simply use the copied source code. I understand it is not the ideal way to work but this is a simple component and won't take more than 10seconds to do this.</p>
+</div>
