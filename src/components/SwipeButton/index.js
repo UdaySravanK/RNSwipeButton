@@ -23,7 +23,40 @@ import {
   TITLE_COLOR,
 } from "../../constants";
 
-const SwipeButton = (props) => {
+const SwipeButton = ({
+  containerStyles = {},
+  disabled = false,
+  disabledRailBackgroundColor = DISABLED_RAIL_BACKGROUND_COLOR,
+  disabledThumbIconBackgroundColor = DISABLED_THUMB_ICON_BACKGROUND_COLOR,
+  disabledThumbIconBorderColor = DISABLED_THUMB_ICON_BORDER_COLOR,
+  disableResetOnTap = false,
+  enableReverseSwipe,
+  forceReset,
+  height = 50,
+  onSwipeFail,
+  onSwipeStart,
+  onSwipeSuccess,
+  railBackgroundColor = RAIL_BACKGROUND_COLOR,
+  railBorderColor = RAIL_BORDER_COLOR,
+  railFillBackgroundColor = RAIL_FILL_BACKGROUND_COLOR,
+  railFillBorderColor = RAIL_FILL_BORDER_COLOR,
+  railStyles,
+  resetAfterSuccessAnimDelay,
+  shouldResetAfterSuccess,
+  swipeSuccessThreshold = SWIPE_SUCCESS_THRESHOLD,
+  thumbIconBackgroundColor = THUMB_ICON_BACKGROUND_COLOR,
+  thumbIconBorderColor = THUMB_ICON_BORDER_COLOR,
+  thumbIconComponent,
+  thumbIconImageSource,
+  thumbIconStyles = {},
+  thumbIconWidth,
+  title = "Swipe to submit",
+  titleColor = TITLE_COLOR,
+  titleFontSize = 20,
+  titleMaxFontScale,
+  titleStyles = {},
+  width,
+}) => {
   const [layoutWidth, setLayoutWidth] = useState(0);
   const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
   const [isUnmounting, setIsUnmounting] = useState(false);
@@ -66,41 +99,6 @@ const SwipeButton = (props) => {
     };
   }, [isUnmounting, screenReaderEnabled]);
 
-  const {
-    containerStyles,
-    disabled,
-    disabledRailBackgroundColor,
-    disabledThumbIconBackgroundColor,
-    disabledThumbIconBorderColor,
-    disableResetOnTap,
-    enableReverseSwipe,
-    forceReset,
-    height,
-    onSwipeFail,
-    onSwipeStart,
-    onSwipeSuccess,
-    railBackgroundColor,
-    railBorderColor,
-    railFillBackgroundColor,
-    railFillBorderColor,
-    railStyles,
-    resetAfterSuccessAnimDelay,
-    resetAfterSuccessAnimDuration,
-    shouldResetAfterSuccess,
-    swipeSuccessThreshold,
-    thumbIconBackgroundColor,
-    thumbIconBorderColor,
-    thumbIconComponent,
-    thumbIconImageSource,
-    thumbIconStyles,
-    thumbIconWidth,
-    title,
-    titleColor,
-    titleFontSize,
-    titleMaxFontScale,
-    titleStyles,
-    width,
-  } = props;
   return (
     <View
       style={[
@@ -150,7 +148,6 @@ const SwipeButton = (props) => {
           railFillBorderColor={railFillBorderColor}
           railStyles={railStyles}
           resetAfterSuccessAnimDelay={resetAfterSuccessAnimDelay}
-          resetAfterSuccessAnimDuration={resetAfterSuccessAnimDuration}
           screenReaderEnabled={screenReaderEnabled}
           shouldResetAfterSuccess={shouldResetAfterSuccess}
           swipeSuccessThreshold={swipeSuccessThreshold}
@@ -166,28 +163,6 @@ const SwipeButton = (props) => {
       )}
     </View>
   );
-};
-
-SwipeButton.defaultProps = {
-  containerStyles: {},
-  disabled: false,
-  disabledRailBackgroundColor: DISABLED_RAIL_BACKGROUND_COLOR,
-  disabledThumbIconBackgroundColor: DISABLED_THUMB_ICON_BACKGROUND_COLOR,
-  disabledThumbIconBorderColor: DISABLED_THUMB_ICON_BORDER_COLOR,
-  disableResetOnTap: false,
-  height: 50,
-  railBackgroundColor: RAIL_BACKGROUND_COLOR,
-  railBorderColor: RAIL_BORDER_COLOR,
-  railFillBackgroundColor: RAIL_FILL_BACKGROUND_COLOR,
-  railFillBorderColor: RAIL_FILL_BORDER_COLOR,
-  swipeSuccessThreshold: SWIPE_SUCCESS_THRESHOLD,
-  thumbIconBackgroundColor: THUMB_ICON_BACKGROUND_COLOR,
-  thumbIconBorderColor: THUMB_ICON_BORDER_COLOR,
-  thumbIconStyles: {},
-  title: "Swipe to submit",
-  titleColor: TITLE_COLOR,
-  titleFontSize: 20,
-  titleStyles: {},
 };
 
 SwipeButton.propTypes = {
@@ -209,7 +184,6 @@ SwipeButton.propTypes = {
   railFillBorderColor: PropTypes.string,
   railStyles: PropTypes.object,
   resetAfterSuccessAnimDelay: PropTypes.number,
-  resetAfterSuccessAnimDuration: PropTypes.number,
   shouldResetAfterSuccess: PropTypes.bool,
   swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe
   thumbIconBackgroundColor: PropTypes.string,
