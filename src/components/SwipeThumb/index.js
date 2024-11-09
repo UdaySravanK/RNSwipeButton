@@ -17,16 +17,41 @@ import { TRANSPARENT_COLOR } from "../../constants";
 const DEFAULT_ANIMATION_DURATION = 400;
 const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
-const SwipeThumb = (props) => {
+const SwipeThumb = ({
+  disabled = false,
+  disableResetOnTap = false,
+  disabledThumbIconBackgroundColor,
+  disabledThumbIconBorderColor,
+  enableReverseSwipe,
+  forceReset,
+  layoutWidth = 0,
+  onSwipeFail,
+  onSwipeStart,
+  onSwipeSuccess,
+  railFillBackgroundColor,
+  railFillBorderColor,
+  railStyles,
+  resetAfterSuccessAnimDelay,
+  screenReaderEnabled = false,
+  shouldResetAfterSuccess,
+  swipeSuccessThreshold,
+  thumbIconBackgroundColor,
+  thumbIconBorderColor,
+  thumbIconComponent: ThumbIconComponent,
+  thumbIconHeight,
+  thumbIconImageSource,
+  thumbIconStyles = {},
+  thumbIconWidth,
+  title,
+}) => {
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
   var defaultContainerWidth = 0;
-  if (props.thumbIconWidth == undefined) {
-    defaultContainerWidth = props.thumbIconHeight;
+  if (thumbIconWidth == undefined) {
+    defaultContainerWidth = thumbIconHeight;
   } else {
-    defaultContainerWidth = props.thumbIconWidth;
+    defaultContainerWidth = thumbIconWidth;
   }
-  const forceReset = props.forceReset;
-  const maxWidth = props.layoutWidth - paddingAndMarginsOffset;
+  const maxWidth = layoutWidth - paddingAndMarginsOffset;
   const isRTL = I18nManager.isRTL;
 
   const animatedWidth = useRef(
@@ -49,7 +74,7 @@ const SwipeThumb = (props) => {
       onPanResponderMove,
       onPanResponderRelease,
     }),
-    [props],
+    [],
   );
 
   useEffect(() => {
@@ -67,7 +92,7 @@ const SwipeThumb = (props) => {
   function onSwipeNotMetSuccessThreshold() {
     // Animate to initial position
     setDefaultWidth(defaultContainerWidth);
-    props.onSwipeFail && props.onSwipeFail();
+    onSwipeFail && onSwipeFail();
   }
 
   function onSwipeMetSuccessThreshold(newWidth) {
@@ -80,17 +105,17 @@ const SwipeThumb = (props) => {
   }
 
   function onPanResponderStart() {
-    if (props.disabled) {
+    if (disabled) {
       return;
     }
-    props.onSwipeStart && props.onSwipeStart();
+    onSwipeStart && onSwipeStart();
   }
 
-  async function onPanResponderMove(event, gestureState) {
-    if (props.disabled) {
+  async function onPanResponderMove(_, gestureState) {
+    if (disabled) {
       return;
     }
-    const reverseMultiplier = props.enableReverseSwipe ? -1 : 1;
+    const reverseMultiplier = enableReverseSwipe ? -1 : 1;
     const rtlMultiplier = isRTL ? -1 : 1;
     const newWidth =
       defaultContainerWidth +
@@ -113,24 +138,22 @@ const SwipeThumb = (props) => {
     }
   }
 
-  function onPanResponderRelease(event, gestureState) {
-    if (props.disabled) {
+  function onPanResponderRelease(_, gestureState) {
+    if (disabled) {
       return;
     }
-    const reverseMultiplier = props.enableReverseSwipe ? -1 : 1;
+    const reverseMultiplier = enableReverseSwipe ? -1 : 1;
     const rtlMultiplier = isRTL ? -1 : 1;
     const newWidth =
       defaultContainerWidth +
       rtlMultiplier * reverseMultiplier * gestureState.dx;
-    const successThresholdWidth =
-      maxWidth * (props.swipeSuccessThreshold / 100);
+    const successThresholdWidth = maxWidth * (swipeSuccessThreshold / 100);
     newWidth < successThresholdWidth
       ? onSwipeNotMetSuccessThreshold()
       : onSwipeMetSuccessThreshold(newWidth);
   }
 
   function setBackgroundColors() {
-    const { railFillBackgroundColor, railFillBorderColor } = props;
     // Set backgroundColor only if not already set
     if (backgroundColor === TRANSPARENT_COLOR) {
       setBackgroundColor(railFillBackgroundColor);
@@ -146,17 +169,17 @@ const SwipeThumb = (props) => {
     //Animate back to initial position after successfully swiped
     const resetDelay =
       DEFAULT_ANIMATION_DURATION +
-      (props.resetAfterSuccessAnimDelay !== undefined
-        ? props.resetAfterSuccessAnimDelay
+      (resetAfterSuccessAnimDelay !== undefined
+        ? resetAfterSuccessAnimDelay
         : RESET_AFTER_SUCCESS_DEFAULT_DELAY);
     setTimeout(() => {
-      props.shouldResetAfterSuccess && reset();
+      shouldResetAfterSuccess && reset();
     }, resetDelay);
   }
 
   function invokeOnSwipeSuccess() {
-    disableTouch(props.disableResetOnTap);
-    props.onSwipeSuccess && props.onSwipeSuccess();
+    disableTouch(disableResetOnTap);
+    onSwipeSuccess && onSwipeSuccess();
   }
 
   function reset() {
@@ -170,18 +193,6 @@ const SwipeThumb = (props) => {
   }
 
   function renderThumbIcon() {
-    const {
-      disabled,
-      disabledThumbIconBackgroundColor,
-      disabledThumbIconBorderColor,
-      thumbIconBackgroundColor,
-      thumbIconBorderColor,
-      thumbIconComponent: ThumbIconComponent,
-      thumbIconHeight,
-      thumbIconImageSource,
-      thumbIconStyles,
-      thumbIconWidth,
-    } = props;
     var iconWidth = 0;
     if (thumbIconWidth == undefined) {
       iconWidth = thumbIconHeight;
@@ -214,15 +225,6 @@ const SwipeThumb = (props) => {
       </View>
     );
   }
-
-  const {
-    disabled,
-    enableReverseSwipe,
-    onSwipeSuccess,
-    railStyles,
-    screenReaderEnabled,
-    title,
-  } = props;
 
   const panStyle = {
     backgroundColor,
@@ -260,15 +262,6 @@ const SwipeThumb = (props) => {
   );
 };
 
-SwipeThumb.defaultProps = {
-  disabled: false,
-  layoutWidth: 0,
-  resetAfterSuccessAnimDuration: 200,
-  disableResetOnTap: false,
-  screenReaderEnabled: false,
-  thumbIconStyles: {},
-};
-
 SwipeThumb.propTypes = {
   disabled: PropTypes.bool,
   disableResetOnTap: PropTypes.bool,
@@ -283,7 +276,7 @@ SwipeThumb.propTypes = {
   railFillBackgroundColor: PropTypes.string,
   railFillBorderColor: PropTypes.string,
   railStyles: PropTypes.object,
-  resetAfterSuccessAnimDuration: PropTypes.number,
+  resetAfterSuccessAnimDelay: PropTypes.number,
   screenReaderEnabled: PropTypes.bool,
   shouldResetAfterSuccess: PropTypes.bool,
   swipeSuccessThreshold: PropTypes.number,
