@@ -31,6 +31,7 @@ interface Props {
     titleColor?: string;
     titleFontSize?: number;
     titleMaxFontScale?: number;
+    titleMaxLines: number
     titleStyles?: StyleProp<TextStyle>;
     width?: string | number;
 }
