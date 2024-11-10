@@ -54,6 +54,7 @@ const SwipeButton = ({
   titleColor = TITLE_COLOR,
   titleFontSize = 20,
   titleMaxFontScale,
+  titleMaxLines = 1,
   titleStyles = {},
   width,
 }) => {
@@ -113,11 +114,12 @@ const SwipeButton = ({
         },
       ]}
       onLayout={onLayoutContainer}
+      testID="SwipeButton"
     >
       <Text
         maxFontSizeMultiplier={titleMaxFontScale}
         ellipsizeMode={"tail"}
-        numberOfLines={1}
+        numberOfLines={titleMaxLines}
         importantForAccessibility={
           screenReaderEnabled ? "no-hide-descendants" : ""
         }
@@ -203,6 +205,7 @@ SwipeButton.propTypes = {
   titleColor: PropTypes.string,
   titleFontSize: PropTypes.number,
   titleMaxFontScale: PropTypes.number,
+  titleMaxLines: PropTypes.number,
   titleStyles: PropTypes.object,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
