@@ -1,5 +1,12 @@
-## React Native Swipe Button Component <img src="https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat" /> 
-<a href="https://nodei.co/npm/rn-swipe-button/"><img src="https://nodei.co/npm/rn-swipe-button.png?downloads=true&downloadRank=true&stars=true"></a>
+## React Native Swipe Button Component 
+[![star this repo](https://img.shields.io/github/stars/UdaySravanK/RNSwipeButton?style=flat-square&labelColor=purple)](https://github.com/UdaySravanK/RNSwipeButton)
+[![fork this repo](https://img.shields.io/github/forks/UdaySravanK/RNSwipeButton?style=flat-square&labelColor=purple)](https://github.com/UdaySravanK/RNSwipeButton)
+[![NPM Version](https://img.shields.io/npm/v/rn-swipe-button.svg?style=flat-square)](https://www.npmjs.com/package/rn-swipe-button)
+[![npm total downloads](https://img.shields.io/npm/dt/rn-swipe-button.svg)](https://www.npmjs.com/package/rn-swipe-button)
+[![Npm Downloads](https://img.shields.io/npm/dm/rn-swipe-button.svg)](https://www.npmjs.com/package/rn-swipe-button)
+[![Socke Score](https://socket.dev/api/badge/npm/package/rn-swipe-button/2.0.0#1731228050357)](https://socket.dev/npm/package/rn-swipe-button)
+[![Contribuutions Welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat&labelColor=darkgreen)](https://github.com/UdaySravanK/RNSwipeButton/blob/master/CONTRIBUTING.md)
+
 
 <hr>
 
@@ -7,16 +14,25 @@
 
 ```bash
 npm install rn-swipe-button --save
+
 # OR
+
 yarn add rn-swipe-button
 
 ```
+
+## react-native compatibility
+
+|rn-swipe-button|react-native|  react  |
+|---------------|------------|---------|
+|   <= v1.3.8   |  >= 0.60.5 | >= 16.8.6|
+|   >= v2.0.0   |  >= 0.70.0 | >= 18.1.0|
 
 ## Usage
 ```js
 import SwipeButton from 'rn-swipe-button'; 
 
-</SwipeButton/>
+<SwipeButton/>
 ```
 
 <hr>
