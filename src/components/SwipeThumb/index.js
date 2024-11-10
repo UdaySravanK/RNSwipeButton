@@ -17,33 +17,35 @@ import { TRANSPARENT_COLOR } from "../../constants";
 const DEFAULT_ANIMATION_DURATION = 400;
 const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
-const SwipeThumb = ({
-  disabled = false,
-  disableResetOnTap = false,
-  disabledThumbIconBackgroundColor,
-  disabledThumbIconBorderColor,
-  enableReverseSwipe,
-  forceReset,
-  layoutWidth = 0,
-  onSwipeFail,
-  onSwipeStart,
-  onSwipeSuccess,
-  railFillBackgroundColor,
-  railFillBorderColor,
-  railStyles,
-  resetAfterSuccessAnimDelay,
-  screenReaderEnabled = false,
-  shouldResetAfterSuccess,
-  swipeSuccessThreshold,
-  thumbIconBackgroundColor,
-  thumbIconBorderColor,
-  thumbIconComponent: ThumbIconComponent,
-  thumbIconHeight,
-  thumbIconImageSource,
-  thumbIconStyles = {},
-  thumbIconWidth,
-  title,
-}) => {
+const SwipeThumb = (props) => {
+  let {
+    disabled = false,
+    disableResetOnTap = false,
+    disabledThumbIconBackgroundColor,
+    disabledThumbIconBorderColor,
+    enableReverseSwipe,
+    forceReset,
+    layoutWidth = 0,
+    onSwipeFail,
+    onSwipeStart,
+    onSwipeSuccess,
+    railFillBackgroundColor,
+    railFillBorderColor,
+    railStyles,
+    resetAfterSuccessAnimDelay,
+    screenReaderEnabled = false,
+    shouldResetAfterSuccess,
+    swipeSuccessThreshold,
+    thumbIconBackgroundColor,
+    thumbIconBorderColor,
+    thumbIconComponent: ThumbIconComponent,
+    thumbIconHeight,
+    thumbIconImageSource,
+    thumbIconStyles = {},
+    thumbIconWidth,
+    title,
+  } = props;
+
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
   var defaultContainerWidth = 0;
   if (thumbIconWidth == undefined) {
@@ -74,7 +76,7 @@ const SwipeThumb = ({
       onPanResponderMove,
       onPanResponderRelease,
     }),
-    [],
+    [props],
   );
 
   useEffect(() => {

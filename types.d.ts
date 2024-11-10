@@ -17,7 +17,7 @@ interface Props {
     railFillBackgroundColor?: string;
     railFillBorderColor?: string;
     railStyles?: StyleProp<ViewStyle>;
-    resetAfterSuccessAnimDuration?: number;
+    resetAfterSuccessAnimDelay: PropTypes.number;
     screenReaderEnabled?: boolean;
     shouldResetAfterSuccess?: boolean;
     swipeSuccessThreshold?: number; // Ex: 70. Swipping 70% will be considered as successful swipe
