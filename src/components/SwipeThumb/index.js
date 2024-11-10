@@ -256,6 +256,7 @@ const SwipeThumb = (props) => {
           style={[panStyle]}
           {...panResponder.panHandlers}
           pointerEvents={shouldDisableTouch ? "none" : "auto"}
+          testID="SwipeThumb"
         >
           {renderThumbIcon()}
         </Animated.View>

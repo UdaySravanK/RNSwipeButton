@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: SwipeButton should render correctly with default props 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+</View>
+`;

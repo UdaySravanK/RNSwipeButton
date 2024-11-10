@@ -114,6 +114,7 @@ const SwipeButton = ({
         },
       ]}
       onLayout={onLayoutContainer}
+      testID="SwipeButton"
     >
       <Text
         maxFontSizeMultiplier={titleMaxFontScale}

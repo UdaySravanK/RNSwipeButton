@@ -26,6 +26,7 @@ interface Props {
     thumbIconComponent?: () => ReactElement;
     thumbIconImageSource?: string | number;
     thumbIconStyles?: StyleProp<ViewStyle>;
+    thumbIconHeight?: number;
     thumbIconWidth?: number;
     title?: string;
     titleColor?: string;
