@@ -4,10 +4,11 @@
   "description": "react native swipe/slide button component",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --config jest.config.js",
     "lint": "eslint .",
     "format": "prettier --write 'src/**/*.js'",
-    "prepare": "husky"
+    "prepare": "husky",
+    "updateSnapshot": "jest --config jest.config.js --updateSnapshot"
   },
   "repository": {
     "type": "git",

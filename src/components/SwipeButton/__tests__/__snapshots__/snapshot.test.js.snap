@@ -1,0 +1,1128 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component: SwipeButton UI Rendering Tree & Props Thumb icon customm styles should not override important styles 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "borderWidth": 56,
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should apply thumbIconWidth 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 28,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 28,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should be able to change title styling 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    maxFontSizeMultiplier="4"
+    numberOfLines="4"
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#123456",
+          "fontSize": "48",
+          "fontWeight": "bold",
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with containerStyles prop 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+        "margin": 24,
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom height 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 126,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 126,
+            "overflow": "hidden",
+            "width": 126,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom rail background color and border color 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#FFFFFF",
+        "borderColor": "#FF0000",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom rail styles 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 20,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom thumb icon border and backgroun color 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#0FF000",
+            "borderColor": "000FFF",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom width 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+        "width": 360,
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with default props 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render with correct styles when disable 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#CBCBCB",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D3D3D3",
+            "borderColor": "#3C3C3C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    />
+  </View>
+</View>
+`;
+
+exports[`Component: SwipeButton UI Rendering Tree & Props should render with custom thumb component 1`] = `
+<View
+  onLayout={[Function]}
+  style={
+    [
+      {
+        "borderRadius": 50,
+        "borderWidth": 1,
+        "justifyContent": "center",
+        "margin": 5,
+      },
+      {
+        "backgroundColor": "#7CF3F9",
+        "borderColor": "#073436",
+      },
+    ]
+  }
+  testID="SwipeButton"
+>
+  <Text
+    ellipsizeMode="tail"
+    importantForAccessibility=""
+    numberOfLines={1}
+    style={
+      [
+        {
+          "alignSelf": "center",
+          "position": "absolute",
+        },
+        {
+          "color": "#083133",
+          "fontSize": 20,
+        },
+      ]
+    }
+  >
+    Swipe to submit
+  </Text>
+  <View
+    collapsable={false}
+    onMoveShouldSetResponder={[Function]}
+    onMoveShouldSetResponderCapture={[Function]}
+    onResponderEnd={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderReject={[Function]}
+    onResponderRelease={[Function]}
+    onResponderStart={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    onStartShouldSetResponderCapture={[Function]}
+    pointerEvents="auto"
+    style={
+      {
+        "alignItems": "flex-end",
+        "alignSelf": "flex-start",
+        "backgroundColor": "#00000000",
+        "borderColor": "#00000000",
+        "borderRadius": 50,
+        "borderRightWidth": 0,
+        "borderWidth": 3,
+        "margin": 1,
+        "width": 50,
+      }
+    }
+    testID="SwipeThumb"
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "borderRadius": 50,
+            "borderWidth": 2,
+            "justifyContent": "center",
+            "marginVertical": -3,
+          },
+          {
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
+            "height": 50,
+            "overflow": "hidden",
+            "width": 50,
+          },
+        ]
+      }
+      testID="DefaultThumbIcon"
+    >
+      <View>
+        <Text>
+          USK
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;

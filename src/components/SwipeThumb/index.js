@@ -215,7 +215,10 @@ const SwipeThumb = (props) => {
     };
 
     return (
-      <View style={[styles.icon, { ...dynamicStyles }]}>
+      <View
+        style={[styles.icon, { ...dynamicStyles }]}
+        testID="DefaultThumbIcon"
+      >
         {!ThumbIconComponent && thumbIconImageSource && (
           <Image resizeMethod="resize" source={thumbIconImageSource} />
         )}

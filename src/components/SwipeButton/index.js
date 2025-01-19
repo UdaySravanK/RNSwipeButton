@@ -23,6 +23,12 @@ import {
   TITLE_COLOR,
 } from "../../constants";
 
+/**
+ * - Height of the RNSwipeButton will be determines by the height of the inner ThumbIcon which we interact with to swipe.
+ *
+ * @param {*} param0
+ * @returns
+ */
 const SwipeButton = ({
   containerStyles = {},
   disabled = false,

@@ -1,1 +1,1 @@
-npm run format && git add .
+npm run format && npm run test && git add .
