@@ -52,16 +52,16 @@ import SwipeButton from 'rn-swipe-button';
 	</tr>
 	<tr>
     <td>
-      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/>
+      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-ios.png" width="200" style="margin-right: 30px;"/>
     </td>
     <td>
-      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/rn-swipe-button.png" style="margin-right: 30px;" width="200"/>
+      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button.png" style="margin-right: 30px;" width="200"/>
     </td>
     <td>
-      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/>
+      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button.gif" style="margin-right: 30px;" width="200"/>
     </td>
     <td>
-      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/rn-swipe-button-rtl.png" style="margin-right: 30px;" width="200"/>
+      <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-rtl.png" style="margin-right: 30px;" width="200"/>
     </td>
 	</tr>
   </table>
@@ -282,3 +282,8 @@ const App: () => React$Node = () => {
   <p>Mapping the local npm package using `npm link` is not working for me but you can give a try and update this readme to help others.<p>
   <p>Workaroud is simply copy the `src` folder from the `RNSwipeButton` and paste it in `RNSwipeButtonDemo` app. In the demo app, you see `App.tsx`. When you open it, you will see a commented import and a note. Simply use the copied source code. I understand it is not the ideal way to work but this is a simple component and won't take more than 10seconds to do this.</p>
 </div>
+
+<hr>
+
+## Contributing
+I request more developers from the open-source community to contributing to improve this project. You can find the work by visiting the [project](https://github.com/users/UdaySravanK/projects/1) associated with this repository. You can find issues related to defects, new feature requests and dev only related tasks like writing unit tests. 
