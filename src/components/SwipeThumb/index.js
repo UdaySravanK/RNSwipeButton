@@ -1,5 +1,5 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
-import PropTypes from "prop-types";
+import PropTypes, { func } from "prop-types";
 import { I18nManager } from "react-native";
 import {
   Animated,
@@ -24,6 +24,8 @@ const SwipeThumb = (props) => {
     disabledThumbIconBackgroundColor,
     disabledThumbIconBorderColor,
     enableReverseSwipe,
+    finishRemainingSwipeAnimationDuration = 400,
+    forceCompleteSwipe,
     forceReset,
     layoutWidth = 0,
     onSwipeFail,
@@ -82,14 +84,18 @@ const SwipeThumb = (props) => {
   useEffect(() => {
     Animated.timing(animatedWidth, {
       toValue: defaultWidth,
-      duration: 400,
+      duration: finishRemainingSwipeAnimationDuration,
       useNativeDriver: false,
     }).start();
-  }, [animatedWidth, defaultWidth]);
+  }, [animatedWidth, defaultWidth, finishRemainingSwipeAnimationDuration]);
 
   useEffect(() => {
     forceReset && forceReset(reset);
   }, [forceReset]);
+
+  useEffect(() => {
+    forceCompleteSwipe && forceCompleteSwipe(forceComplete);
+  }, [forceCompleteSwipe]);
 
   function onSwipeNotMetSuccessThreshold() {
     // Animate to initial position
@@ -179,9 +185,9 @@ const SwipeThumb = (props) => {
     }, resetDelay);
   }
 
-  function invokeOnSwipeSuccess() {
+  function invokeOnSwipeSuccess(forceComplete) {
     disableTouch(disableResetOnTap);
-    onSwipeSuccess && onSwipeSuccess();
+    onSwipeSuccess && onSwipeSuccess(forceComplete);
   }
 
   function reset() {
@@ -192,6 +198,11 @@ const SwipeThumb = (props) => {
       setBackgroundColor(TRANSPARENT_COLOR);
       setBorderColor(TRANSPARENT_COLOR);
     }
+  }
+
+  function forceComplete() {
+    setDefaultWidth(maxWidth);
+    invokeOnSwipeSuccess();
   }
 
   function renderThumbIcon() {
@@ -274,6 +285,8 @@ SwipeThumb.propTypes = {
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
   enableReverseSwipe: PropTypes.bool,
+  finishRemainingSwipeAnimationDuration: PropTypes.number,
+  forceCompleteSwipe: PropTypes.func,
   forceReset: PropTypes.func,
   layoutWidth: PropTypes.number,
   onSwipeFail: PropTypes.func,

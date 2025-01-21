@@ -37,6 +37,8 @@ const SwipeButton = ({
   disabledThumbIconBorderColor = DISABLED_THUMB_ICON_BORDER_COLOR,
   disableResetOnTap = false,
   enableReverseSwipe,
+  finishRemainingSwipeAnimationDuration = 400,
+  forceCompleteSwipe,
   forceReset,
   height = 50,
   onSwipeFail,
@@ -147,6 +149,10 @@ const SwipeButton = ({
           disabledThumbIconBorderColor={disabledThumbIconBorderColor}
           disableResetOnTap={disableResetOnTap}
           enableReverseSwipe={enableReverseSwipe}
+          finishRemainingSwipeAnimationDuration={
+            finishRemainingSwipeAnimationDuration
+          }
+          forceCompleteSwipe={forceCompleteSwipe}
           forceReset={forceReset}
           layoutWidth={layoutWidth}
           onSwipeFail={onSwipeFail}
@@ -175,12 +181,14 @@ const SwipeButton = ({
 
 SwipeButton.propTypes = {
   containerStyles: PropTypes.object,
-  disable: PropTypes.bool,
+  disabled: PropTypes.bool,
   disabledRailBackgroundColor: PropTypes.string,
   disabledThumbIconBackgroundColor: PropTypes.string,
   disabledThumbIconBorderColor: PropTypes.string,
   disableResetOnTap: PropTypes.bool,
   enableReverseSwipe: PropTypes.bool,
+  finishRemainingSwipeAnimationDuration: PropTypes.number,
+  forceCompleteSwipe: PropTypes.func,
   forceReset: PropTypes.func,
   height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   onSwipeFail: PropTypes.func,
