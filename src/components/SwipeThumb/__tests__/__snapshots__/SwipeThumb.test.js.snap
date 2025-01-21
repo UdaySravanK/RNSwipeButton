@@ -1,0 +1,56 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwipeThumb Component should render correctly with default props 1`] = `
+<View
+  collapsable={false}
+  onMoveShouldSetResponder={[Function]}
+  onMoveShouldSetResponderCapture={[Function]}
+  onResponderEnd={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderReject={[Function]}
+  onResponderRelease={[Function]}
+  onResponderStart={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  onStartShouldSetResponderCapture={[Function]}
+  pointerEvents="auto"
+  style={
+    {
+      "alignItems": "flex-end",
+      "alignSelf": "flex-start",
+      "backgroundColor": "#00000000",
+      "borderColor": "#00000000",
+      "borderRadius": 50,
+      "borderRightWidth": 0,
+      "borderWidth": 3,
+      "margin": 1,
+      "width": 50,
+    }
+  }
+  testID="SwipeThumb"
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "borderRadius": 50,
+          "borderWidth": 2,
+          "justifyContent": "center",
+          "marginVertical": -3,
+        },
+        {
+          "backgroundColor": "#D27030",
+          "borderColor": "#3D797C",
+          "height": 50,
+          "overflow": "hidden",
+          "width": 50,
+        },
+      ]
+    }
+    testID="DefaultThumbIcon"
+  />
+</View>
+`;
