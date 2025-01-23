@@ -108,7 +108,7 @@ const SwipeThumb = (props) => {
       finishRemainingSwipe();
       return;
     }
-    invokeOnSwipeSuccess();
+    invokeOnSwipeSuccess(false);
     reset();
   }
 
@@ -172,7 +172,7 @@ const SwipeThumb = (props) => {
   function finishRemainingSwipe() {
     // Animate to final position
     setDefaultWidth(maxWidth);
-    invokeOnSwipeSuccess();
+    invokeOnSwipeSuccess(false);
 
     //Animate back to initial position after successfully swiped
     const resetDelay =
@@ -202,7 +202,7 @@ const SwipeThumb = (props) => {
 
   function forceComplete() {
     setDefaultWidth(maxWidth);
-    invokeOnSwipeSuccess();
+    invokeOnSwipeSuccess(true);
   }
 
   function renderThumbIcon() {

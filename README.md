@@ -32,7 +32,7 @@ yarn add rn-swipe-button
 ```js
 import SwipeButton from 'rn-swipe-button'; 
 
-<SwipeButton/>
+<SwipeButton />
 ```
 
 <hr>
@@ -79,15 +79,15 @@ import SwipeButton from 'rn-swipe-button';
     <b>disabledThumbIconBorderColor</b>: PropTypes.string,
     <b>enableReverseSwipe</b>: PropTypes.bool,
     <b>finishRemainingSwipeAnimationDuration</b>: PropTypes.number,
-    <b>forceCompleteSwipe</b>: PropTypes.func, // <span style="color: blueviolet">RNSwipeButton will call this function by passing a "forceCompleteSwipe" function as an argument. Calling the returned function will force complete the swipe.</span>
-    <b>forceReset</b>: PropTypes.func, <span style="color: blueviolet"> // RNSwipeButton will call this function by passing a "reset" function as argument. Calling "reset" will reset the swipe thumb.</span>
+    <b>forceCompleteSwipe</b>: PropTypes.func, // <span style="color: blueviolet">RNSwipeButton will call this function by passing a  function as an argument. Calling the returned function will force complete the swipe.</span>
+    <b>forceReset</b>: PropTypes.func, <span style="color: blueviolet"> // RNSwipeButton will call this function by passing a "reset" function as an argument. Calling "reset" will reset the swipe thumb.</span>
     <b>height</b>: PropTypes.oneOfType([
        PropTypes.string,
        PropTypes.number,
     ]),
     <b>onSwipeFail</b>: PropTypes.func,
     <b>onSwipeStart</b>: PropTypes.func,
-    <b>onSwipeSuccess</b>: PropTypes.func,
+    <b>onSwipeSuccess</b>: PropTypes.func, // Returns a boolean to indicate the swipe completed with real gesture or forceCompleteSwipe was called
     <b>railBackgroundColor</b>: PropTypes.string,
     <b>railBorderColor</b>: PropTypes.string,
     <b>railFillBackgroundColor</b>: PropTypes.string,
@@ -117,111 +117,65 @@ import SwipeButton from 'rn-swipe-button';
       PropTypes.number,
     ]),
 </pre>
+
+<p style="color:#9c5d12; font-weight: bold;">You can also check type definitions in <a href="https://github.com/UdaySravanK/RNSwipeButton/blob/master/types.d.ts">types.d.ts</a> file.<p>
+
 <hr>
-<h2 style="color:darkgreen;">Code for above screenshots</h2>
+<h2 style="color:darkgreen;">Example</h2>
 
 ```js
-import React, {useState} from 'react';
-import {SafeAreaView, View, Text, StatusBar, Button} from 'react-native';
-
-import Icon from 'react-native-vector-icons/FontAwesome';
-
-import thumbIcon from './assets/thumbIcon.png';
-import arrowRight from './assets/arrow-right.png';
-import styles from './styles';
+import React, { useState } from 'react';
+import { View, Text } from 'react-native';
 
 import SwipeButton from 'rn-swipe-button';
 
 
-const App: () => React$Node = () => {
-  const [disableCBButton, setDisableCBButton] = useState(false)
-  const defaultStatusMessage = 'swipe status appears here';
-  const [swipeStatusMessage, setSwipeStatusMessage] = useState(
-    defaultStatusMessage,
-  );
+function Example() {
+  let forceResetLastButton: any = null;
+  let forceCompleteCallback: any = null;
+  const [finishSwipeAnimDuration, setFinishSwipeAnimDuration] = useState(400)
+  
+  const forceCompleteButtonCallback = useCallback(() => {
+    setFinishSwipeAnimDuration(0)
+    forceCompleteCallback()
+  }, [])
 
-  setInterval(() => setSwipeStatusMessage(defaultStatusMessage), 5000);
-  const updateSwipeStatusMessage = (message) => setSwipeStatusMessage(message);
-  const renderSubHeading = (heading) => (
-    <Text style={styles.subHeading}>{heading}</Text>
-  );
-  let forceResetLastButton = null;
-
-  const CheckoutButton = () => {
-    return(
-        <View style={{width: 100, height: 30, backgroundColor: '#C70039', borderRadius: 5, justifyContent: 'center', alignItems: 'center'}}>
-            <Text style={{color: '#ffffff'}}>Checkout</Text>
-        </View>
-    );
-  } 
-
-
+  const forceResetButtonCallback = useCallback(() => {
+    forceResetLastButton()
+    setInterval(() => setFinishSwipeAnimDuration(400) , 1000)
+  }, [])
+  
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <View style={styles.container}>
-          <Text style={styles.title}>React Native Swipe Button</Text>
-          <Text style={styles.swipeStatus}>{swipeStatusMessage}</Text>
-          {renderSubHeading('Disabled')}
-          <SwipeButton thumbIconImageSource={arrowRight} disabled />
-          {renderSubHeading('Swipe status callbacks')}
-          <SwipeButton
-            containerStyles={{borderRadius: 5}}
-            height={30}
-            onSwipeFail={() => updateSwipeStatusMessage('Incomplete swipe!')}
-            onSwipeStart={() => updateSwipeStatusMessage('Swipe started!')}
-            onSwipeSuccess={() =>
-              updateSwipeStatusMessage('Submitted successfully!')
-            }
-            railBackgroundColor="#31a57c"
-            railStyles={{borderRadius: 5}}
-            thumbIconComponent={CheckoutButton}
-            thumbIconImageSource={arrowRight}
-            thumbIconStyles={{borderRadius: 5}}
-            thumbIconWidth={100} 
-            title="Submit order"
-          />
-          {renderSubHeading('Reverse swipe enabled')}
-          <SwipeButton
-            enableReverseSwipe
-            onSwipeSuccess={() => updateSwipeStatusMessage('Slide success!')}
-            railBackgroundColor="#a493d6"
-            thumbIconBackgroundColor="#FFFFFF"
-            title="Slide to unlock"
-          />
-          {renderSubHeading('Set a component as thumb icon & use forceReset')}
-          <SwipeButton
-            disableResetOnTap
-            forceReset={ reset => {
-              forceResetLastButton = reset
-            }}
-            railBackgroundColor="#9fc7e8"  
-            railStyles={{
-              backgroundColor: '#44000088',
-              borderColor: '#880000FF',
-            }}
-            thumbIconBackgroundColor="#FFFFFF"
-            title="Slide to unlock"
-          />
-          <View style={{ alignItems: 'center', marginBottom: 5 }}>
-            <Button onPress={() => forceResetLastButton && forceResetLastButton()} title="Force reset" />
-          </View>  
-          {renderSubHeading('Set .png image as thumb icon')}
-          <SwipeButton thumbIconImageSource={thumbIcon} railBackgroundColor="#cfb0dd"/>
-          {renderSubHeading('Set height & reset after successful swipe')}
-          <SwipeButton height={25} shouldResetAfterSuccess={true} resetAfterSuccessAnimDelay={1000} />
-          {renderSubHeading('Set height and width')}
-          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-            <SwipeButton height={35} width={200} title="Swipe" disabled={disableCBButton} />
-            <View style={{ marginLeft: 15, width: 150, height: 32 }}><Button onPress={() => setDisableCBButton(!disableCBButton)} title="Toggle disable" /></View>
-          </View>  
-        </View>
-      </SafeAreaView>
-    </>
-  );
+    <View>
+      <SwipeButton
+        disableResetOnTap
+        forceReset={ (reset: any) => {
+          forceResetLastButton = reset
+        }}
+        finishRemainingSwipeAnimationDuration={finishSwipeAnimDuration}
+        forceCompleteSwipe={ (forceComplete: any) => {
+          forceCompleteCallback = forceComplete
+        }}
+        railBackgroundColor="#9fc7e8"
+        railStyles={{
+          backgroundColor: '#147cbb',
+          borderColor: '#880000FF',
+        }}
+        thumbIconBackgroundColor="#FFFFFF"
+        thumbIconImageSource={require('@/assets/images/react-logo.png')}
+        title="Slide to unlock"
+      />
+      <View style={{ marginBottom: 5, flexDirection: 'row', justifyContent: 'center' }}>
+        <Text onPress={forceCompleteButtonCallback}>Force Complete</Text>
+        <Text onPress={forceResetButtonCallback}>Force Reset</Text>
+      </View>
+    </View>
+  )
 };
 ```
+
+<p>Please check <a href="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/app/(tabs)/index.tsx" target="_blank">the demo app</a> for more examples.</p>
+
 <hr/>
 
 ### Note 
@@ -282,7 +236,7 @@ const App: () => React$Node = () => {
 <div>
   <h2 style="color:darkgreen;">Making changes and seeing them in the demo app</h2>
   <p>Mapping the local npm package using `npm link` is not working for me but you can give a try and update this readme to help others.<p>
-  <p>Workaroud is simply copy the `src` folder from the `RNSwipeButton` and paste it in `RNSwipeButtonDemo` app. In the demo app, you see `App.tsx`. When you open it, you will see a commented import and a note. Simply use the copied source code. I understand it is not the ideal way to work but this is a simple component and won't take more than 10seconds to do this.</p>
+  <p>Workaroud is simply copy the `src` folder from the `RNSwipeButton` and paste it in `RNSwipeButtonDemo` app "app\(tabs)" folder. In the demo app, you see `index.tsx` with HomeScreen. When you open it, you will see a commented import and a note. Simply use the copied source code. I understand it is not the ideal way to work but this is a simple component and won't take more than 10seconds to do this.</p>
 </div>
 
 <hr>
