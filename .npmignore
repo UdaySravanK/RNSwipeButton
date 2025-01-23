@@ -17,5 +17,35 @@ examples
 # Buids
 builds
 
-#coverage directory
+# Coverage directory
 coverage
+coverage/*
+
+# Test
+test/
+tests/
+*.test.js
+*spec.js
+__tests__
+__tests__/*
+
+# IDE
+.vscode
+.idea
+.DS_Store
+
+# Git
+.git
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+.github/
+.husky/
+
+# Dev
+.babelrc
+.nvmrc
+.stylelintrc
+babel.config.js
+eslint.config.mjs
+jest.config.js
+jest.setupFilesAfterEnv.ts
