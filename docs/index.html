@@ -69,7 +69,11 @@
 
     <b>enableReverseSwipe</b>: PropTypes.bool,
 
-    <b>forceReset</b>: PropTypes.func, // <span style="color: blueviolet">RNSwipeButton will call this function by passing a "reset" function as argument. Calling "reset" will reset the swipe thumb.</span>
+    <b>finishRemainingSwipeAnimationDuration</b>: PropTypes.number,
+
+    <b>forceCompleteSwipe</b>: PropTypes.func, // <span style="color: blueviolet">RNSwipeButton will call this function by passing a "forceCompleteSwipe" function as an argument. Calling the returned function will force complete the swipe.</span>
+
+    <b>forceReset</b>: PropTypes.func, // <span style="color: blueviolet">RNSwipeButton will call this function by passing a "reset" function as an argument. Calling "reset" will reset the swipe thumb.</span>
     
     <b>height</b>: PropTypes.number,
 

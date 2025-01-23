@@ -78,6 +78,8 @@ import SwipeButton from 'rn-swipe-button';
     <b>disabledThumbIconBackgroundColor</b>: PropTypes.string,
     <b>disabledThumbIconBorderColor</b>: PropTypes.string,
     <b>enableReverseSwipe</b>: PropTypes.bool,
+    <b>finishRemainingSwipeAnimationDuration</b>: PropTypes.number,
+    <b>forceCompleteSwipe</b>: PropTypes.func, // <span style="color: blueviolet">RNSwipeButton will call this function by passing a "forceCompleteSwipe" function as an argument. Calling the returned function will force complete the swipe.</span>
     <b>forceReset</b>: PropTypes.func, <span style="color: blueviolet"> // RNSwipeButton will call this function by passing a "reset" function as argument. Calling "reset" will reset the swipe thumb.</span>
     <b>height</b>: PropTypes.oneOfType([
        PropTypes.string,
