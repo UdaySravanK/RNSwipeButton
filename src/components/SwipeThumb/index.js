@@ -1,13 +1,7 @@
 import React, { useCallback, useState, useEffect, useRef } from "react";
-import PropTypes, { func } from "prop-types";
+import PropTypes from "prop-types";
 import { I18nManager } from "react-native";
-import {
-  Animated,
-  Image,
-  PanResponder,
-  TouchableNativeFeedback,
-  View,
-} from "react-native";
+import { Animated, Image, PanResponder, View } from "react-native";
 
 // Styles
 import styles, { borderWidth, margin } from "./styles";
@@ -35,7 +29,6 @@ const SwipeThumb = (props) => {
     railFillBorderColor,
     railStyles,
     resetAfterSuccessAnimDelay,
-    screenReaderEnabled = false,
     shouldResetAfterSuccess,
     swipeSuccessThreshold,
     thumbIconBackgroundColor,
@@ -45,7 +38,6 @@ const SwipeThumb = (props) => {
     thumbIconImageSource,
     thumbIconStyles = {},
     thumbIconWidth,
-    title,
   } = props;
 
   const paddingAndMarginsOffset = borderWidth + 2 * margin;
@@ -162,11 +154,8 @@ const SwipeThumb = (props) => {
   }
 
   function setBackgroundColors() {
-    // Set backgroundColor only if not already set
-    if (backgroundColor === TRANSPARENT_COLOR) {
-      setBackgroundColor(railFillBackgroundColor);
-      setBorderColor(railFillBorderColor);
-    }
+    setBackgroundColor(railFillBackgroundColor);
+    setBorderColor(railFillBorderColor);
   }
 
   function finishRemainingSwipe() {
@@ -193,11 +182,6 @@ const SwipeThumb = (props) => {
   function reset() {
     disableTouch(false);
     setDefaultWidth(defaultContainerWidth);
-
-    if (backgroundColor !== TRANSPARENT_COLOR) {
-      setBackgroundColor(TRANSPARENT_COLOR);
-      setBorderColor(TRANSPARENT_COLOR);
-    }
   }
 
   function forceComplete() {
@@ -251,31 +235,14 @@ const SwipeThumb = (props) => {
   };
 
   return (
-    <>
-      {screenReaderEnabled ? (
-        <TouchableNativeFeedback
-          accessibilityLabel={`${title}. ${
-            disabled ? "Disabled" : "Double-tap to activate"
-          }`}
-          disabled={disabled}
-          onPress={onSwipeSuccess}
-          accessible
-        >
-          <View style={[panStyle, { width: defaultContainerWidth }]}>
-            {renderThumbIcon()}
-          </View>
-        </TouchableNativeFeedback>
-      ) : (
-        <Animated.View
-          style={[panStyle]}
-          {...panResponder.panHandlers}
-          pointerEvents={shouldDisableTouch ? "none" : "auto"}
-          testID="SwipeThumb"
-        >
-          {renderThumbIcon()}
-        </Animated.View>
-      )}
-    </>
+    <Animated.View
+      style={[panStyle]}
+      {...panResponder.panHandlers}
+      pointerEvents={shouldDisableTouch ? "none" : "auto"}
+      testID="SwipeThumb"
+    >
+      {renderThumbIcon()}
+    </Animated.View>
   );
 };
 
@@ -296,7 +263,6 @@ SwipeThumb.propTypes = {
   railFillBorderColor: PropTypes.string,
   railStyles: PropTypes.object,
   resetAfterSuccessAnimDelay: PropTypes.number,
-  screenReaderEnabled: PropTypes.bool,
   shouldResetAfterSuccess: PropTypes.bool,
   swipeSuccessThreshold: PropTypes.number,
   thumbIconBackgroundColor: PropTypes.string,
@@ -313,7 +279,6 @@ SwipeThumb.propTypes = {
   ]),
   thumbIconStyles: PropTypes.object,
   thumbIconWidth: PropTypes.number,
-  title: PropTypes.string,
 };
 
 export default SwipeThumb;

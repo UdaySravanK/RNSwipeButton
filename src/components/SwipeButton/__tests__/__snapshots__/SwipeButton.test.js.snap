@@ -2,20 +2,47 @@
 
 exports[`Component: SwipeButton UI Rendering Tree & Props Thumb icon customm styles should not override important styles 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -96,20 +123,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props Thumb icon customm sty
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should apply thumbIconWidth 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -189,20 +243,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should apply thumbIcon
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should be able to change title styling 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -284,21 +365,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should be able to chan
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with containerStyles prop 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-        "margin": 24,
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 24,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -378,20 +485,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom height 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -471,20 +605,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom rail background color and border color 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#FFFFFF",
-        "borderColor": "#FF0000",
-      },
-    ]
+    {
+      "backgroundColor": "#FFFFFF",
+      "borderColor": "#FF0000",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -564,20 +725,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom rail styles 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -657,20 +845,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom thumb icon border and backgroun color 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -750,21 +965,48 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with custom width 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-        "width": 360,
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+      "width": 360,
+    }
   }
   testID="SwipeButton"
 >
@@ -844,20 +1086,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render correctly with default props 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -937,20 +1206,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render with correct styles when disable 1`] = `
 <View
+  accessibilityHint="Button disabled"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#CBCBCB",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#CBCBCB",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >
@@ -1030,20 +1326,47 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render with cor
 
 exports[`Component: SwipeButton UI Rendering Tree & Props should render with custom thumb component 1`] = `
 <View
+  accessibilityHint="Swipe to submit"
+  accessibilityLabel="Swipe to submit"
+  accessibilityRole="button"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
   onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
   style={
-    [
-      {
-        "borderRadius": 50,
-        "borderWidth": 1,
-        "justifyContent": "center",
-        "margin": 5,
-      },
-      {
-        "backgroundColor": "#7CF3F9",
-        "borderColor": "#073436",
-      },
-    ]
+    {
+      "backgroundColor": "#7CF3F9",
+      "borderColor": "#073436",
+      "borderRadius": 50,
+      "borderWidth": 1,
+      "justifyContent": "center",
+      "margin": 5,
+      "opacity": 1,
+    }
   }
   testID="SwipeButton"
 >

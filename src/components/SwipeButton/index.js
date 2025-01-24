@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Text, View, AccessibilityInfo } from "react-native";
+import { Text, AccessibilityInfo, TouchableOpacity } from "react-native";
 
 // Components
 import SwipeThumb from "../../components/SwipeThumb";
@@ -69,7 +69,8 @@ const SwipeButton = ({
   const [layoutWidth, setLayoutWidth] = useState(0);
   const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
   const [isUnmounting, setIsUnmounting] = useState(false);
-
+  const [activationMessage, setActivationMessage] = useState(title);
+  const [disableInteraction, setDisableInteraction] = useState(false);
   /**
    * Retrieve layoutWidth to set maximum swipeable area.
    * Correct layout width will be received only after first render but we need it before render.
@@ -82,34 +83,76 @@ const SwipeButton = ({
     setLayoutWidth(e.nativeEvent.layout.width);
   };
 
+  /**
+   * If we don't update `disabled` prop of TouchableOpacity through state changes,
+   * switching from a11y to normal mode would still keep the button in disabled state.
+   * Which results to all interactions disabled. Swipe gesture won't work.
+   */
   useEffect(() => {
-    const handleScreenReaderToggled = (isEnabled) => {
-      if (isUnmounting || screenReaderEnabled === isEnabled) {
-        return;
-      }
-      setScreenReaderEnabled(isEnabled);
-    };
+    if (disabled && screenReaderEnabled) {
+      setDisableInteraction(true);
+    } else {
+      setDisableInteraction(false);
+    }
+  }, [disabled, screenReaderEnabled]);
+
+  const handleScreenReaderToggled = (isEnabled) => {
+    if (isUnmounting || screenReaderEnabled === isEnabled) {
+      return;
+    }
+    setScreenReaderEnabled(isEnabled);
+  };
+
+  useEffect(() => {
     setIsUnmounting(false);
     const subscription = AccessibilityInfo.addEventListener(
-      "change",
+      "screenReaderChanged",
       handleScreenReaderToggled,
     );
 
-    AccessibilityInfo.isScreenReaderEnabled().then((isEnabled) => {
-      if (isUnmounting) {
-        return;
-      }
-      setScreenReaderEnabled(isEnabled);
-    });
+    AccessibilityInfo.isScreenReaderEnabled().then(handleScreenReaderToggled);
 
     return () => {
       setIsUnmounting(true);
-      subscription.remove();
+      if (subscription) {
+        subscription.remove();
+      }
     };
-  }, [isUnmounting, screenReaderEnabled]);
+  }, [setIsUnmounting, screenReaderEnabled, handleScreenReaderToggled]);
+
+  useEffect(() => {
+    // Update activation message based on disabled state and screen reader status
+    if (disabled) {
+      setActivationMessage("Button disabled");
+    } else if (screenReaderEnabled) {
+      setActivationMessage("Double tap to activate");
+    } else {
+      setActivationMessage(title);
+    }
+  }, [disabled, screenReaderEnabled]);
+
+  const handlePress = () => {
+    if (disabled) return;
+    if (screenReaderEnabled) {
+      // Simulate swipe success for screen readers
+      onSwipeSuccess && onSwipeSuccess(false);
+    }
+  };
+
+  const handleFocus = () => {
+    AccessibilityInfo.isScreenReaderEnabled().then(handleScreenReaderToggled);
+  };
 
   return (
-    <View
+    <TouchableOpacity
+      onFocus={handleFocus}
+      disabled={disableInteraction}
+      accessible={true}
+      accessibilityLabel={title}
+      accessibilityHint={activationMessage}
+      accessibilityRole="button"
+      activeOpacity={disabled ? 1 : 0.5} // Make it feel like a button
+      onPress={handlePress}
       style={[
         styles.container,
         {
@@ -175,7 +218,7 @@ const SwipeButton = ({
           title={title}
         />
       )}
-    </View>
+    </TouchableOpacity>
   );
 };
 
