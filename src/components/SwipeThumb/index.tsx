@@ -1,12 +1,31 @@
-import React, { useCallback, useState, useEffect, useRef, ReactElement } from "react";
-import { I18nManager, Animated, Image, PanResponder, View, ViewStyle, ImageSourcePropType, GestureResponderEvent, PanResponderGestureState } from "react-native";
+import React, {
+  useCallback,
+  useState,
+  useEffect,
+  useRef,
+  ReactElement,
+} from "react";
+import {
+  I18nManager,
+  Animated,
+  Image,
+  PanResponder,
+  View,
+  ViewStyle,
+  ImageSourcePropType,
+  GestureResponderEvent,
+  PanResponderGestureState,
+} from "react-native";
 
 // Styles
 import styles, { borderWidth, margin } from "./styles";
 
 // Constants
-import { SWIPE_SUCCESS_THRESHOLD, TRANSPARENT_COLOR } from "../../constants";
-const DEFAULT_ANIMATION_DURATION = 400;
+import {
+  DEFAULT_ANIMATION_DURATION,
+  SWIPE_SUCCESS_THRESHOLD,
+  TRANSPARENT_COLOR,
+} from "../../constants";
 const RESET_AFTER_SUCCESS_DEFAULT_DELAY = 1000;
 
 interface SwipeThumbProps {
@@ -72,7 +91,7 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
   var defaultContainerWidth = 0;
   if (thumbIconWidth == undefined && thumbIconHeight != undefined) {
     defaultContainerWidth = thumbIconHeight;
-  } else if(thumbIconWidth != undefined) {
+  } else if (thumbIconWidth != undefined) {
     defaultContainerWidth = thumbIconWidth;
   }
   const maxWidth = layoutWidth - paddingAndMarginsOffset;
@@ -139,7 +158,10 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
     onSwipeStart && onSwipeStart();
   }
 
-  async function onPanResponderMove(_: any, gestureState: PanResponderGestureState) {
+  async function onPanResponderMove(
+    _: any,
+    gestureState: PanResponderGestureState,
+  ) {
     if (disabled || screenReaderEnabled) {
       return;
     }
@@ -166,11 +188,16 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
     }
   }
 
-  function onPanResponderRelease(_: any, gestureState: PanResponderGestureState) {
+  function onPanResponderRelease(
+    _: any,
+    gestureState: PanResponderGestureState,
+  ) {
     if (disabled) {
       return;
     }
-    const threshold = swipeSuccessThreshold ? swipeSuccessThreshold : SWIPE_SUCCESS_THRESHOLD;
+    const threshold = swipeSuccessThreshold
+      ? swipeSuccessThreshold
+      : SWIPE_SUCCESS_THRESHOLD;
     const reverseMultiplier = enableReverseSwipe ? -1 : 1;
     const rtlMultiplier = isRTL ? -1 : 1;
     const newWidth =

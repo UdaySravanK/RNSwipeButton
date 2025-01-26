@@ -1,15 +1,27 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import { Text, AccessibilityInfo, TouchableOpacity } from "react-native";
+import React, { useState, useEffect, ReactElement } from "react";
+import {
+  Text,
+  AccessibilityInfo,
+  TouchableOpacity,
+  ViewStyle,
+  TextStyle,
+  ImageSourcePropType,
+  LayoutChangeEvent,
+} from "react-native";
 
 // Components
-import SwipeThumb from "../../components/SwipeThumb";
+import SwipeThumb from "../SwipeThumb";
 
 // Styles
 import styles from "./styles";
 
 // Constants
 import {
+  DEFAULT_ANIMATION_DURATION,
+  DEFAULT_HEIGHT,
+  DEFAULT_TITLE,
+  DEFAULT_TITLE_FONT_SIZE,
+  DEFAULT_TITLE_MAX_LINES,
   DISABLED_RAIL_BACKGROUND_COLOR,
   DISABLED_THUMB_ICON_BACKGROUND_COLOR,
   DISABLED_THUMB_ICON_BORDER_COLOR,
@@ -22,6 +34,45 @@ import {
   THUMB_ICON_BORDER_COLOR,
   TITLE_COLOR,
 } from "../../constants";
+import { TouchableOpacityProps } from "react-native-gesture-handler";
+
+interface SwipeButtonProps extends TouchableOpacityProps {
+  containerStyles?: ViewStyle;
+  disabled?: boolean;
+  disabledRailBackgroundColor?: string;
+  disabledThumbIconBackgroundColor?: string;
+  disabledThumbIconBorderColor?: string;
+  disableResetOnTap?: boolean;
+  enableReverseSwipe?: boolean;
+  finishRemainingSwipeAnimationDuration?: number;
+  forceCompleteSwipe?: (forceComplete: () => void) => void;
+  forceReset?: (forceReset: () => void) => void;
+  height?: number;
+  onSwipeFail?: () => void;
+  onSwipeStart?: () => void;
+  onSwipeSuccess?: (isForceComplete: boolean) => void;
+  railBackgroundColor?: string;
+  railBorderColor?: string;
+  railFillBackgroundColor?: string;
+  railFillBorderColor?: string;
+  railStyles?: ViewStyle;
+  resetAfterSuccessAnimDelay?: number;
+  shouldResetAfterSuccess?: boolean;
+  swipeSuccessThreshold?: number;
+  thumbIconBackgroundColor?: string;
+  thumbIconBorderColor?: string;
+  thumbIconComponent?: () => ReactElement;
+  thumbIconImageSource?: ImageSourcePropType;
+  thumbIconStyles?: ViewStyle;
+  thumbIconWidth?: number;
+  title?: string;
+  titleColor?: string;
+  titleFontSize?: number;
+  titleMaxFontScale?: number;
+  titleMaxLines?: number;
+  titleStyles?: TextStyle;
+  width?: number;
+}
 
 /**
  * - Height of the RNSwipeButton will be determines by the height of the inner ThumbIcon which we interact with to swipe.
@@ -29,18 +80,18 @@ import {
  * @param {*} param0
  * @returns
  */
-const SwipeButton = ({
-  containerStyles = {},
+const SwipeButton: React.FC<SwipeButtonProps> = ({
+  containerStyles,
   disabled = false,
   disabledRailBackgroundColor = DISABLED_RAIL_BACKGROUND_COLOR,
   disabledThumbIconBackgroundColor = DISABLED_THUMB_ICON_BACKGROUND_COLOR,
   disabledThumbIconBorderColor = DISABLED_THUMB_ICON_BORDER_COLOR,
   disableResetOnTap = false,
   enableReverseSwipe,
-  finishRemainingSwipeAnimationDuration = 400,
+  finishRemainingSwipeAnimationDuration = DEFAULT_ANIMATION_DURATION,
   forceCompleteSwipe,
   forceReset,
-  height = 50,
+  height = DEFAULT_HEIGHT,
   onSwipeFail,
   onSwipeStart,
   onSwipeSuccess,
@@ -58,13 +109,14 @@ const SwipeButton = ({
   thumbIconImageSource,
   thumbIconStyles = {},
   thumbIconWidth,
-  title = "Swipe to submit",
+  title = DEFAULT_TITLE,
   titleColor = TITLE_COLOR,
-  titleFontSize = 20,
+  titleFontSize = DEFAULT_TITLE_FONT_SIZE,
   titleMaxFontScale,
-  titleMaxLines = 1,
+  titleMaxLines = DEFAULT_TITLE_MAX_LINES,
   titleStyles = {},
   width,
+  ...rest // Include other TouchableOpacity props
 }) => {
   const [layoutWidth, setLayoutWidth] = useState(0);
   const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
@@ -76,7 +128,7 @@ const SwipeButton = ({
    * Correct layout width will be received only after first render but we need it before render.
    * So render SwipeThumb only if layoutWidth > 0
    */
-  const onLayoutContainer = async (e) => {
+  const onLayoutContainer = async (e: LayoutChangeEvent) => {
     if (isUnmounting || layoutWidth) {
       return;
     }
@@ -96,7 +148,7 @@ const SwipeButton = ({
     }
   }, [disabled, screenReaderEnabled]);
 
-  const handleScreenReaderToggled = (isEnabled) => {
+  const handleScreenReaderToggled = (isEnabled: boolean) => {
     if (isUnmounting || screenReaderEnabled === isEnabled) {
       return;
     }
@@ -142,7 +194,14 @@ const SwipeButton = ({
   const handleFocus = () => {
     AccessibilityInfo.isScreenReaderEnabled().then(handleScreenReaderToggled);
   };
-
+  const dynamicContainerStyles: ViewStyle = {
+    ...containerStyles,
+    backgroundColor: disabled
+      ? disabledRailBackgroundColor
+      : railBackgroundColor,
+    borderColor: railBorderColor,
+    ...(width ? { width } : {}),
+  };
   return (
     <TouchableOpacity
       onFocus={handleFocus}
@@ -153,27 +212,15 @@ const SwipeButton = ({
       accessibilityRole="button"
       activeOpacity={disabled ? 1 : 0.5} // Make it feel like a button
       onPress={handlePress}
-      style={[
-        styles.container,
-        {
-          ...containerStyles,
-          backgroundColor: disabled
-            ? disabledRailBackgroundColor
-            : railBackgroundColor,
-          borderColor: railBorderColor,
-          ...(width ? { width } : {}),
-        },
-      ]}
+      style={[styles.container, { ...dynamicContainerStyles }]}
       onLayout={onLayoutContainer}
       testID="SwipeButton"
+      {...rest}
     >
       <Text
         maxFontSizeMultiplier={titleMaxFontScale}
         ellipsizeMode={"tail"}
         numberOfLines={titleMaxLines}
-        importantForAccessibility={
-          screenReaderEnabled ? "no-hide-descendants" : ""
-        }
         style={[
           styles.title,
           {
@@ -215,56 +262,10 @@ const SwipeButton = ({
           thumbIconImageSource={thumbIconImageSource}
           thumbIconStyles={thumbIconStyles}
           thumbIconWidth={thumbIconWidth}
-          title={title}
         />
       )}
     </TouchableOpacity>
   );
-};
-
-SwipeButton.propTypes = {
-  containerStyles: PropTypes.object,
-  disabled: PropTypes.bool,
-  disabledRailBackgroundColor: PropTypes.string,
-  disabledThumbIconBackgroundColor: PropTypes.string,
-  disabledThumbIconBorderColor: PropTypes.string,
-  disableResetOnTap: PropTypes.bool,
-  enableReverseSwipe: PropTypes.bool,
-  finishRemainingSwipeAnimationDuration: PropTypes.number,
-  forceCompleteSwipe: PropTypes.func,
-  forceReset: PropTypes.func,
-  height: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-  onSwipeFail: PropTypes.func,
-  onSwipeStart: PropTypes.func,
-  onSwipeSuccess: PropTypes.func,
-  railBackgroundColor: PropTypes.string,
-  railBorderColor: PropTypes.string,
-  railFillBackgroundColor: PropTypes.string,
-  railFillBorderColor: PropTypes.string,
-  railStyles: PropTypes.object,
-  resetAfterSuccessAnimDelay: PropTypes.number,
-  shouldResetAfterSuccess: PropTypes.bool,
-  swipeSuccessThreshold: PropTypes.number, // Ex: 70. Swipping 70% will be considered as successful swipe
-  thumbIconBackgroundColor: PropTypes.string,
-  thumbIconBorderColor: PropTypes.string,
-  thumbIconComponent: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.node,
-    PropTypes.func,
-  ]),
-  thumbIconImageSource: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
-  thumbIconStyles: PropTypes.object,
-  thumbIconWidth: PropTypes.number,
-  title: PropTypes.string,
-  titleColor: PropTypes.string,
-  titleFontSize: PropTypes.number,
-  titleMaxFontScale: PropTypes.number,
-  titleMaxLines: PropTypes.number,
-  titleStyles: PropTypes.object,
-  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 export default SwipeButton;

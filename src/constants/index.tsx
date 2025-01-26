@@ -15,3 +15,8 @@ export const DISABLED_THUMB_ICON_BORDER_COLOR = "#3C3C3C";
 export const DISABLED_THUMB_ICON_BACKGROUND_COLOR = "#D3D3D3";
 
 export const SWIPE_SUCCESS_THRESHOLD = 70;
+export const DEFAULT_ANIMATION_DURATION = 400;
+export const DEFAULT_HEIGHT = 50;
+export const DEFAULT_TITLE = "Swipe to submit";
+export const DEFAULT_TITLE_FONT_SIZE = 20;
+export const DEFAULT_TITLE_MAX_LINES = 1;
