@@ -1,5 +1,5 @@
 import { Component, ReactElement } from 'react';
-import { StyleProp, ViewStyle, TextStyle } from 'react-native';
+import { StyleProp, ViewStyle, TextStyle, ImageSourcePropType } from 'react-native';
 
 interface Props {
     containerStyles?: StyleProp<ViewStyle>;
@@ -10,7 +10,7 @@ interface Props {
     /**
      * Without setting this to true, the completed swipe will be reset to start position upon a tap.
      */
-    disableResetOnTap?: boolean,
+    disableResetOnTap?: boolean;
     /**
      * Enable swipe from right to left for RTL apps support
      */
@@ -19,7 +19,7 @@ interface Props {
      * When the swipe reaches a default 70% threshold or a custom `swipeSuccessThreshold`, the remaining swipe will be auto completed with an animation.
      * The default animation duration is 400ms. This value can be contolled with this prop.
      */
-    finishRemainingSwipeAnimationDuration?: number,
+    finishRemainingSwipeAnimationDuration?: number;
     /**
      * This funtion returns an inner function. The returned inner function can be invoked to complete the swipe programmatically.
      * @returns function
@@ -29,18 +29,18 @@ interface Props {
      * This funtion returns an inner function. The returned inner function can be invoked to reset a successfully completed swipe.
      * @returns function
      */
-    forceReset?: (reset: () => void) => void;
+    forceReset?: (forceReset: () => void) => void;
     /**
      * This is the height of thumb which we interact to swipe. 
      * The width of the thumb will be automatically set to the height by default. But the thumb can be costomized with `thumbIconComponent`.
+     * Default value is 50
      */
-    height?: number | string;
+    height?: number;
     onSwipeFail?: () => void;
     onSwipeStart?: () => void;
     /**
      * A successful swipe invokes this callback.
      * @param isForceComplete Indicates whether the swipe is completed by real gesture of programmatically using the forceCompleteSwipe
-     * @returns 
      */
     onSwipeSuccess?: (isForceComplete: boolean) => void;
     railBackgroundColor?: string;
@@ -51,31 +51,40 @@ interface Props {
     /**
      * The button can be reset to original state upon a succesful swipe by setting `shouldResetAfterSuccess` to true. This prop is to set the delay.
      */
-    resetAfterSuccessAnimDelay: number;
+    resetAfterSuccessAnimDelay?: number;
     shouldResetAfterSuccess?: boolean;
     /**
-     * If you set it to 50, it means after swiping 70%, the remaining will be auto completed.
+     * If you set it to 50, it means after swiping 50%, the remaining will be auto completed.
      * 
      * Default value is 70.
      */
-    swipeSuccessThreshold?: number; 
+    swipeSuccessThreshold?: number;
     thumbIconBackgroundColor?: string;
     thumbIconBorderColor?: string;
     thumbIconComponent?: () => ReactElement;
-    thumbIconImageSource?: string | number;
+    thumbIconImageSource?: ImageSourcePropType;
     thumbIconStyles?: StyleProp<ViewStyle>;
     thumbIconHeight?: number;
     thumbIconWidth?: number;
     title?: string;
     titleColor?: string;
+    /**
+     * Default value is 20
+     */
     titleFontSize?: number;
+    /**
+     * Allows scaling the title font size when the button width increases.  A value of 1.5 means the font size will scale up to 150% of the base `titleFontSize`.
+     */
     titleMaxFontScale?: number;
-    titleMaxLines: number
+    /**
+     * Default value is 1
+     */
+    titleMaxLines?: number;
     titleStyles?: StyleProp<TextStyle>;
     /**
      * Width of the entire SwipeButton not just the draggable thumb icon.
      */
-    width?: string | number;
+    width?: number;
 }
 
 interface State {
@@ -83,10 +92,7 @@ interface State {
     screenReaderEnabled: boolean;
 }
 
-export default class RNSwipeButton extends Component<Props, State> {
-    static defaultProps = RNSwipeButton.defaultProps;
-}
+export default class RNSwipeButton extends Component<Props, State> {}
 
-export {
-    Props
-};
+export { Props };
+

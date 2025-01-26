@@ -48,7 +48,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props Thumb icon customm sty
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -169,7 +168,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should apply thumbIcon
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -289,7 +287,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should be able to chan
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     maxFontSizeMultiplier="4"
     numberOfLines="4"
     style={
@@ -411,7 +408,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -531,7 +527,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -651,7 +646,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -771,7 +765,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -891,7 +884,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -1012,7 +1004,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -1132,7 +1123,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -1252,7 +1242,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render with cor
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [
@@ -1372,7 +1361,6 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render with cus
 >
   <Text
     ellipsizeMode="tail"
-    importantForAccessibility=""
     numberOfLines={1}
     style={
       [

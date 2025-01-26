@@ -15,22 +15,60 @@ describe("Component: SwipeButton Functionality", () => {
     jest.clearAllMocks();
   });
 
-  it("should call onSwipeStart when swiping starts", async () => {
+  it("should call onSwipeSuccess when swipe completed with forceCompleteSwipe", async () => {
     // Setup
-    // const onSwipeStart = jest.fn();
-    // const user = userEvent.setup();
-    // render(<SwipeButton onSwipeStart={onSwipeStart} />);
-    // const button = screen.getAllByTestId("SwipeButton")[0];
-    // fireEvent(button, 'onLayout', { nativeEvent: { layout: { width: 100 } } })
-    // const thumb = screen.getByTestId("DefaultThumbIcon"); // Get the thumb component
+    const onSwipeSuccess = jest.fn();
+    let forceComplete;
+    render(
+      <SwipeButton
+        title="Swipe"
+        onSwipeSuccess={onSwipeSuccess}
+        forceCompleteSwipe={(complete) => (forceComplete = complete)}
+      />,
+    );
+    const button = screen.getAllByTestId("SwipeButton")[0];
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
 
     // Execute
-    // await user.press(thumb);
+    forceComplete();
 
     // Assert
-    expect(2 + 2).toBe(4);
-    // expect(onSwipeStart).toHaveBeenCalledTimes(1);
+    expect(onSwipeSuccess).toHaveBeenCalledTimes(1);
   });
+
+  it("should return forceReset callback", async () => {
+    // Setup
+    let forceReset;
+    render(
+      <SwipeButton
+        title="Swipe"
+        forceReset={(reset) => (forceReset = reset)}
+      />,
+    );
+
+    // Execute
+    const button = screen.getAllByTestId("SwipeButton")[0];
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    // Assert
+    expect(forceReset).not.toBeNull();
+  });
+
+  // it("should call onSwipeStart when swiping starts", async () => {
+  // Setup
+  // const onSwipeStart = jest.fn();
+  // const user = userEvent.setup();
+  // render(<SwipeButton onSwipeStart={onSwipeStart} />);
+  // const button = screen.getAllByTestId("SwipeButton")[0];
+  // fireEvent(button, 'onLayout', { nativeEvent: { layout: { width: 100 } } })
+  // const thumb = screen.getByTestId("DefaultThumbIcon"); // Get the thumb component
+
+  // Execute
+  // await user.press(thumb);
+
+  // Assert
+  // expect(onSwipeStart).toHaveBeenCalledTimes(1);
+  // });
 
   // it("should call onSwipeSuccess when swiped successfully", async () => {
   //   const onSwipeSuccess = jest.fn();
