@@ -33,7 +33,6 @@ describe("SwipeThumb Component", () => {
         thumbIconBackgroundColor={THUMB_ICON_BACKGROUND_COLOR}
         thumbIconBorderColor={THUMB_ICON_BORDER_COLOR}
         thumbIconHeight={50}
-        title={"Test Thumb"}
         onSwipeStart={onSwipeStart}
       />,
     );
