@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">78.04% </span>
+                <span class="strong">80.48% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>32/41</span>
+                <span class='fraction'>33/41</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">80% </span>
+                <span class="strong">82.5% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>32/40</span>
+                <span class='fraction'>33/40</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -334,7 +334,12 @@
 <a name='L269'></a><a href='#L269'>269</a>
 <a name='L270'></a><a href='#L270'>270</a>
 <a name='L271'></a><a href='#L271'>271</a>
-<a name='L272'></a><a href='#L272'>272</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L272'></a><a href='#L272'>272</a>
+<a name='L273'></a><a href='#L273'>273</a>
+<a name='L274'></a><a href='#L274'>274</a>
+<a name='L275'></a><a href='#L275'>275</a>
+<a name='L276'></a><a href='#L276'>276</a>
+<a name='L277'></a><a href='#L277'>277</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -465,10 +470,13 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-yes">14x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -530,13 +538,6 @@
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">44x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -547,6 +548,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">44x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -605,7 +607,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect, ReactElement } from "react";
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { useState, useEffect, ReactElement, useCallback } from "react";
 import {
   Text,
   AccessibilityInfo,
@@ -735,12 +745,15 @@ const SwipeButton: React.FC&lt;SwipeButtonProps&gt; = ({
    * Correct layout width will be received only after first render but we need it before render.
    * So render SwipeThumb only if layoutWidth &gt; 0
    */
-  const onLayoutContainer = async (e: LayoutChangeEvent) =&gt; {
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (isUnmounting || layoutWidth) {
-<span class="cstat-no" title="statement not covered" >      return;</span>
-    }
-    setLayoutWidth(e.nativeEvent.layout.width);
-  };
+  const onLayoutContainer = useCallback(
+    (e: LayoutChangeEvent) =&gt; {
+      const newWidth = e.nativeEvent.layout.width;
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (!isUnmounting &amp;&amp; newWidth !== layoutWidth) {
+        setLayoutWidth(newWidth);
+      }
+    },
+    [isUnmounting, layoutWidth],
+  );
 &nbsp;
   /**
    * If we don't update `disabled` prop of TouchableOpacity through state changes,
@@ -790,17 +803,18 @@ const SwipeButton: React.FC&lt;SwipeButtonProps&gt; = ({
     }
   }, [disabled, screenReaderEnabled]);
 &nbsp;
-  const handlePress = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+  const handlePress = useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    if (disabled) <span class="cstat-no" title="statement not covered" >return;</span></span>
 <span class="cstat-no" title="statement not covered" >    if (screenReaderEnabled) {</span>
       // Simulate swipe success for screen readers
 <span class="cstat-no" title="statement not covered" >      onSwipeSuccess &amp;&amp; onSwipeSuccess(false);</span>
     }
-  };
+  }, [disabled, screenReaderEnabled, onSwipeSuccess]);
 &nbsp;
-  const handleFocus = <span class="fstat-no" title="function not covered" >()</span> =&gt; {
+  const handleFocus = useCallback(<span class="fstat-no" title="function not covered" >()</span> =&gt; {
 <span class="cstat-no" title="statement not covered" >    AccessibilityInfo.isScreenReaderEnabled().then(handleScreenReaderToggled);</span>
-  };
+  }, [handleScreenReaderToggled]);
+&nbsp;
   const dynamicContainerStyles: ViewStyle = {
     ...containerStyles,
     backgroundColor: disabled
@@ -809,6 +823,7 @@ const SwipeButton: React.FC&lt;SwipeButtonProps&gt; = ({
     borderColor: railBorderColor,
     ...(width ? { width } : {}),
   };
+&nbsp;
   return (
     &lt;TouchableOpacity
       onFocus={handleFocus}
@@ -875,7 +890,7 @@ const SwipeButton: React.FC&lt;SwipeButtonProps&gt; = ({
   );
 };
 &nbsp;
-export default SwipeButton;
+export default React.memo(SwipeButton);
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
@@ -883,7 +898,7 @@ export default SwipeButton;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2025-01-26T22:56:37.155Z
+                at 2025-01-29T05:26:55.826Z
             </div>
         <script src="../../prettify.js"></script>
         <script>
