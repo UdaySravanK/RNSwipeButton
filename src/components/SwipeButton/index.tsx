@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ReactElement } from "react";
+import React, { useState, useEffect, ReactElement, useCallback } from "react";
 import {
   Text,
   AccessibilityInfo,
@@ -128,12 +128,15 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
    * Correct layout width will be received only after first render but we need it before render.
    * So render SwipeThumb only if layoutWidth > 0
    */
-  const onLayoutContainer = async (e: LayoutChangeEvent) => {
-    if (isUnmounting || layoutWidth) {
-      return;
-    }
-    setLayoutWidth(e.nativeEvent.layout.width);
-  };
+  const onLayoutContainer = useCallback(
+    (e: LayoutChangeEvent) => {
+      const newWidth = e.nativeEvent.layout.width;
+      if (!isUnmounting && newWidth !== layoutWidth) {
+        setLayoutWidth(newWidth);
+      }
+    },
+    [isUnmounting, layoutWidth],
+  );
 
   /**
    * If we don't update `disabled` prop of TouchableOpacity through state changes,
@@ -183,17 +186,18 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
     }
   }, [disabled, screenReaderEnabled]);
 
-  const handlePress = () => {
+  const handlePress = useCallback(() => {
     if (disabled) return;
     if (screenReaderEnabled) {
       // Simulate swipe success for screen readers
       onSwipeSuccess && onSwipeSuccess(false);
     }
-  };
+  }, [disabled, screenReaderEnabled, onSwipeSuccess]);
 
-  const handleFocus = () => {
+  const handleFocus = useCallback(() => {
     AccessibilityInfo.isScreenReaderEnabled().then(handleScreenReaderToggled);
-  };
+  }, [handleScreenReaderToggled]);
+
   const dynamicContainerStyles: ViewStyle = {
     ...containerStyles,
     backgroundColor: disabled
@@ -202,6 +206,7 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
     borderColor: railBorderColor,
     ...(width ? { width } : {}),
   };
+
   return (
     <TouchableOpacity
       onFocus={handleFocus}
@@ -268,4 +273,4 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
   );
 };
 
-export default SwipeButton;
+export default React.memo(SwipeButton);

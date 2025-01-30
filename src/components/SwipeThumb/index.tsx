@@ -4,6 +4,7 @@ import React, {
   useEffect,
   useRef,
   ReactElement,
+  useMemo,
 } from "react";
 import {
   I18nManager,
@@ -57,7 +58,7 @@ interface SwipeThumbProps {
   screenReaderEnabled?: boolean;
 }
 
-const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
+const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
   const {
     disabled = false,
     disableResetOnTap = false,
@@ -106,27 +107,13 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
   const [backgroundColor, setBackgroundColor] = useState(TRANSPARENT_COLOR);
   const [borderColor, setBorderColor] = useState(TRANSPARENT_COLOR);
 
-  const panResponder = useCallback(
-    PanResponder.create({
-      onStartShouldSetPanResponder: (e: any, s: any) => true,
-      onStartShouldSetPanResponderCapture: (e: any, s: any) => true,
-      onMoveShouldSetPanResponder: (e: any, s: any) => true,
-      onMoveShouldSetPanResponderCapture: (e: any, s: any) => true,
-      onShouldBlockNativeResponder: (e: any, s: any) => true,
-      onPanResponderStart,
-      onPanResponderMove,
-      onPanResponderRelease,
-    }) as any,
-    [props], // [disabled, enableReverseSwipe, defaultContainerWidth, maxWidth, setBackgroundColors, animatedWidth, screenReaderEnabled],
-  );
-
   useEffect(() => {
     Animated.timing(animatedWidth, {
       toValue: defaultWidth,
       duration: finishRemainingSwipeAnimationDuration,
       useNativeDriver: false,
     }).start();
-  }, [animatedWidth, defaultWidth, finishRemainingSwipeAnimationDuration]);
+  }, [defaultWidth]);
 
   useEffect(() => {
     forceReset && forceReset(reset);
@@ -158,35 +145,43 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
     onSwipeStart && onSwipeStart();
   }
 
-  async function onPanResponderMove(
-    _: any,
-    gestureState: PanResponderGestureState,
-  ) {
-    if (disabled || screenReaderEnabled) {
-      return;
-    }
-    const reverseMultiplier = enableReverseSwipe ? -1 : 1;
-    const rtlMultiplier = isRTL ? -1 : 1;
-    const newWidth =
-      defaultContainerWidth +
-      rtlMultiplier * reverseMultiplier * gestureState.dx;
-    if (newWidth < defaultContainerWidth) {
-      // Reached starting position
-      reset();
-    } else if (newWidth > maxWidth) {
-      // Reached end position
-      setBackgroundColors();
-      setDefaultWidth(maxWidth);
-    } else {
-      setBackgroundColors();
-      await Animated.timing(animatedWidth, {
-        toValue: newWidth,
-        duration: 0,
-        useNativeDriver: false,
-      }).start();
-      setDefaultWidth(newWidth);
-    }
-  }
+  const onPanResponderMove = useCallback(
+    async (_: any, gestureState: PanResponderGestureState) => {
+      if (disabled || screenReaderEnabled) return;
+
+      const reverseMultiplier = enableReverseSwipe ? -1 : 1;
+      const rtlMultiplier = isRTL ? -1 : 1;
+      const newWidth =
+        defaultContainerWidth +
+        rtlMultiplier * reverseMultiplier * gestureState.dx;
+
+      if (newWidth < defaultContainerWidth) {
+        reset();
+      } else if (newWidth > maxWidth) {
+        setBackgroundColors();
+        setDefaultWidth(maxWidth);
+      } else {
+        setBackgroundColors();
+        await Animated.timing(animatedWidth, {
+          toValue: newWidth,
+          duration: 0,
+          useNativeDriver: false,
+        }).start();
+        setDefaultWidth(newWidth);
+      }
+    },
+    [
+      disabled,
+      screenReaderEnabled,
+      defaultContainerWidth,
+      maxWidth,
+      isRTL,
+      enableReverseSwipe,
+      reset,
+      setBackgroundColors,
+      animatedWidth,
+    ],
+  );
 
   function onPanResponderRelease(
     _: any,
@@ -249,14 +244,9 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
     invokeOnSwipeSuccess(true);
   }
 
-  function renderThumbIcon() {
-    var iconWidth = 0;
-    if (thumbIconWidth == undefined && thumbIconHeight != undefined) {
-      iconWidth = thumbIconHeight;
-    } else if (thumbIconWidth != undefined) {
-      iconWidth = thumbIconWidth;
-    }
-    const dynamicStyles: ViewStyle = {
+  const dynamicStyles: ViewStyle = useMemo(() => {
+    const iconWidth = thumbIconWidth ?? thumbIconHeight ?? 0;
+    return {
       ...thumbIconStyles,
       height: thumbIconHeight,
       width: iconWidth,
@@ -268,7 +258,18 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
         : thumbIconBorderColor,
       overflow: "hidden",
     };
+  }, [
+    thumbIconWidth,
+    thumbIconHeight,
+    thumbIconStyles,
+    disabled,
+    disabledThumbIconBackgroundColor,
+    thumbIconBackgroundColor,
+    disabledThumbIconBorderColor,
+    thumbIconBorderColor,
+  ]);
 
+  const renderThumbIcon = useCallback(() => {
     return (
       <View
         style={[styles.icon, { ...dynamicStyles }]}
@@ -284,7 +285,21 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
         )}
       </View>
     );
-  }
+  }, [ThumbIconComponent, thumbIconImageSource, dynamicStyles]);
+
+  const panResponder = useCallback(
+    PanResponder.create({
+      onStartShouldSetPanResponder: (e: any, s: any) => true,
+      onStartShouldSetPanResponderCapture: (e: any, s: any) => true,
+      onMoveShouldSetPanResponder: (e: any, s: any) => true,
+      onMoveShouldSetPanResponderCapture: (e: any, s: any) => true,
+      onShouldBlockNativeResponder: (e: any, s: any) => true,
+      onPanResponderGrant: onPanResponderStart,
+      onPanResponderMove: onPanResponderMove,
+      onPanResponderRelease: onPanResponderRelease,
+    }) as any,
+    [props], // [disabled, enableReverseSwipe, defaultContainerWidth, maxWidth, setBackgroundColors, animatedWidth, screenReaderEnabled],
+  );
 
   const panStyle = {
     backgroundColor,
@@ -304,6 +319,6 @@ const SwipeThumb: React.FC<SwipeThumbProps> = (props) => {
       {renderThumbIcon()}
     </Animated.View>
   );
-};
+});
 
 export default SwipeThumb;
