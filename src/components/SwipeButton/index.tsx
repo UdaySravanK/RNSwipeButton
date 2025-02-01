@@ -207,8 +207,6 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
   }, [disabled, isScreenReaderEnabled, onSwipeSuccess]);
 
   const handleFocus = useCallback(() => {
-    debugger;
-    console.log("handle focus called");
     AccessibilityInfo.isScreenReaderEnabled().then(handleScreenReaderToggled);
   }, [handleScreenReaderToggled]);
 
