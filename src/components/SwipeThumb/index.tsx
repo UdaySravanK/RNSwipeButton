@@ -46,6 +46,7 @@ interface SwipeThumbProps {
   railFillBorderColor?: string;
   railStyles?: ViewStyle;
   resetAfterSuccessAnimDelay?: number;
+  screenReaderEnabled?: boolean;
   shouldResetAfterSuccess?: boolean;
   swipeSuccessThreshold?: number;
   thumbIconBackgroundColor?: string;
@@ -55,7 +56,6 @@ interface SwipeThumbProps {
   thumbIconImageSource?: ImageSourcePropType | undefined;
   thumbIconStyles?: ViewStyle;
   thumbIconWidth?: number;
-  screenReaderEnabled?: boolean;
 }
 
 const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
@@ -76,6 +76,7 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
     railFillBorderColor,
     railStyles,
     resetAfterSuccessAnimDelay,
+    screenReaderEnabled = false,
     shouldResetAfterSuccess,
     swipeSuccessThreshold,
     thumbIconBackgroundColor,
@@ -85,7 +86,6 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
     thumbIconImageSource,
     thumbIconStyles = {},
     thumbIconWidth,
-    screenReaderEnabled = false,
   } = props;
 
   const paddingAndMarginsOffset = borderWidth + 2 * margin;

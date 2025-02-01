@@ -1,23 +1,32 @@
-import {
-  render,
-  screen,
-  userEvent,
-  fireEvent,
-} from "@testing-library/react-native";
+import { render, screen, fireEvent } from "@testing-library/react-native";
 
-import SwipeButton from "../index";
+import SwipeButton from "../";
 import { expect } from "@jest/globals";
-import { AccessibilityInfo } from "react-native";
-import { borderWidth } from "../../SwipeThumb/styles";
+import React from "react";
 
 describe("Component: SwipeButton Functionality", () => {
   afterEach(() => {
     jest.clearAllMocks();
   });
 
+  it("moves the thumb icon when swiped", () => {
+    const { getByTestId } = render(<SwipeButton />);
+
+    const button = screen.getAllByTestId("SwipeButton")[0];
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    const thumb = getByTestId("SwipeThumb");
+
+    fireEvent(thumb, "onPanResponderMove", {
+      nativeEvent: { touches: [{ clientX: 50 }] },
+    });
+    expect(thumb).toHaveStyle({ width: 50 });
+  });
+
   it("should call onSwipeSuccess when swipe completed with forceCompleteSwipe", async () => {
     // Setup
     const onSwipeSuccess = jest.fn();
+
     let forceComplete;
     render(
       <SwipeButton
@@ -54,167 +63,256 @@ describe("Component: SwipeButton Functionality", () => {
     expect(forceReset).not.toBeNull();
   });
 
-  // it("should call onSwipeStart when swiping starts", async () => {
-  // Setup
-  // const onSwipeStart = jest.fn();
-  // const user = userEvent.setup();
-  // render(<SwipeButton onSwipeStart={onSwipeStart} />);
-  // const button = screen.getAllByTestId("SwipeButton")[0];
-  // fireEvent(button, 'onLayout', { nativeEvent: { layout: { width: 100 } } })
-  // const thumb = screen.getByTestId("DefaultThumbIcon"); // Get the thumb component
+  it("triggers onSwipeSuccess when swipe threshold is met", () => {
+    const onSwipeStart = jest.fn();
+    const onSwipeSuccess = jest.fn();
+    const onSwipeFail = jest.fn();
+    const { getByTestId } = render(
+      <SwipeButton
+        onSwipeStart={onSwipeStart}
+        onSwipeSuccess={onSwipeSuccess}
+        onSwipeFail={onSwipeFail}
+      />,
+    );
 
-  // Execute
-  // await user.press(thumb);
+    // Simulate the onLayout event to set the layoutWidth
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "layout", {
+      nativeEvent: {
+        layout: {
+          width: 300, // Set a realistic width for the button
+          height: 50,
+        },
+      },
+    });
 
-  // Assert
-  // expect(onSwipeStart).toHaveBeenCalledTimes(1);
-  // });
+    // Get the thumb element
+    const thumb = getByTestId("SwipeThumb");
 
-  // it("should call onSwipeSuccess when swiped successfully", async () => {
-  //   const onSwipeSuccess = jest.fn();
-  //   const { getAllByTestId } = render(
-  //     <SwipeButton title="Swipe" onSwipeSuccess={onSwipeSuccess} />
-  //   );
+    // Simulate the start of the gesture
+    fireEvent(thumb, "responderGrant", {
+      nativeEvent: {
+        touches: [{ pageX: 0, pageY: 0 }], // Initial touch position
+        changedTouches: [],
+        target: thumb,
+        identifier: 1,
+      },
+      touchHistory: { mostRecentTimeStamp: "2", touchBank: [] },
+    });
 
-  //   // Find the thumb element (replace 'SwipeThumb' if a different testID is used)
-  //   const thumb = getAllByTestId("SwipeThumb")[0];
+    // Simulate the movement during the gesture
+    fireEvent(thumb, "responderMove", {
+      touchHistory: {
+        mostRecentTimeStamp: "1",
+        touchBank: [
+          {
+            touchActive: true,
+            currentTimeStamp: 1,
+            currentPageX: 200,
+            previousPageX: 0,
+          },
+        ],
+        numberActiveTouches: 1,
+        indexOfSingleActiveTouch: 0,
+      },
+    });
 
-  //   // Simulate a swipe gesture (adapt to the specific implementation of SwipeThumb)
-  //   fireEvent(thumb, 'invokeOnSwipeSuccess'); //  Replace with actual event the SwipeThumb component uses.
+    // Simulate the end of the gesture
+    fireEvent(thumb, "responderRelease", {
+      touchHistory: { mostRecentTimeStamp: "1", touchBank: [] },
+    });
+    expect(onSwipeStart).toHaveBeenCalled();
+    expect(onSwipeSuccess).toHaveBeenCalled();
+    expect(onSwipeFail).not.toHaveBeenCalled();
+  });
 
-  //   expect(onSwipeSuccess).toHaveBeenCalledTimes(1);
-  // });
+  it("should trigger onSwipeFail when swipe threshold is not met", () => {
+    const onSwipeStart = jest.fn();
+    const onSwipeFail = jest.fn();
+    const onSwipeSuccess = jest.fn();
+    const { getByTestId } = render(
+      <SwipeButton
+        onSwipeStart={onSwipeStart}
+        onSwipeFail={onSwipeFail}
+        onSwipeSuccess={onSwipeSuccess}
+      />,
+    );
 
-  // it("should call onSwipeFail when swiped unsuccessfully", async () => {
-  //   const onSwipeFail = jest.fn();
-  //   const { getAllByTestId } = render(
-  //       <SwipeButton title="Swipe" onSwipeFail={onSwipeFail} />
-  //   );
+    // Simulate the onLayout event to set the layoutWidth
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "layout", {
+      nativeEvent: {
+        layout: {
+          width: 300, // Set a realistic width for the button
+          height: 50,
+        },
+      },
+    });
 
-  //   const thumb = getAllByTestId("SwipeThumb")[0];
-  //   fireEvent(thumb, 'onSwipeFail'); // Replace with actual event name
+    // Get the thumb element
+    const thumb = getByTestId("SwipeThumb");
 
-  //   expect(onSwipeFail).toHaveBeenCalledTimes(1);
-  // });
+    // Simulate the start of the gesture
+    fireEvent(thumb, "responderGrant", {
+      nativeEvent: {
+        touches: [{ pageX: 0, pageY: 0 }], // Initial touch position
+        changedTouches: [],
+        target: thumb,
+        identifier: 1,
+      },
+      touchHistory: { mostRecentTimeStamp: "2", touchBank: [] },
+    });
 
-  //   it("should call onSwipeSuccess when swiped successfully", async () => {
-  //     const onSwipeSuccess = jest.fn();
-  //     const { getByText, getAllByTestId } = render(
-  //       <SwipeButton title="Swipe" onSwipeSuccess={onSwipeSuccess} />
-  //     );
+    // Simulate the movement during the gesture
+    fireEvent(thumb, "responderMove", {
+      touchHistory: {
+        mostRecentTimeStamp: "1",
+        touchBank: [
+          {
+            touchActive: true,
+            currentTimeStamp: 1,
+            currentPageX: 100,
+            previousPageX: 0,
+          },
+        ],
+        numberActiveTouches: 1,
+        indexOfSingleActiveTouch: 0,
+      },
+    });
 
-  //     // Simulate successful swipe (implementation detail, might need adjustments)
-  //     const thumb = getAllByTestId("SwipeThumb")[0];
-  //     fireEvent(thumb, 'onSwipeSuccess');
+    // Simulate the end of the gesture
+    fireEvent(thumb, "responderRelease", {
+      touchHistory: { mostRecentTimeStamp: "1", touchBank: [] },
+    });
 
-  //     expect(onSwipeSuccess).toHaveBeenCalledTimes(1);
-  //   });
+    expect(onSwipeStart).toHaveBeenCalled();
+    expect(onSwipeFail).toHaveBeenCalled();
+    expect(onSwipeSuccess).not.toHaveBeenCalled();
+  });
 
-  //   it("should call onSwipeFail when swiped unsuccessfully", async () => {
-  //     const onSwipeFail = jest.fn();
-  //     const { getByText, getAllByTestId } = render(
-  //         <SwipeButton title="Swipe" onSwipeFail={onSwipeFail} />
-  //     );
+  it("should not call onSwipeStart when disabled", async () => {
+    const onSwipeStart = jest.fn();
+    const onSwipeFail = jest.fn();
+    const onSwipeSuccess = jest.fn();
+    const { getByTestId } = render(
+      <SwipeButton
+        disabled={true}
+        onSwipeStart={onSwipeStart}
+        onSwipeFail={onSwipeFail}
+        onSwipeSuccess={onSwipeSuccess}
+      />,
+    );
 
-  //     // Simulate unsuccessful swipe (implementation detail, might need adjustments)
-  //     const thumb = getAllByTestId("SwipeThumb")[0];
-  //     fireEvent(thumb, 'onSwipeFail');
+    // Simulate the onLayout event to set the layoutWidth
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "layout", {
+      nativeEvent: {
+        layout: {
+          width: 300, // Set a realistic width for the button
+          height: 50,
+        },
+      },
+    });
 
-  //     expect(onSwipeFail).toHaveBeenCalledTimes(1);
-  //   });
+    // Get the thumb element
+    const thumb = getByTestId("SwipeThumb");
 
-  //   it("should render correctly with disabled prop", async () => {
-  //     const { toJSON } = render(<SwipeButton disabled />);
-  //     expect(toJSON()).toMatchSnapshot();
-  //   });
+    // Simulate the start of the gesture
+    fireEvent(thumb, "responderGrant", {
+      nativeEvent: {
+        touches: [{ pageX: 0, pageY: 0 }], // Initial touch position
+        changedTouches: [],
+        target: thumb,
+        identifier: 1,
+      },
+      touchHistory: { mostRecentTimeStamp: "2", touchBank: [] },
+    });
 
-  //   it("should not call onSwipeStart when disabled", async () => {
-  //     const onSwipeStart = jest.fn();
-  //     const { getByText } = render(<SwipeButton title="Swipe" onSwipeStart={onSwipeStart} disabled />);
-  //     await fireEvent.press(getByText("Swipe"));
-  //     expect(onSwipeStart).not.toHaveBeenCalled();
-  //   });
+    // Simulate the movement during the gesture
+    fireEvent(thumb, "responderMove", {
+      touchHistory: {
+        mostRecentTimeStamp: "1",
+        touchBank: [
+          {
+            touchActive: true,
+            currentTimeStamp: 1,
+            currentPageX: 100,
+            previousPageX: 0,
+          },
+        ],
+        numberActiveTouches: 1,
+        indexOfSingleActiveTouch: 0,
+      },
+    });
 
-  //   it('should update screenReaderEnabled state when AccessibilityInfo changes', async () => {
-  //     const { rerender } = render(<SwipeButton />);
+    // Simulate the end of the gesture
+    fireEvent(thumb, "responderRelease", {
+      touchHistory: { mostRecentTimeStamp: "1", touchBank: [] },
+    });
 
-  //     AccessibilityInfo.isScreenReaderEnabled = jest.fn().mockResolvedValue(true);
-  //     AccessibilityInfo.addEventListener = jest.fn();  // Mock the event listener
-  //     AccessibilityInfo.removeEventListener = jest.fn(); // Mock removing the listener
+    expect(onSwipeStart).not.toHaveBeenCalled();
+    expect(onSwipeFail).not.toHaveBeenCalled();
+    expect(onSwipeSuccess).not.toHaveBeenCalled();
+  });
 
-  //     rerender(<SwipeButton />); // Re-render to trigger the effect
-  //     await new Promise((resolve) => setTimeout(resolve, 0)); // Allow the effect to run
+  it("does not move the thumb icon when disabled", () => {
+    const { getByTestId } = render(<SwipeButton disabled={true} />);
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "layout", {
+      nativeEvent: {
+        layout: {
+          width: 300, // Set a realistic width for the button
+          height: 50,
+        },
+      },
+    });
 
-  //     // Check if screenReaderEnabled is true after re-render
-  //     // This will need to be checked indirectly, likely through component behavior or a wrapper component
-  //     // Example using wrapper component in a real test:
-  //     // expect(wrapper.state('screenReaderEnabled')).toBe(true);
-  //   });
+    const thumb = getByTestId("SwipeThumb");
 
-  //   it('should handle unmounting correctly', async () => {
-  //     const { unmount } = render(<SwipeButton />);
+    fireEvent(thumb, "onPanResponderMove", {
+      nativeEvent: { touches: [{ clientX: 50 }] },
+    });
+    expect(thumb).toHaveStyle({ width: 50 }); // Should not change
+  });
 
-  //     AccessibilityInfo.isScreenReaderEnabled = jest.fn().mockResolvedValue(true);
-  //     AccessibilityInfo.addEventListener = jest.fn();
-  //     AccessibilityInfo.removeEventListener = jest.fn();
+  it("is accessible to screen readers", () => {
+    const { getByLabelText } = render(<SwipeButton title="Swipe to submit" />);
+    expect(getByLabelText("Swipe to submit")).toBeTruthy();
+  });
 
-  //     unmount();  // Unmount the component
+  it("moves thumb icon in reverse direction when enableReverseSwipe is true", () => {
+    const { getByTestId } = render(<SwipeButton enableReverseSwipe={true} />);
+    // Simulate the onLayout event to set the layoutWidth
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "layout", {
+      nativeEvent: {
+        layout: {
+          width: 300, // Set a realistic width for the button
+          height: 50,
+        },
+      },
+    });
 
-  //     // Check if event listener is removed using the mock
-  //     expect(AccessibilityInfo.removeEventListener).toHaveBeenCalled();
-  // });
+    // Get the thumb element
+    const thumb = getByTestId("SwipeThumb");
 
-  //   it('should reset after successful swipe', async () => {
-  //     const onSwipeSuccess = jest.fn();
-  //     const { rerender, getAllByTestId } = render(
-  //       <SwipeButton title="Swipe" onSwipeSuccess={onSwipeSuccess} shouldResetAfterSuccess />
-  //     );
+    // Simulate the movement during the gesture
+    fireEvent(thumb, "responderMove", {
+      touchHistory: {
+        mostRecentTimeStamp: "1",
+        touchBank: [
+          {
+            touchActive: true,
+            currentTimeStamp: 1,
+            currentPageX: -100,
+            previousPageX: 0,
+          },
+        ],
+        numberActiveTouches: 1,
+        indexOfSingleActiveTouch: 0,
+      },
+    });
 
-  //      // Simulate successful swipe
-  //      const thumb = getAllByTestId("SwipeThumb")[0];
-  //      fireEvent(thumb, 'onSwipeSuccess');
-
-  //     // Assertion to check if the component has reset (implementation specific)
-  //     // e.g., check thumb position, rail fill, etc.
-  //   });
-
-  //   it('should reset after successful swipe after a delay', async () => {
-  //     const onSwipeSuccess = jest.fn();
-  //     const { rerender, getAllByTestId } = render(
-  //       <SwipeButton title="Swipe" onSwipeSuccess={onSwipeSuccess} shouldResetAfterSuccess  resetAfterSuccessAnimDelay={1000} />
-  //     );
-
-  //      // Simulate successful swipe
-  //      const thumb = getAllByTestId("SwipeThumb")[0];
-  //      fireEvent(thumb, 'onSwipeSuccess');
-
-  //     // Add necessary delay and then perform the assertions for the reset
-  //     await new Promise(resolve => setTimeout(resolve, 1100)); // Wait a bit longer than the delay
-  //     // Perform the assertions now that the delay is over
-
-  //   });
-
-  //   it('should not reset after successful swipe if shouldResetAfterSuccess is false', async () => {
-  //     const onSwipeSuccess = jest.fn();
-  //     const { rerender, getAllByTestId } = render(
-  //       <SwipeButton title="Swipe" onSwipeSuccess={onSwipeSuccess} shouldResetAfterSuccess={false} />
-  //     );
-
-  //      // Simulate successful swipe
-  //      const thumb = getAllByTestId("SwipeThumb")[0];
-  //      fireEvent(thumb, 'onSwipeSuccess');
-
-  //     // Assertion to verify that the component has *not* reset
-  //   });
-
-  //   it('should handle forceReset', () => {
-  //     const forceReset = jest.fn();
-  //     const { rerender } = render(<SwipeButton forceReset={forceReset} />);
-
-  //     rerender(<SwipeButton forceReset={() => {}} />); // Call forceReset indirectly
-
-  //     // Assert that forceReset was called.  This might require a different approach
-  //     // depending on how forceReset is implemented.
-  //     // expect(forceReset).toHaveBeenCalled(); // or an alternative check
-  //   });
+    expect(thumb).toHaveStyle({ width: 150 });
+  });
 });

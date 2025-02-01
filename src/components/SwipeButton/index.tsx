@@ -7,6 +7,7 @@ import {
   TextStyle,
   ImageSourcePropType,
   LayoutChangeEvent,
+  TouchableOpacityProps,
 } from "react-native";
 
 // Components
@@ -34,7 +35,6 @@ import {
   THUMB_ICON_BORDER_COLOR,
   TITLE_COLOR,
 } from "../../constants";
-import { TouchableOpacityProps } from "react-native-gesture-handler";
 
 interface SwipeButtonProps extends TouchableOpacityProps {
   containerStyles?: ViewStyle;
