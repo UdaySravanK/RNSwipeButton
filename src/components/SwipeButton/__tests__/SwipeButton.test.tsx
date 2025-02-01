@@ -1,3 +1,4 @@
+import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react-native";
 
 import SwipeButton from "../index";
@@ -109,9 +110,9 @@ describe("Component: SwipeButton UI Rendering Tree & Props", () => {
           borderWidth: 56,
           backgroundColor: "#000123",
           borderColor: "#000456",
-          height: "120",
-          width: "210",
-          overflow: "none",
+          height: 120,
+          width: 210,
+          overflow: undefined,
         }}
       />,
     );
@@ -137,9 +138,9 @@ describe("Component: SwipeButton UI Rendering Tree & Props", () => {
     render(
       <SwipeButton
         titleColor={"#123456"}
-        titleFontSize={"48"}
-        titleMaxFontScale={"4"}
-        titleMaxLines={"4"}
+        titleFontSize={48}
+        titleMaxFontScale={4}
+        titleMaxLines={4}
         titleStyles={{ fontWeight: "bold" }}
       />,
     );

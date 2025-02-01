@@ -287,8 +287,8 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should be able to chan
 >
   <Text
     ellipsizeMode="tail"
-    maxFontSizeMultiplier="4"
-    numberOfLines="4"
+    maxFontSizeMultiplier={4}
+    numberOfLines={4}
     style={
       [
         {
@@ -297,7 +297,7 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should be able to chan
         },
         {
           "color": "#123456",
-          "fontSize": "48",
+          "fontSize": 48,
           "fontWeight": "bold",
         },
       ]
