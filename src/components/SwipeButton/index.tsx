@@ -257,7 +257,6 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
           railFillBorderColor={railFillBorderColor}
           railStyles={railStyles}
           resetAfterSuccessAnimDelay={resetAfterSuccessAnimDelay}
-          screenReaderEnabled={screenReaderEnabled}
           shouldResetAfterSuccess={shouldResetAfterSuccess}
           swipeSuccessThreshold={swipeSuccessThreshold}
           thumbIconBackgroundColor={thumbIconBackgroundColor}

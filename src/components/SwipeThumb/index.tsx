@@ -46,7 +46,6 @@ interface SwipeThumbProps {
   railFillBorderColor?: string;
   railStyles?: ViewStyle;
   resetAfterSuccessAnimDelay?: number;
-  screenReaderEnabled?: boolean;
   shouldResetAfterSuccess?: boolean;
   swipeSuccessThreshold?: number;
   thumbIconBackgroundColor?: string;
@@ -76,7 +75,6 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
     railFillBorderColor,
     railStyles,
     resetAfterSuccessAnimDelay,
-    screenReaderEnabled = false,
     shouldResetAfterSuccess,
     swipeSuccessThreshold,
     thumbIconBackgroundColor,
@@ -147,7 +145,7 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
 
   const onPanResponderMove = useCallback(
     async (_: any, gestureState: PanResponderGestureState) => {
-      if (disabled || screenReaderEnabled) return;
+      if (disabled) return;
 
       const reverseMultiplier = enableReverseSwipe ? -1 : 1;
       const rtlMultiplier = isRTL ? -1 : 1;
@@ -172,7 +170,6 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
     },
     [
       disabled,
-      screenReaderEnabled,
       defaultContainerWidth,
       maxWidth,
       isRTL,
