@@ -3,6 +3,7 @@ import { render, screen, fireEvent } from "@testing-library/react-native";
 import SwipeButton from "../";
 import { expect } from "@jest/globals";
 import React from "react";
+import { AccessibilityInfo } from "react-native";
 
 describe("Component: SwipeButton Functionality", () => {
   afterEach(() => {
@@ -12,7 +13,7 @@ describe("Component: SwipeButton Functionality", () => {
   it("moves the thumb icon when swiped", () => {
     const { getByTestId } = render(<SwipeButton />);
 
-    const button = screen.getAllByTestId("SwipeButton")[0];
+    const button = screen.getByTestId("SwipeButton");
     fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
 
     const thumb = getByTestId("SwipeThumb");
@@ -35,7 +36,7 @@ describe("Component: SwipeButton Functionality", () => {
         forceCompleteSwipe={(complete) => (forceComplete = complete)}
       />,
     );
-    const button = screen.getAllByTestId("SwipeButton")[0];
+    const button = screen.getByTestId("SwipeButton");
     fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
 
     // Execute
@@ -56,7 +57,7 @@ describe("Component: SwipeButton Functionality", () => {
     );
 
     // Execute
-    const button = screen.getAllByTestId("SwipeButton")[0];
+    const button = screen.getByTestId("SwipeButton");
     fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
 
     // Assert
@@ -314,5 +315,98 @@ describe("Component: SwipeButton Functionality", () => {
     });
 
     expect(thumb).toHaveStyle({ width: 150 });
+  });
+
+  it("should call onSwipeSuccess upon a tap when screen reader enabled", async () => {
+    // Setup
+    const onSwipeSuccess = jest.fn();
+
+    render(
+      <SwipeButton
+        title="Swipe"
+        onSwipeSuccess={onSwipeSuccess}
+        screenReaderEnabled
+      />,
+    );
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    // Execute
+    fireEvent(button, "onPress");
+
+    // Assert
+    expect(onSwipeSuccess).toHaveBeenCalledTimes(1);
+  });
+
+  it("should call screen reader toggle on focus change", async () => {
+    // Setup
+    const onSwipeSuccess = jest.fn();
+    AccessibilityInfo.addEventListener = jest.fn(); // Mock the event listener
+
+    render(<SwipeButton onSwipeSuccess={onSwipeSuccess} />);
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+    fireEvent(button, "onPress");
+    expect(onSwipeSuccess).not.toHaveBeenCalledTimes(1);
+
+    // Execute
+    AccessibilityInfo.isScreenReaderEnabled = jest.fn().mockResolvedValue(true);
+    fireEvent(button, "onFocus");
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Allow the effect to run
+    fireEvent(button, "onPress");
+
+    // Assert
+    expect(onSwipeSuccess).toHaveBeenCalledTimes(1);
+  });
+
+  it("press should invoke on success callback when the screen reader enabled internally", async () => {
+    // Setup
+    const onSwipeSuccess = jest.fn();
+    AccessibilityInfo.isScreenReaderEnabled = jest.fn().mockResolvedValue(true);
+    AccessibilityInfo.addEventListener = jest.fn(); // Mock the event listener
+    render(<SwipeButton onSwipeSuccess={onSwipeSuccess} />);
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Allow the effect to run
+
+    fireEvent(button, "onPress");
+    expect(onSwipeSuccess).toHaveBeenCalledTimes(1);
+  });
+
+  it("screen reader internally should not override the prop value", async () => {
+    // Setup
+    const onSwipeSuccess = jest.fn();
+    AccessibilityInfo.isScreenReaderEnabled = jest.fn().mockResolvedValue(true);
+    AccessibilityInfo.addEventListener = jest.fn(); // Mock the event listener
+    render(
+      <SwipeButton
+        onSwipeSuccess={onSwipeSuccess}
+        screenReaderEnabled={false}
+      />,
+    );
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Allow the effect to run
+
+    fireEvent(button, "onPress");
+    expect(onSwipeSuccess).not.toHaveBeenCalledTimes(1);
+  });
+
+  it("press should not invoke on success callback when the screen reader enabled internally and button disabled", async () => {
+    // Setup
+    const onSwipeSuccess = jest.fn();
+    AccessibilityInfo.isScreenReaderEnabled = jest.fn().mockResolvedValue(true);
+    AccessibilityInfo.addEventListener = jest.fn(); // Mock the event listener
+    render(<SwipeButton onSwipeSuccess={onSwipeSuccess} disabled />);
+    const button = screen.getByTestId("SwipeButton");
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    await new Promise((resolve) => setTimeout(resolve, 0)); // Allow the effect to run
+
+    fireEvent(button, "onPress");
+    expect(onSwipeSuccess).not.toHaveBeenCalledTimes(1);
   });
 });

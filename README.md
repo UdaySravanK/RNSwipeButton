@@ -65,6 +65,9 @@ import SwipeButton from 'rn-swipe-button';
 </div>
 <hr>
 
+<h2 style="color:darkgreen;">Web Demo</h2>
+<video src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-web.mov" />
+
 <h2 style="color:darkgreen;">Component properties</h2>
 <pre style="font-size: 15px; color: brown;">
     <b>containerStyles</b>: PropTypes.object,
@@ -90,7 +93,7 @@ import SwipeButton from 'rn-swipe-button';
     <b>railFillBorderColor</b>: PropTypes.string,
     <b>railStyles</b>: PropTypes.object,
     <b>resetAfterSuccessAnimDelay</b>: PropTypes.number, <span style="color: blueviolet">// This is delay before resetting the button after successful swipe When shouldResetAfterSuccess = true </span>
-    <b>screenReaderEnabled</b>: PropTypes.bool,
+    <b>screenReaderEnabled</b>: PropTypes.bool, <span style="color: blueviolet">// Overrides the internal value </span>
     <b>shouldResetAfterSuccess</b>: PropTypes.bool, <span style="color: blueviolet">// If set to true, buttun resets automatically after swipe success with default delay of 1000ms</span>
     <b>swipeSuccessThreshold</b>: PropTypes.number, <span style="color: blueviolet">// Ex: 70. Swipping 70% will be considered as successful swipe</span>
     <b>thumbIconBackgroundColor</b>: PropTypes.string,

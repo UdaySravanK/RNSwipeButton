@@ -163,4 +163,24 @@ describe("Component: SwipeButton UI Rendering Tree & Props", () => {
     // Assert
     expect(screen.toJSON()).toMatchSnapshot();
   });
+
+  it("should render correctly with screen reader enabled", async () => {
+    // Setup
+    render(<SwipeButton screenReaderEnabled />);
+    const button = screen.getAllByTestId("SwipeButton")[0];
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    // Assert
+    expect(screen.toJSON()).toMatchSnapshot();
+  });
+
+  it("should render correctly with screen reader disabled", async () => {
+    // Setup
+    render(<SwipeButton screenReaderEnabled={false} />);
+    const button = screen.getAllByTestId("SwipeButton")[0];
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    // Assert
+    expect(screen.toJSON()).toMatchSnapshot();
+  });
 });
