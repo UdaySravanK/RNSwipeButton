@@ -121,7 +121,7 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
   ...rest // Include other TouchableOpacity props
 }) => {
   const [layoutWidth, setLayoutWidth] = useState(0);
-  const [isScreenReaderEnabled, setScreenReaderEnabled] =
+  const [isScreenReaderEnabled, setIsScreenReaderEnabled] =
     useState(screenReaderEnabled);
   const [isUnmounting, setIsUnmounting] = useState(false);
   const [activationMessage, setActivationMessage] = useState(title);
@@ -160,12 +160,12 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
         return;
       }
       if (screenReaderEnabled !== undefined) {
-        setScreenReaderEnabled(screenReaderEnabled);
+        setIsScreenReaderEnabled(screenReaderEnabled);
         // Return to avoid overriding the externally set value
         return;
       }
 
-      setScreenReaderEnabled(isEnabled);
+      setIsScreenReaderEnabled(isEnabled);
     },
     [isScreenReaderEnabled, screenReaderEnabled],
   );
