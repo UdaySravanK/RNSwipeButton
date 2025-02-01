@@ -10,6 +10,18 @@
 
 <hr>
 
+
+## Description
+- Highly customizable "swipe to submit" category button. 
+- Generally used in exchange of regular buttons to avoid accidental taps.
+- This component works for Android, iOS and Web application.
+- Supports RTL out of the box.
+- Provides accessiblity support.
+- Component has more than 85% test coverge.
+- 100% TypeScript
+- MIT License
+
+
 ## Installation 
 
 ```bash
@@ -66,7 +78,9 @@ import SwipeButton from 'rn-swipe-button';
 <hr>
 
 <h2 style="color:darkgreen;">Web Demo</h2>
-<img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-web.gif" style="margin-right: 30px;" width="400"/>
+<p align="center">
+  <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-web.gif" width="400"/>
+</p>
 
 
 <h2 style="color:darkgreen;">Component properties</h2>
