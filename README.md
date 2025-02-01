@@ -66,7 +66,8 @@ import SwipeButton from 'rn-swipe-button';
 <hr>
 
 <h2 style="color:darkgreen;">Web Demo</h2>
-<video src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-web.mov" />
+<img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-web.gif" style="margin-right: 30px;" width="400"/>
+
 
 <h2 style="color:darkgreen;">Component properties</h2>
 <pre style="font-size: 15px; color: brown;">
