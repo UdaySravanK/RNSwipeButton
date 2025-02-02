@@ -57,6 +57,7 @@ interface SwipeButtonProps extends TouchableOpacityProps {
   railFillBorderColor?: string;
   railStyles?: ViewStyle;
   resetAfterSuccessAnimDelay?: number;
+  screenReaderEnabled?: boolean;
   shouldResetAfterSuccess?: boolean;
   swipeSuccessThreshold?: number;
   thumbIconBackgroundColor?: string;
@@ -101,6 +102,7 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
   railFillBorderColor = RAIL_FILL_BORDER_COLOR,
   railStyles,
   resetAfterSuccessAnimDelay,
+  screenReaderEnabled,
   shouldResetAfterSuccess,
   swipeSuccessThreshold = SWIPE_SUCCESS_THRESHOLD,
   thumbIconBackgroundColor = THUMB_ICON_BACKGROUND_COLOR,
@@ -119,7 +121,8 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
   ...rest // Include other TouchableOpacity props
 }) => {
   const [layoutWidth, setLayoutWidth] = useState(0);
-  const [screenReaderEnabled, setScreenReaderEnabled] = useState(false);
+  const [isScreenReaderEnabled, setIsScreenReaderEnabled] =
+    useState(screenReaderEnabled);
   const [isUnmounting, setIsUnmounting] = useState(false);
   const [activationMessage, setActivationMessage] = useState(title);
   const [disableInteraction, setDisableInteraction] = useState(false);
@@ -144,19 +147,28 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
    * Which results to all interactions disabled. Swipe gesture won't work.
    */
   useEffect(() => {
-    if (disabled && screenReaderEnabled) {
+    if (disabled && isScreenReaderEnabled) {
       setDisableInteraction(true);
     } else {
       setDisableInteraction(false);
     }
-  }, [disabled, screenReaderEnabled]);
+  }, [disabled, isScreenReaderEnabled]);
 
-  const handleScreenReaderToggled = (isEnabled: boolean) => {
-    if (isUnmounting || screenReaderEnabled === isEnabled) {
-      return;
-    }
-    setScreenReaderEnabled(isEnabled);
-  };
+  const handleScreenReaderToggled = useCallback(
+    (isEnabled: boolean) => {
+      if (isUnmounting || isScreenReaderEnabled === isEnabled) {
+        return;
+      }
+      if (screenReaderEnabled !== undefined) {
+        setIsScreenReaderEnabled(screenReaderEnabled);
+        // Return to avoid overriding the externally set value
+        return;
+      }
+
+      setIsScreenReaderEnabled(isEnabled);
+    },
+    [isScreenReaderEnabled, screenReaderEnabled],
+  );
 
   useEffect(() => {
     setIsUnmounting(false);
@@ -173,26 +185,26 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
         subscription.remove();
       }
     };
-  }, [setIsUnmounting, screenReaderEnabled, handleScreenReaderToggled]);
+  }, [isScreenReaderEnabled, handleScreenReaderToggled]);
 
   useEffect(() => {
     // Update activation message based on disabled state and screen reader status
     if (disabled) {
       setActivationMessage("Button disabled");
-    } else if (screenReaderEnabled) {
+    } else if (isScreenReaderEnabled) {
       setActivationMessage("Double tap to activate");
     } else {
       setActivationMessage(title);
     }
-  }, [disabled, screenReaderEnabled]);
+  }, [disabled, isScreenReaderEnabled]);
 
   const handlePress = useCallback(() => {
     if (disabled) return;
-    if (screenReaderEnabled) {
+    if (isScreenReaderEnabled) {
       // Simulate swipe success for screen readers
       onSwipeSuccess && onSwipeSuccess(false);
     }
-  }, [disabled, screenReaderEnabled, onSwipeSuccess]);
+  }, [disabled, isScreenReaderEnabled, onSwipeSuccess]);
 
   const handleFocus = useCallback(() => {
     AccessibilityInfo.isScreenReaderEnabled().then(handleScreenReaderToggled);
@@ -257,7 +269,6 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
           railFillBorderColor={railFillBorderColor}
           railStyles={railStyles}
           resetAfterSuccessAnimDelay={resetAfterSuccessAnimDelay}
-          screenReaderEnabled={screenReaderEnabled}
           shouldResetAfterSuccess={shouldResetAfterSuccess}
           swipeSuccessThreshold={swipeSuccessThreshold}
           thumbIconBackgroundColor={thumbIconBackgroundColor}

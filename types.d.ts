@@ -52,6 +52,10 @@ interface Props {
      * The button can be reset to original state upon a succesful swipe by setting `shouldResetAfterSuccess` to true. This prop is to set the delay.
      */
     resetAfterSuccessAnimDelay?: number;
+    /**
+     * Detecting screen reader enabled is not very reliable across platforms. So, exposing it to override the internal value.
+     */
+    screenReaderEnabled?: boolean; 
     shouldResetAfterSuccess?: boolean;
     /**
      * If you set it to 50, it means after swiping 50%, the remaining will be auto completed.
