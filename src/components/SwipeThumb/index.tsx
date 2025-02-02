@@ -14,7 +14,6 @@ import {
   View,
   ViewStyle,
   ImageSourcePropType,
-  GestureResponderEvent,
   PanResponderGestureState,
 } from "react-native";
 
@@ -99,19 +98,10 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
   const animatedWidth = useRef(
     new Animated.Value(defaultContainerWidth),
   ).current;
-  const [defaultWidth, setDefaultWidth] = useState(defaultContainerWidth);
   const [shouldDisableTouch, disableTouch] = useState(false);
 
   const [backgroundColor, setBackgroundColor] = useState(TRANSPARENT_COLOR);
   const [borderColor, setBorderColor] = useState(TRANSPARENT_COLOR);
-
-  useEffect(() => {
-    Animated.timing(animatedWidth, {
-      toValue: defaultWidth,
-      duration: finishRemainingSwipeAnimationDuration,
-      useNativeDriver: false,
-    }).start();
-  }, [defaultWidth]);
 
   useEffect(() => {
     forceReset && forceReset(reset);
@@ -121,19 +111,35 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
     forceCompleteSwipe && forceCompleteSwipe(forceComplete);
   }, [forceCompleteSwipe]);
 
+  function updateWidthWithAnimation(newWidth: number) {
+    Animated.timing(animatedWidth, {
+      toValue: newWidth,
+      duration: finishRemainingSwipeAnimationDuration,
+      useNativeDriver: false,
+    }).start();
+  }
+
+  function updateWidthWithoutAnimation(newWidth: number) {
+    Animated.timing(animatedWidth, {
+      toValue: newWidth,
+      duration: 0,
+      useNativeDriver: false,
+    }).start();
+  }
+
   function onSwipeNotMetSuccessThreshold() {
     // Animate to initial position
-    setDefaultWidth(defaultContainerWidth);
+    updateWidthWithAnimation(defaultContainerWidth);
     onSwipeFail && onSwipeFail();
   }
 
   function onSwipeMetSuccessThreshold(newWidth: number) {
     if (newWidth !== maxWidth) {
+      // Animate to final position
       finishRemainingSwipe();
       return;
     }
     invokeOnSwipeSuccess(false);
-    reset();
   }
 
   function onPanResponderStart() {
@@ -144,7 +150,7 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
   }
 
   const onPanResponderMove = useCallback(
-    async (_: any, gestureState: PanResponderGestureState) => {
+    (_: any, gestureState: PanResponderGestureState) => {
       if (disabled) return;
 
       const reverseMultiplier = enableReverseSwipe ? -1 : 1;
@@ -157,15 +163,10 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
         reset();
       } else if (newWidth > maxWidth) {
         setBackgroundColors();
-        setDefaultWidth(maxWidth);
+        updateWidthWithoutAnimation(maxWidth);
       } else {
         setBackgroundColors();
-        await Animated.timing(animatedWidth, {
-          toValue: newWidth,
-          duration: 0,
-          useNativeDriver: false,
-        }).start();
-        setDefaultWidth(newWidth);
+        updateWidthWithoutAnimation(newWidth);
       }
     },
     [
@@ -212,7 +213,7 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
 
   function finishRemainingSwipe() {
     // Animate to final position
-    setDefaultWidth(maxWidth);
+    updateWidthWithAnimation(maxWidth);
     invokeOnSwipeSuccess(false);
 
     //Animate back to initial position after successfully swiped
@@ -233,11 +234,11 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
 
   function reset() {
     disableTouch(false);
-    setDefaultWidth(defaultContainerWidth);
+    updateWidthWithAnimation(defaultContainerWidth);
   }
 
   function forceComplete() {
-    setDefaultWidth(maxWidth);
+    updateWidthWithAnimation(maxWidth);
     invokeOnSwipeSuccess(true);
   }
 
@@ -295,7 +296,7 @@ const SwipeThumb: React.FC<SwipeThumbProps> = React.memo((props) => {
       onPanResponderMove: onPanResponderMove,
       onPanResponderRelease: onPanResponderRelease,
     }) as any,
-    [props], // [disabled, enableReverseSwipe, defaultContainerWidth, maxWidth, setBackgroundColors, animatedWidth, screenReaderEnabled],
+    [props], // [disabled, enableReverseSwipe, defaultContainerWidth, maxWidth, setBackgroundColors, animatedWidth],
   );
 
   const panStyle = {
