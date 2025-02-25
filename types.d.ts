@@ -31,7 +31,7 @@ interface Props {
      */
     forceReset?: (forceReset: () => void) => void;
     /**
-     * This is the height of thumb which we interact to swipe. 
+     * This is the height of thumb which we interact to swipe.
      * The width of the thumb will be automatically set to the height by default. But the thumb can be costomized with `thumbIconComponent`.
      * Default value is 50
      */
@@ -55,11 +55,11 @@ interface Props {
     /**
      * Detecting screen reader enabled is not very reliable across platforms. So, exposing it to override the internal value.
      */
-    screenReaderEnabled?: boolean; 
+    screenReaderEnabled?: boolean;
     shouldResetAfterSuccess?: boolean;
     /**
      * If you set it to 50, it means after swiping 50%, the remaining will be auto completed.
-     * 
+     *
      * Default value is 70.
      */
     swipeSuccessThreshold?: number;
@@ -70,6 +70,7 @@ interface Props {
     thumbIconStyles?: StyleProp<ViewStyle>;
     thumbIconHeight?: number;
     thumbIconWidth?: number;
+    titleComponent?: () => ReactElement;
     title?: string;
     titleColor?: string;
     /**
