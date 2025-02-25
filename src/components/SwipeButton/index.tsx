@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ReactElement, useCallback } from "react";
 import {
+  View,
   Text,
   AccessibilityInfo,
   TouchableOpacity,
@@ -66,6 +67,7 @@ interface SwipeButtonProps extends TouchableOpacityProps {
   thumbIconImageSource?: ImageSourcePropType;
   thumbIconStyles?: ViewStyle;
   thumbIconWidth?: number;
+  titleComponent?: () => ReactElement;
   title?: string;
   titleColor?: string;
   titleFontSize?: number;
@@ -111,6 +113,7 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
   thumbIconImageSource,
   thumbIconStyles = {},
   thumbIconWidth,
+  titleComponent: TitleComponent,
   title = DEFAULT_TITLE,
   titleColor = TITLE_COLOR,
   titleFontSize = DEFAULT_TITLE_FONT_SIZE,
@@ -234,21 +237,27 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
       testID="SwipeButton"
       {...rest}
     >
-      <Text
-        maxFontSizeMultiplier={titleMaxFontScale}
-        ellipsizeMode={"tail"}
-        numberOfLines={titleMaxLines}
-        style={[
-          styles.title,
-          {
-            color: titleColor,
-            fontSize: titleFontSize,
-            ...titleStyles,
-          },
-        ]}
-      >
-        {title}
-      </Text>
+      {TitleComponent ? (
+          <View style={{...styles.title}}>
+            <TitleComponent />
+          </View>
+      ) : (
+          <Text
+              maxFontSizeMultiplier={titleMaxFontScale}
+              ellipsizeMode={"tail"}
+              numberOfLines={titleMaxLines}
+              style={[
+                styles.title,
+                {
+                  color: titleColor,
+                  fontSize: titleFontSize,
+                  ...titleStyles,
+                },
+              ]}
+          >
+            {title}
+          </Text>
+      )}
       {layoutWidth > 0 && (
         <SwipeThumb
           disabled={disabled}
