@@ -120,6 +120,7 @@ import SwipeButton from 'rn-swipe-button';
     ]),
     <b>thumbIconStyles</b>: PropTypes.object,
     <b>thumbIconWidth</b>: PropTypes.number,
+    <b>titleComponent</b>: PropTypes.node, <span style="color: blueviolet">Pass any react component to replace title text element</span>
     <b>title</b>: PropTypes.string,
     <b>titleColor</b>: PropTypes.string,
     <b>titleFontSize</b>: PropTypes.number,
