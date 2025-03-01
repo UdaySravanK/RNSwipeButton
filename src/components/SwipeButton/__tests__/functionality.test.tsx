@@ -21,8 +21,7 @@ describe("Component: SwipeButton Functionality", () => {
     jest.clearAllTimers();
   });
 
-  // Failing on CI, will fix it later
-  xit("moves the thumb icon when swiped", async () => {
+  it("moves the thumb icon when swiped", async () => {
     jest.useRealTimers();
     const { getByTestId } = render(<SwipeButton />);
 
@@ -48,7 +47,7 @@ describe("Component: SwipeButton Functionality", () => {
     await waitFor(async () => {
       expect(thumb).toHaveStyle({ width: 50 });
     });
-  });
+  }, 10000);
 
   it("should call onSwipeSuccess when swipe completed with forceCompleteSwipe", async () => {
     // Setup
