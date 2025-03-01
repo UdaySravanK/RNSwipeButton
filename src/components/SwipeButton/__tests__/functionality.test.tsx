@@ -22,6 +22,7 @@ describe("Component: SwipeButton Functionality", () => {
   });
 
   it("moves the thumb icon when swiped", async () => {
+    jest.useRealTimers();
     const { getByTestId } = render(<SwipeButton />);
 
     let button;
