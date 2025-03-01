@@ -923,7 +923,7 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
         "borderColor": "#00000000",
         "borderRadius": 50,
         "borderRightWidth": 0,
-        "borderWidth": 3,
+        "borderWidth": 20,
         "margin": 1,
         "width": 50,
       }
@@ -941,8 +941,8 @@ exports[`Component: SwipeButton UI Rendering Tree & Props should render correctl
             "marginVertical": -3,
           },
           {
-            "backgroundColor": "#0FF000",
-            "borderColor": "000FFF",
+            "backgroundColor": "#D27030",
+            "borderColor": "#3D797C",
             "height": 50,
             "overflow": "hidden",
             "width": 50,
