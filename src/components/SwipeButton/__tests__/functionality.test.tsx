@@ -42,9 +42,9 @@ describe("Component: SwipeButton Functionality", () => {
       fireEvent(thumb, "onPanResponderMove", {
         nativeEvent: { touches: [{ clientX: 50 }] },
       });
-      await waitFor(async () => {
-        expect(thumb).toHaveStyle({ width: 50 });
-      });
+    });
+    await waitFor(async () => {
+      expect(thumb).toHaveStyle({ width: 50 });
     });
   });
 
