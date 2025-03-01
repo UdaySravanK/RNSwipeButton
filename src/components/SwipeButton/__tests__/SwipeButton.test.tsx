@@ -183,4 +183,17 @@ describe("Component: SwipeButton UI Rendering Tree & Props", () => {
     // Assert
     expect(screen.toJSON()).toMatchSnapshot();
   });
+
+  it("should render with custom title component", async () => {
+    // Setup
+    const CustomComp = () => {
+      return <Text>USK</Text>;
+    };
+    render(<SwipeButton titleComponent={CustomComp} />);
+    const button = screen.getAllByTestId("SwipeButton")[0];
+    fireEvent(button, "onLayout", { nativeEvent: { layout: { width: 100 } } });
+
+    // Assert
+    expect(screen.toJSON()).toMatchSnapshot();
+  });
 });
