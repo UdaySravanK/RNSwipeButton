@@ -18,3 +18,10 @@ assignees: ''
 
 ### Screenshots And/Or GIFs
 <!-- Please attach screenshots of before fix and after fix -->
+
+### Checks
+
+[] Added or updated tests
+[] Added or updated type definitions (in alphabetical order)
+[] Updated readme file
+[] Tested manually with demo app or with an other apporach

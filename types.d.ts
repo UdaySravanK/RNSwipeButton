@@ -70,9 +70,12 @@ interface Props {
     thumbIconStyles?: StyleProp<ViewStyle>;
     thumbIconHeight?: number;
     thumbIconWidth?: number;
-    titleComponent?: () => ReactElement;
     title?: string;
     titleColor?: string;
+    /**
+     * Use a component as title
+     */
+    titleComponent?: () => ReactElement;
     /**
      * Default value is 20
      */

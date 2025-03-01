@@ -67,9 +67,9 @@ interface SwipeButtonProps extends TouchableOpacityProps {
   thumbIconImageSource?: ImageSourcePropType;
   thumbIconStyles?: ViewStyle;
   thumbIconWidth?: number;
-  titleComponent?: () => ReactElement;
   title?: string;
   titleColor?: string;
+  titleComponent?: () => ReactElement;
   titleFontSize?: number;
   titleMaxFontScale?: number;
   titleMaxLines?: number;
@@ -78,7 +78,9 @@ interface SwipeButtonProps extends TouchableOpacityProps {
 }
 
 /**
- * - Height of the RNSwipeButton will be determines by the height of the inner ThumbIcon which we interact with to swipe.
+ * A swipe to submit button
+ *
+ * - Height of the RNSwipeButton will be determined by the height of the inner ThumbIcon which we interact with to swipe.
  *
  * @param {*} param0
  * @returns
@@ -113,9 +115,9 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
   thumbIconImageSource,
   thumbIconStyles = {},
   thumbIconWidth,
-  titleComponent: TitleComponent,
   title = DEFAULT_TITLE,
   titleColor = TITLE_COLOR,
+  titleComponent: TitleComponent,
   titleFontSize = DEFAULT_TITLE_FONT_SIZE,
   titleMaxFontScale,
   titleMaxLines = DEFAULT_TITLE_MAX_LINES,
@@ -238,25 +240,25 @@ const SwipeButton: React.FC<SwipeButtonProps> = ({
       {...rest}
     >
       {TitleComponent ? (
-          <View style={{...styles.title}}>
-            <TitleComponent />
-          </View>
+        <View style={{ ...styles.title }}>
+          <TitleComponent />
+        </View>
       ) : (
-          <Text
-              maxFontSizeMultiplier={titleMaxFontScale}
-              ellipsizeMode={"tail"}
-              numberOfLines={titleMaxLines}
-              style={[
-                styles.title,
-                {
-                  color: titleColor,
-                  fontSize: titleFontSize,
-                  ...titleStyles,
-                },
-              ]}
-          >
-            {title}
-          </Text>
+        <Text
+          maxFontSizeMultiplier={titleMaxFontScale}
+          ellipsizeMode={"tail"}
+          numberOfLines={titleMaxLines}
+          style={[
+            styles.title,
+            {
+              color: titleColor,
+              fontSize: titleFontSize,
+              ...titleStyles,
+            },
+          ]}
+        >
+          {title}
+        </Text>
       )}
       {layoutWidth > 0 && (
         <SwipeThumb
