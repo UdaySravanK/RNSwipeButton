@@ -81,7 +81,11 @@ import SwipeButton from 'rn-swipe-button';
 <p align="center">
   <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-web.gif" width="400"/>
 </p>
-
+<h2 style="color:darkgreen;">Custom Title Demo</h2>
+<p align="center">
+  <img src="https://github.com/UdaySravanK/RNSwipeButtonDemo/blob/main/assets/images/rn-swipe-button-custom-title.gif" width="400"/>
+</p>
+<p>You can get the code for this from the demo project</p>
 
 <h2 style="color:darkgreen;">Component properties</h2>
 <pre style="font-size: 15px; color: brown;">
